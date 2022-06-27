@@ -1,0 +1,17 @@
+{
+    "name": "33623/pizzeria-gabinelli",
+    "authors": [
+        {
+            "name": "Alex-Zicaro",
+            "email": "alex.zicaro@laplateforme.io"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "App\\" : "App/"
+        }
+    },
+    "require": {
+        "phpmailer/phpmailer": "^6.6"
+    }
+}
