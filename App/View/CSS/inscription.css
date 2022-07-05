@@ -230,8 +230,12 @@ display-flex, .booking-content {
     -webkit-appearance: none; }
     input:focus + .form-label, input:valid + .form-label {
       top: 1px;
-      font-size: 11px;
+      font-size: 13.25px;
       color: #04711e; }
+      input:focus + .form-label, input[type='file']:valid + .form-label{
+        font-size: 14px;
+ }
+      
   
   input, select {
     box-sizing: border-box;

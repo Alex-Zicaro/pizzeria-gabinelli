@@ -5,10 +5,10 @@ use App\Controller\Utilisateurs;
 $utilisateur = new Utilisateurs;
 $image = new App\Controller\Images;
 $utilisateur->verifConnect();
-if(isset($_POST['Envoyer'])){
-	$utilisateur->register($_POST['email'],$_POST['password'], $_POST['confirmation'], $_POST['prenom'], $_POST['nom'],$_POST['civilite']);
+if (isset($_POST['Envoyer'])) {
+	$msgErr = $utilisateur->register($_POST['email'], $_POST['password'], $_POST['confirmation'], $_POST['prenom'], $_POST['nom'], $_POST['civilite']);
 }
-
+// var_dump($_SESSION['err']);
 
 ?>
 
@@ -22,8 +22,9 @@ if(isset($_POST['Envoyer'])){
 	<title></title>
 
 	<link rel="stylesheet" href="CSS/inscription.css">
+
 	<!-- CSS only -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 	<meta name="robots" content="">
 
 <body>
@@ -36,8 +37,10 @@ if(isset($_POST['Envoyer'])){
 						<img class="booking-img" src="View/media/pizzaInscription.jpg" alt="image d'une pizza">
 					</div>
 					<div class="booking-form">
-						<form id="booking-form" enctype="multipart/form-data">
+						<form id="booking-form" enctype="multipart/form-data" method="POST">
 							<h2>Inscription</h2>
+							<?php if (isset($msgErr)) {
+				?><p class="alert alert-dange"><?= $msgErr;}?></p> 
 							<div class="form-group form-input">
 								<input type="text" name="prenom" id="prenom" value="" required />
 								<label for="prenom" class="form-label" id="prenom">*Votre prenom</label>
@@ -56,13 +59,18 @@ if(isset($_POST['Envoyer'])){
 
 
 							<div class="form-group form-input">
-								<input type="password" name="password" id="password" value="" required />
+								<input type="password" name="password" id="password" autocomplete = "off" required />
 								<label for="password" class="form-label">*Votre mot de passe</label>
 							</div>
 
 							<div class="form-group form-input">
-								<input type="password" name="confirmation" id="confirmation" value="" required />
+								<input type="password" name="confirmation" id="confirmation" autocomplete = "off" required />
 								<label for="confirmation" class="form-label">*Confirmation</label>
+							</div>
+
+							<div class="form-group form-input">
+								<input class="form-control" type="file">
+								<label class="form-label" for="fichier" name="fichier"> <b>Votre image</b> </label>
 							</div>
 							<fieldset>
 
@@ -80,19 +88,16 @@ if(isset($_POST['Envoyer'])){
 
 							</fieldset>
 
-							<div class="button-wrap">
-        <label class="form-label" for="fichier" name="fichier">Votre image</label>
-        <input class="form-control" type="file">
-      </div>
 
-							
-								<!-- <input type="submit" name="envoyer" id="envoyer" value="" required /> -->
-								<!-- <label for="envoyer" class="envoyer">S'inscrire</label> -->
-							
+
+
+							<!-- <input type="submit" name="envoyer" id="envoyer" value="" required /> -->
+							<!-- <label for="envoyer" class="envoyer">S'inscrire</label> -->
+
 
 							<input type="submit" name="Envoyer" class="padding-top">
-							
-	<p><i>* = obligatoire</i></p>
+
+							<p><i>* = obligatoire</i></p>
 						</form>
 					</div>
 				</div>

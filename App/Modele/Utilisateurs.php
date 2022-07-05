@@ -15,14 +15,23 @@ class Utilisateurs extends Modele{
 
 
 
-    public function sqlRegister($email, $password, $prenom, $nom, $civilite,$id_image, $id_droits = 1)
+    public function sqlRegister($email, $password, $prenom, $nom, $droit = 'client', $civilite,$id_image, )
     {
-        $hachage = password_hash($password, PASSWORD_BCRYPT); // mettre dans le contrôler
-        $insertmbr = parent::getBdd()->prepare("INSERT INTO utilisateurs(email, password, prenom,nom, droit ,civilite, id_image) VALUES(?,?,?,?,?,?,?,?)"); // Prépare une requête à l'exécution et retourne un objet (PDO)
-        $insertmbr->execute(array($email, $password, $email, $prenom, $nom, $civilite, $id_droits , $id_image)); // Exécute une requête préparée PDO
+        $insertmbr = parent::getBdd()->prepare(
+        "INSERT INTO utilisateurs(id,email, password, prenom, nom, droit ,civilite, id_image) 
+        VALUES(:email,:password ,:prenom ,:nom ,:droit,:civilite,:id_image,);"); // Prépare une requête à l'exécution et retourne un objet (PDO)
+        $insertmbr->execute(array(
+            'email' => $email, 
+            '$password' => $password,
+            'prenom' => $prenom, 
+            'nom' => $nom, 
+            'droit' => $droit , 
+            'civilite' => $civilite, 
+            'id_image' => $id_image
+        )); // Exécute une requête préparée PDO
         // $erreur = "Votre compte à été crée !";
 
-        // header('Location: connexion.php');
+        header('Refresh:5;url=connexion');
     }
 
     public function loginVerify($login)

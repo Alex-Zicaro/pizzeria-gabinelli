@@ -16,17 +16,15 @@ Class Utilisateurs extends Controller{
 
     public function __construct()
     {
-    
+    $this->utilisateur = new \App\Modele\Utilisateurs();
+    $this->imageC = new \App\Controller\Images();
+
     }
 
     public function register($email, $password, $password2, $prenom, $nom, $civilite)
     {
-        if (!isset($login) or empty($login)) {
-            $msgErr = "Vous n'avez pas rentré(e) de login !";
-        } else if (strlen($login) >= 32) {
-            $msgErr = "Votre login est trop long";
-        } else if (strlen($password) <= 8) {
-            $msgErr = "Votre mot de passe est trop court !";
+    if (strlen($password) <= 8) {
+            $msgErr = "Votre mot de passe est trop court 8caractère minimum !";
         }
         elseif (!preg_match("/^[a-zA-z0-9]*$/", $prenom)) {// test le && nom
             $msgErr = 'Vous ne pouvez pas utiliser des caractères spéciaux dans votre prénom et nom.';
@@ -60,7 +58,7 @@ Class Utilisateurs extends Controller{
 
                 $email = htmlspecialchars(strip_tags($_POST["email"]));
                 $password = htmlspecialchars(strip_tags($_POST["password"]));
-                $hachage = password_hash($password, PASSWORD_BCRYPT); 
+                $password = password_hash($password, PASSWORD_BCRYPT); 
                 $prenom = htmlspecialchars(strip_tags($_POST["prenom"]));
                 $nom = htmlspecialchars(strip_tags($_POST["nom"]));
                 $civilite = htmlspecialchars(strip_tags($_POST["civilite"]));
@@ -68,20 +66,19 @@ Class Utilisateurs extends Controller{
                 if (isset($_SESSION['err']) && $_SESSION['err'] == 1) {
                     $image = $this->image->trouverLeDernierId();
                     $id_image = $image['id'];
-                } else {
-                    if ($civilite == 'femme') {
+                } else if(empty($_SESSION['err'])) {
+                    if ($civilite == 'Madame') {
                         $id_image = 1;
-                    } else if ($civilite == 'homme') {
-
-                        $id_image = 2;
-                    } else if ($civilite == 'nonBinaire') {
-                        $id_image = 3; // pas d'image
+                    
+                    } else if ($civilite == 'Monsieur') {
+                        $id_image = 2; // pas d'image
                     }
                 }
 
-                $this->utilisateur->sqlRegister($email, $hachage,$prenom, $nom, $civilite, $id_image);
+                $this->utilisateur->sqlRegister($email, $password,$prenom, $nom, $civilite, $id_image);
                 unset($_SESSION['err']);
-                header("location: connexion");
+                // header("location: connexion");
+                echo'ici';
             }
             } 
             if (isset($msgErr)) {

@@ -5,6 +5,8 @@ Namespace App\Modele;
 use PDO;
 use PDOException;
 
+session_start();
+
 Class Modele {
 
     protected $table;
