@@ -2,7 +2,7 @@
 
 namespace App\Modele;
 
-abstract class Commentaires extends Modele {
+class Commentaires extends Modele {
 
     
 }

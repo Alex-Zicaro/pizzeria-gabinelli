@@ -2,6 +2,14 @@
 
 Namespace App\Controller;
 
+use PDO;
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+require '../vendor/phpmailer/phpmailer/src/Exception.php';
+require '../vendor/phpmailer/phpmailer/src/SMTP.php';
+require '../vendor/phpmailer/phpmailer/src/PHPMailer.php';
+
+
 //revoir le code ici 
 
 Class Utilisateurs extends Controller{
@@ -11,17 +19,17 @@ Class Utilisateurs extends Controller{
     
     }
 
-    public function register($login, $password, $password2, $email, $prenom, $nom, $civilite)
+    public function register($email, $password, $password2, $prenom, $nom, $civilite)
     {
         if (!isset($login) or empty($login)) {
             $msgErr = "Vous n'avez pas rentré(e) de login !";
         } else if (strlen($login) >= 32) {
             $msgErr = "Votre login est trop long";
-        } else if (strlen($password) <= 6) {
+        } else if (strlen($password) <= 8) {
             $msgErr = "Votre mot de passe est trop court !";
         }
-        elseif (!preg_match("/^[a-zA-z0-9]*$/", $login)) {
-            $msgErr = 'Vous ne pouvez pas utiliser des caractères spéciaux.';
+        elseif (!preg_match("/^[a-zA-z0-9]*$/", $prenom)) {// test le && nom
+            $msgErr = 'Vous ne pouvez pas utiliser des caractères spéciaux dans votre prénom et nom.';
         }
         else if (!isset($password) or empty($password)) {
             $msgErr = "Vous n'avez pas rentré(e) de password !";
@@ -37,9 +45,8 @@ Class Utilisateurs extends Controller{
             $msgErr = "Choisir sa civilite !";
         } else if ($password !== $password2) {
             $msgErr = "Vos mot de passe de correspondent pas !";
-        } else if ($this->utilisateur->loginVerify($login) !== 0) {
-            $msgErr = "Login déja pris";
-        } else if ($this->utilisateur->emailVerify($email) !== 0) {
+        } 
+        else if ($this->utilisateur->emailVerify($email) !== 0) {
             $msgErr = "Email déja pris";
         } else {
         
@@ -51,10 +58,9 @@ Class Utilisateurs extends Controller{
                     $this->imageC->secondForm();
                 
 
-                $login = htmlspecialchars(strip_tags($_POST["login"]));
-                $password = htmlspecialchars(strip_tags($_POST["password"]));
-                $password2 = htmlspecialchars(strip_tags($_POST["confirm"]));
                 $email = htmlspecialchars(strip_tags($_POST["email"]));
+                $password = htmlspecialchars(strip_tags($_POST["password"]));
+                $hachage = password_hash($password, PASSWORD_BCRYPT); 
                 $prenom = htmlspecialchars(strip_tags($_POST["prenom"]));
                 $nom = htmlspecialchars(strip_tags($_POST["nom"]));
                 $civilite = htmlspecialchars(strip_tags($_POST["civilite"]));
@@ -73,7 +79,7 @@ Class Utilisateurs extends Controller{
                     }
                 }
 
-                $this->utilisateur->sqlRegister($login, $password, $email, $prenom, $nom, $civilite, $id_image);
+                $this->utilisateur->sqlRegister($email, $hachage,$prenom, $nom, $civilite, $id_image);
                 unset($_SESSION['err']);
                 header("location: connexion");
             }

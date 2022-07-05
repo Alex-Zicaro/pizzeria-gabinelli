@@ -2,7 +2,7 @@
 
 namespace App\Modele;
 
-Abstract class Utilisateurs extends Modele{
+class Utilisateurs extends Modele{
 
     
     public function __construct()
@@ -15,11 +15,11 @@ Abstract class Utilisateurs extends Modele{
 
 
 
-    public function sqlRegister($login, $password, $email, $prenom, $nom, $civilite,$id_image, $id_droits = 1)
+    public function sqlRegister($email, $password, $prenom, $nom, $civilite,$id_image, $id_droits = 1)
     {
-        $hachage = password_hash($password, PASSWORD_BCRYPT);
-        $insertmbr = parent::getBdd()->prepare("INSERT INTO utilisateurs(login, password, email,prenom,nom,civilite,id_droits , id_image) VALUES(?,?,?,?,?,?,?,?)"); // Prépare une requête à l'exécution et retourne un objet (PDO)
-        $insertmbr->execute(array($login, $hachage, $email, $prenom, $nom, $civilite, $id_droits , $id_image)); // Exécute une requête préparée PDO
+        $hachage = password_hash($password, PASSWORD_BCRYPT); // mettre dans le contrôler
+        $insertmbr = parent::getBdd()->prepare("INSERT INTO utilisateurs(email, password, prenom,nom, droit ,civilite, id_image) VALUES(?,?,?,?,?,?,?,?)"); // Prépare une requête à l'exécution et retourne un objet (PDO)
+        $insertmbr->execute(array($email, $password, $email, $prenom, $nom, $civilite, $id_droits , $id_image)); // Exécute une requête préparée PDO
         // $erreur = "Votre compte à été crée !";
 
         // header('Location: connexion.php');

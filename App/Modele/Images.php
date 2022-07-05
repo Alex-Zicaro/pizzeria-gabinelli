@@ -1,8 +1,7 @@
 <?php
 
 namespace App\Modele;
-
-abstract class Images extends Modele {
+class Images extends Modele {
 
 
     public function __construct()

@@ -5,6 +5,10 @@ use App\Controller\Utilisateurs;
 $utilisateur = new Utilisateurs;
 $image = new App\Controller\Images;
 $utilisateur->verifConnect();
+if(isset($_POST['Envoyer'])){
+	$utilisateur->register($_POST['email'],$_POST['password'], $_POST['confirmation'], $_POST['prenom'], $_POST['nom'],$_POST['civilite']);
+}
+
 
 ?>
 
@@ -17,11 +21,10 @@ $utilisateur->verifConnect();
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<title></title>
 
-
-
 	<link rel="stylesheet" href="CSS/inscription.css">
-	<meta name="robots" content="noindex, follow">
-	<!-- <script nonce="4044afe9-c014-42ec-953b-c0ca2fe43ed1">(function(w,d){!function(a,e,t,r){a.zarazData=a.zarazData||{},a.zarazData.executed=[],a.zaraz={deferred:[]},a.zaraz.q=[],a.zaraz._f=function(e){return function(){var t=Array.prototype.slice.call(arguments);a.zaraz.q.push({m:e,a:t})}};for(const e of["track","set","ecommerce","debug"])a.zaraz[e]=a.zaraz._f(e);a.zaraz.init=()=>{var t=e.getElementsByTagName(r)[0],z=e.createElement(r),n=e.getElementsByTagName("title")[0];for(n&&(a.zarazData.t=e.getElementsByTagName("title")[0].text),a.zarazData.x=Math.random(),a.zarazData.w=a.screen.width,a.zarazData.h=a.screen.height,a.zarazData.j=a.innerHeight,a.zarazData.e=a.innerWidth,a.zarazData.l=a.location.href,a.zarazData.r=e.referrer,a.zarazData.k=a.screen.colorDepth,a.zarazData.n=e.characterSet,a.zarazData.o=(new Date).getTimezoneOffset(),a.zarazData.q=[];a.zaraz.q.length;){const e=a.zaraz.q.shift();a.zarazData.q.push(e)}z.defer=!0;for(const e of[localStorage,sessionStorage])Object.keys(e||{}).filter((a=>a.startsWith("_zaraz_"))).forEach((t=>{try{a.zarazData["z_"+t.slice(7)]=JSON.parse(e.getItem(t))}catch{a.zarazData["z_"+t.slice(7)]=e.getItem(t)}}));z.referrerPolicy="origin",z.src="/cdn-cgi/zaraz/s.js?z="+btoa(encodeURIComponent(JSON.stringify(a.zarazData))),t.parentNode.insertBefore(z,t)},["complete","interactive"].includes(e.readyState)?zaraz.init():a.addEventListener("DOMContentLoaded",zaraz.init)}(w,d,0,"script");})(window,document);</script></head> -->
+	<!-- CSS only -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+	<meta name="robots" content="">
 
 <body>
 	<main>
@@ -33,47 +36,54 @@ $utilisateur->verifConnect();
 						<img class="booking-img" src="View/media/pizzaInscription.jpg" alt="image d'une pizza">
 					</div>
 					<div class="booking-form">
-						<form id="booking-form">
+						<form id="booking-form" enctype="multipart/form-data">
 							<h2>Inscription</h2>
 							<div class="form-group form-input">
 								<input type="text" name="prenom" id="prenom" value="" required />
-								<label for="prenom" class="form-label" id="prenom">Votre prenom</label>
+								<label for="prenom" class="form-label" id="prenom">*Votre prenom</label>
 							</div>
 
 							<div class="form-group form-input">
 								<input type="text" name="nom" id="nom" value="" required />
-								<label for="nom" class="form-label">Votre nom</label>
+								<label for="nom" class="form-label">*Votre nom</label>
 							</div>
 
 							<div class="form-group form-input">
-								<input type="email" name="email" id="email" value="" required />
-								<label for="email" class="form-label">Votre email</label>
+								<input type="text" name="email" id="email" value="" required />
+								<label for="email" class="form-label">*Votre Email</label>
 							</div>
+
+
 
 							<div class="form-group form-input">
 								<input type="password" name="password" id="password" value="" required />
-								<label for="password" class="form-label">Votre mot de passe</label>
+								<label for="password" class="form-label">*Votre mot de passe</label>
 							</div>
 
 							<div class="form-group form-input">
 								<input type="password" name="confirmation" id="confirmation" value="" required />
-								<label for="confirmation" class="form-label">Confirmation</label>
+								<label for="confirmation" class="form-label">*Confirmation</label>
 							</div>
 							<fieldset>
 
-								<legend>Choisir sa civilité </legend>
+								<legend>*Choisir sa civilité </legend>
 
 								<div class="form-group form-input">
-									<input type="radio" name="Madame" id="Madame" value="" required />
+									<input type="radio" name="civilite" value="Madame" value="" required />
 									<label for="Madame" class="">Mme.</label>
 								</div>
 
 								<div class="form-group form-input">
-									<input type="radio" name="Monsieur" id="Monsieur" value="" required />
+									<input type="radio" name="civilite" value="Monsieur" value="" required />
 									<label for="Monsieur" class="">Mr.</label>
 								</div>
 
 							</fieldset>
+
+							<div class="button-wrap">
+        <label class="form-label" for="fichier" name="fichier">Votre image</label>
+        <input class="form-control" type="file">
+      </div>
 
 							
 								<!-- <input type="submit" name="envoyer" id="envoyer" value="" required /> -->
@@ -82,7 +92,7 @@ $utilisateur->verifConnect();
 
 							<input type="submit" name="Envoyer" class="padding-top">
 							
-	<p>* = obligatoire</p>
+	<p><i>* = obligatoire</i></p>
 						</form>
 					</div>
 				</div>

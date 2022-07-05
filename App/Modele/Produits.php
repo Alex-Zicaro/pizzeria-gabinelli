@@ -2,7 +2,7 @@
 
 namespace App\Modele;
 
-abstract class Produits extends Modele{
+class Produits extends Modele{
 
     public function selectProduits(?int $id_categorie, int $order = 0)
     {
