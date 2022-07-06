@@ -17,14 +17,15 @@ Class Utilisateurs extends Controller{
     public function __construct()
     {
     $this->utilisateur = new \App\Modele\Utilisateurs();
-    $this->imageC = new \App\Controller\Images();
+    $this->imageC = new Images();
+    $this->controller = new Controller;
 
     }
 
     public function register($email, $password, $password2, $prenom, $nom, $civilite)
     {
     if (strlen($password) <= 8) {
-            $msgErr = "Votre mot de passe est trop court 8caractère minimum !";
+            $msgErr = "Votre mot de passe est trop court 8 caractère  minimum !";
         }
         elseif (!preg_match("/^[a-zA-z0-9]*$/", $prenom)) {// test le && nom
             $msgErr = 'Vous ne pouvez pas utiliser des caractères spéciaux dans votre prénom et nom.';
@@ -74,11 +75,12 @@ Class Utilisateurs extends Controller{
                         $id_image = 2; // pas d'image
                     }
                 }
-
-                $this->utilisateur->sqlRegister($email, $password,$prenom, $nom, $civilite, $id_image);
+                $droit = 'client';
+                
+                $this->utilisateur->sqlRegister($email, $password,$prenom, $nom, $droit, $civilite, $id_image);
                 unset($_SESSION['err']);
                 // header("location: connexion");
-                echo'ici';
+                $msgErr = 'Votre compte a bien été créé !';
             }
             } 
             if (isset($msgErr)) {
@@ -92,6 +94,8 @@ Class Utilisateurs extends Controller{
 
     public function login($infoLogin, $password)
     {
+        $this->controller->security($infoLogin);
+        $this->controller->security($password);
         $total = $this->utilisateur->connexion($infoLogin);
         if (isset($total)) {
 
@@ -99,19 +103,11 @@ Class Utilisateurs extends Controller{
             if (password_verify($password, $SqlPassword)) {
 
                 $_SESSION['profil']['id'] = $total['id'];
-                $_SESSION['profil']['email'] = $total['email'];
-                $_SESSION['profil']['login'] = $total['login'];
-                // Il faudrait ajouter une ligne pour le password
-                $_SESSION['profil']['prenom'] = $total['prenom'];
-                $_SESSION['profil']['nom'] = $total['nom'];
-                $_SESSION['profil']['civilite'] = $total['civilite'];
-                $_SESSION['profil']['id_droits'] = $total['id_droits'];
-                $_SESSION['profil']['id_image'] = $total['id_image'];
                 header("location: profil");
 
             } else {
-                $msgErr = "Mauvais login ou mot de passe !";
-                echo $msgErr;
+                $msgErr = "Mauvais email ou mot de passe !";
+                return $msgErr;
             }
         }
     }
@@ -146,23 +142,7 @@ Class Utilisateurs extends Controller{
         }
     }
 
-    public function CUpdatelogin($login, $id)
-    {
-        // echo"On est dans la méthode ici azel";
-        $info = $_SESSION['profil'];
-        $id = $_SESSION['profil']['id'];
 
-        if (isset($login) && !empty($login) && $login != $info['login']) {
-            // echo"on continue dans la méthode ici aussi";
-            if ($this->utilisateur->loginVerify($login) != 1) {
-                $this->utilisateur->updateLogin($login, $id);
-                $_SESSION['profil']['login'] = $login;
-            } else {
-                $msgErr = "Votre login existe déjà !";
-                echo $msgErr;
-            }
-        }
-    }
     public function CUpdatemail($email, $id)
     {   
         // echo"on est ici";
@@ -240,8 +220,8 @@ Class Utilisateurs extends Controller{
     {
         $user = $this->utilisateur->getOneUser($id);
 
-        if (strlen($password2) <= 6) {
-            $msgErr = "Votre mot de passe est trop court !";
+        if (strlen($password2) <= 8) {
+            $msgErr = "Votre mot de passe est trop court 8 caractères minimum !";
         }
         if (password_verify($password1, $user['password']) && empty($msgErr)) {
             $password = password_hash($password2, PASSWORD_BCRYPT);
@@ -322,7 +302,7 @@ Class Utilisateurs extends Controller{
         }
     }
 
-    public function tuVeuxQuelleHeader()
+    public function headerFront()
     {
 
         if (isset($_SESSION["profil"]) && !empty($_SESSION["profil"])) {

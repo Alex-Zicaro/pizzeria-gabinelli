@@ -1,9 +1,10 @@
 <?php
 
-use App\Controller\Utilisateurs;
-
+use App\Controller\{Utilisateurs,Controller,Images};
+session_destroy();
 $utilisateur = new Utilisateurs;
-$image = new App\Controller\Images;
+$controller = new Controller;
+$image = new Images;
 $utilisateur->verifConnect();
 if (isset($_POST['Envoyer'])) {
 	$msgErr = $utilisateur->register($_POST['email'], $_POST['password'], $_POST['confirmation'], $_POST['prenom'], $_POST['nom'], $_POST['civilite']);
@@ -28,6 +29,9 @@ if (isset($_POST['Envoyer'])) {
 	<meta name="robots" content="">
 
 <body>
+<header>
+	<?php $utilisateur->headerFront(); ?>
+</header>
 	<main>
 
 		<div class="main">
@@ -39,20 +43,40 @@ if (isset($_POST['Envoyer'])) {
 					<div class="booking-form">
 						<form id="booking-form" enctype="multipart/form-data" method="POST">
 							<h2>Inscription</h2>
-							<?php if (isset($msgErr)) {
-				?><p class="alert alert-dange"><?= $msgErr;}?></p> 
+							<?php if (isset($msgErr) && $msgErr == 'Votre compte a bien été créé !') {
+				?><p class="alert alert-danger"><?= $msgErr;}?></p> 
+				<?php if(isset($msgErr) && $msgErr == 'Votre compte a bien été créé !'){
+
+					
+?><p class="alert alert-danger"><?= $msgErr;?></p> <?php
+				}
+				?>
+
 							<div class="form-group form-input">
-								<input type="text" name="prenom" id="prenom" value="" required />
+								<input type="text" name="prenom" id="prenom" value="<?php
+								if(isset($_POST['prenom']))
+
+									echo $controller->security($_POST['prenom']) ;
+								?>" required />
 								<label for="prenom" class="form-label" id="prenom">*Votre prenom</label>
 							</div>
 
 							<div class="form-group form-input">
-								<input type="text" name="nom" id="nom" value="" required />
+								<input type="text" name="nom" id="nom" value="<?php
+								if(isset($_POST['nom']))
+
+									echo $controller->security($_POST['nom']) ;
+								?>
+								" required />
 								<label for="nom" class="form-label">*Votre nom</label>
 							</div>
 
 							<div class="form-group form-input">
-								<input type="text" name="email" id="email" value="" required />
+								<input type="email" name="email" id="email" value="<?php
+								if(isset($_POST['email']))
+
+									echo $controller->security($_POST['email']) ;
+								?>" required />
 								<label for="email" class="form-label">*Votre Email</label>
 							</div>
 
@@ -97,7 +121,7 @@ if (isset($_POST['Envoyer'])) {
 
 							<input type="submit" name="Envoyer" class="padding-top">
 
-							<p><i>* = obligatoire</i></p>
+							<p class="padding-top"><i>* = obligatoire</i></p>
 						</form>
 					</div>
 				</div>
@@ -105,19 +129,10 @@ if (isset($_POST['Envoyer'])) {
 		</div>
 	</main>
 
+	<footer>
+		<?php include_once ('footer.php'); ?>
+	</footer>
 
-	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
-	<script>
-		window.dataLayer = window.dataLayer || [];
-
-		function gtag() {
-			dataLayer.push(arguments);
-		}
-		gtag('js', new Date());
-
-		gtag('config', 'UA-23581568-13');
-	</script>
-	<script defer src="https://static.cloudflareinsights.com/beacon.min.js/v652eace1692a40cfa3763df669d7439c1639079717194" integrity="sha512-Gi7xpJR8tSkrpF7aordPZQlW2DLtzUlZcumS8dMQjwDHEnw9I7ZLyiOj/6tZStRBGtGgN6ceN6cMH8z7etPGlw==" data-cf-beacon='{"rayId":"7255c9046908100a","token":"cd0b4b3a733644fc843ef0b185f98241","version":"2022.6.0","si":100}' crossorigin="anonymous"></script>
 </body>
 
 </html>

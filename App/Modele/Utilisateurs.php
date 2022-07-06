@@ -15,14 +15,15 @@ class Utilisateurs extends Modele{
 
 
 
-    public function sqlRegister($email, $password, $prenom, $nom, $droit = 'client', $civilite,$id_image, )
+    public function sqlRegister($email, $password, $prenom, $nom, $droit, $civilite,$id_image ,  ) :void
     {
+        var_dump($email , $password, $prenom, $nom, $droit, $civilite,$id_image);
         $insertmbr = parent::getBdd()->prepare(
-        "INSERT INTO utilisateurs(id,email, password, prenom, nom, droit ,civilite, id_image) 
-        VALUES(:email,:password ,:prenom ,:nom ,:droit,:civilite,:id_image,);"); // Prépare une requête à l'exécution et retourne un objet (PDO)
+        "INSERT INTO utilisateurs(email, password, prenom, nom, droit ,civilite, id_image) 
+        VALUES(:email,:password ,:prenom ,:nom ,:droit,:civilite,:id_image);"); // Prépare une requête à l'exécution et retourne un objet (PDO)
         $insertmbr->execute(array(
             'email' => $email, 
-            '$password' => $password,
+            'password' => $password,
             'prenom' => $prenom, 
             'nom' => $nom, 
             'droit' => $droit , 
@@ -34,14 +35,6 @@ class Utilisateurs extends Modele{
         header('Refresh:5;url=connexion');
     }
 
-    public function loginVerify($login)
-    {
-
-        $sql = parent::getBdd()->prepare("SELECT utilisateurs.login FROM utilisateurs WHERE login = ?");
-        $sql->execute(array($login));
-        $loginExist = $sql->rowCount();
-        return $loginExist;
-    }
 
     public function emailVerify($email)
     {
@@ -56,23 +49,13 @@ class Utilisateurs extends Modele{
 
     public function connexion($login)
     {
-        $SqlVerifUtilisateur = "SELECT * FROM UTILISATEURS WHERE login = :login or email = :login";
+        $SqlVerifUtilisateur = "SELECT * FROM utilisateurs WHERE email = :login";
         $prepVerif = parent::getBdd()->prepare($SqlVerifUtilisateur);
         $prepVerif->execute(array('login' => $login));
         $infoLogin = $prepVerif->fetch();
         return $infoLogin;
     }
-    public function updateLogin($login, $id)
-    {
-        // var_dump($login);
-        $sql = "UPDATE utilisateurs SET login = :login WHERE id = :id";;
-        $prepupdatetilisateur = parent::getBdd()->prepare($sql);
-        $prepupdatetilisateur->execute(array(
-            ':login' => $login,
-            ':id' => $id
-        ));
-        return $prepupdatetilisateur;
-    }
+
     public function updateMail($email, $id)
     {
         $sql = "UPDATE utilisateurs SET email = :email WHERE id = :id";;
@@ -106,7 +89,6 @@ class Utilisateurs extends Modele{
         $sql = "UPDATE utilisateurs SET id_image = :id_image WHERE id = :id ";
         $query = parent::getBdd()->prepare($sql);
         $query->execute(['id_image' => $idImage , 'id' => $_SESSION['profil']['id']]);
-        $_SESSION['profil']['id_image'] = $idImage;
     }
 
     public function isConnected()

@@ -1,5 +1,6 @@
 <?php
 
+
 require "../vendor/autoload.php";
 // require_once "Controller/Controller.php";
 
@@ -8,7 +9,7 @@ use App\Controller\{Controller};
 $utilisateur = new Controller();
 
 $url = "";
-
+// session_destroy();
 if (isset($_GET["url"])) {
     $url = explode("/", $_GET["url"]);
 }
@@ -17,9 +18,8 @@ if(isset($_GET["deconnexion"])){
     // $utilisateur->logOut();
 }
 ?>
-<head>
-    	<link rel="stylesheet" href="View/CSS/inscription.css">
-</head>
+
+
     <?php
 
 
@@ -30,13 +30,12 @@ if(isset($_GET["deconnexion"])){
 
     if (isset($url[1])) {
         include_once "View/{$url[1]}View.php";
-        echo "c bon bg";
         // Si le fichier n'existe pas
         if(!file_exists("View/{$url[1]}View.php")) {
             include_once "View/404View.php";
         }
     } else {
-        echo "double";
+        // echo "double";
         include_once "View/accueilView.php";
     }
 

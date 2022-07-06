@@ -432,6 +432,11 @@ input[type="radio"]:checked:after {
                 0 0 2px 2px hsla(0,70%,70%,.4);
 }
 
+input[type="submit"]:hover {
+    color: #04711e;
+
+}
+
 img {
     width: 900px;
     height: 900px;
