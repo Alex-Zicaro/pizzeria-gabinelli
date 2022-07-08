@@ -39,6 +39,14 @@ Class Modele {
         return static::$bdd;
     }
 
+    public function getAll($id){
+        $sql = "SELECT * FROM $this->table WHERE id = :id";
+        $query = static::getBdd()->prepare($sql);
+        $query->execute(array('id' => $id));
+        $data = $query->fetch();
+        return $data;
+    }
+
 
     public function deleteOneById($id) : void{
 

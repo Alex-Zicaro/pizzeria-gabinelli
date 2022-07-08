@@ -1,7 +1,7 @@
 <?php
 
 use App\Controller\{Utilisateurs,Controller,Images};
-session_destroy();
+
 $utilisateur = new Utilisateurs;
 $controller = new Controller;
 $image = new Images;
@@ -22,7 +22,7 @@ if (isset($_POST['Envoyer'])) {
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<title></title>
 
-	<link rel="stylesheet" href="CSS/inscription.css">
+	<link rel="stylesheet" href="View/CSS/inscription.css">
 
 	<!-- CSS only -->
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">

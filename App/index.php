@@ -23,22 +23,21 @@ if(isset($_GET["deconnexion"])){
     <?php
 
 
-// $utilisateur->tuVeuxQuelleHeader();
     // === MISE EN PLACE DU ROUTEUR ===
 
     // Il faut faire attention à ce que l'url et le filename correspondent
-
-    if (isset($url[1])) {
+// var_dump(file_exists("View/{$url[1]}View.php"));
+    if (isset($url[1]) && file_exists("View/{$url[1]}View.php")) {
         include_once "View/{$url[1]}View.php";
         // Si le fichier n'existe pas
-        if(!file_exists("View/{$url[1]}View.php")) {
-            include_once "View/404View.php";
-        }
+    }
+    else if(file_exists("View/{$url[1]}View.php") == false) {
+        include_once "View/404View.php";
+        
     } else {
-        // echo "double";
+        
         include_once "View/accueilView.php";
     }
-
     $_SESSION["url"] = $url;
     include_once("./View/include/footer.php");
     ?>

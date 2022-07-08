@@ -114,9 +114,10 @@ Class Utilisateurs extends Controller{
 
     public function userConnect()
     {
-
+var_dump($_SESSION['profil']);
         if (isset($_SESSION["profil"]["id"])) {
-            return true;
+            $data = $this->utilisateur->getAll($_SESSION["profil"]["id"]);
+            return $data;
         } else {
             header("location: connexion");
             die();
