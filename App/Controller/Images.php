@@ -4,9 +4,8 @@ namespace App\Controller;
 
 use App\Modele;
 
-require_once("Modele/Images.php");
-require_once("Modele/Produits.php");
-require_once('Utilisateurs.php');
+require_once("../vendor/autoload.php");
+
 
 class Images extends Controller
 {

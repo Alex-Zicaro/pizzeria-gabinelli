@@ -41,7 +41,7 @@ body {
 
 .card-block {
     padding: 1.25rem;
-    color: white;
+    color: black;
 }
 
 .m-b-25 {
@@ -133,6 +133,14 @@ p {
     margin: 0 10px 0 0;
     -webkit-transition: all 0.3s ease-in-out;
     transition: all 0.3s ease-in-out;
+}
+
+.flex{
+    display: flex;
+}
+
+.flex-end{
+    justify-content: flex-end;
 }
 
 

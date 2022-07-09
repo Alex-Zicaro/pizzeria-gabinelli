@@ -8,7 +8,7 @@ use PHPMailer\PHPMailer\Exception;
 require '../vendor/phpmailer/phpmailer/src/Exception.php';
 require '../vendor/phpmailer/phpmailer/src/SMTP.php';
 require '../vendor/phpmailer/phpmailer/src/PHPMailer.php';
-
+require_once('../vendor/autoload.php');
 
 //revoir le code ici 
 
@@ -19,6 +19,7 @@ Class Utilisateurs extends Controller{
     $this->utilisateur = new \App\Modele\Utilisateurs();
     $this->imageC = new Images();
     $this->controller = new Controller;
+    
 
     }
 
@@ -117,12 +118,15 @@ Class Utilisateurs extends Controller{
 var_dump($_SESSION['profil']);
         if (isset($_SESSION["profil"]["id"])) {
             $data = $this->utilisateur->getAll($_SESSION["profil"]["id"]);
+            $image = $this->imageC->requete->selectImage($data['id_image']);
+            array_push($data, $image);
             return $data;
         } else {
             header("location: connexion");
             die();
         }
     }
+
     public function IsAdmin()
     {
         if (isset($_SESSION["profil"]["id_droits"]) && $_SESSION["profil"]["id_droits"] == 42) {

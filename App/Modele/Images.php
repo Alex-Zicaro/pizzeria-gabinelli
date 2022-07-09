@@ -46,7 +46,7 @@ on return true si c'est une femme else homme false
 */
 
     public function selectImage(?int $id = 0){
-        $sql = "SELECT img_dir FROM images WHERE id = :id";
+        $sql = "SELECT img_dir , nom_img FROM images WHERE id = :id";
         $query = parent::getBdd()->prepare($sql);
         $query->execute(['id' => $id]);
         $data = $query->fetch();
