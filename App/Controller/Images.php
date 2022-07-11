@@ -23,14 +23,14 @@ class Images extends Controller
     public function secondForm()
     {
         // echo"test";
-        // var_dump($_FILES);
+        // var_dump($_FILES); 
 
         if (!empty($_FILES) && $_FILES['fichier']['name'] !== "") {
             $file_nom  = $_FILES["fichier"]["name"];
             $file_type  = strrchr($file_nom, '.');
             $type_autorise = [".png", ".jpg", ".jpeg", ".jfif", ".jpeg"];
             $file_tmp_name = $_FILES["fichier"]["tmp_name"];
-            $file_destination = 'files/' . $file_nom;
+            $file_destination = 'media/' . $file_nom;
 
             if (in_array($file_type, $type_autorise)) {
 
@@ -42,7 +42,7 @@ class Images extends Controller
                 }
                 echo "image conforme";
                 header("Refresh:0");
-                $_SESSION["err"] = 1;
+                // $_SESSION["err"] = 1;
             } else {
 
                 echo "Vous pouvez seulement utiliser ces formats ";
