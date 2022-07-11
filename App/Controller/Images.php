@@ -20,38 +20,49 @@ class Images extends Controller
     /*
     *add image
     */
-    public function secondForm()
+    public function addImage()
     {
         // echo"test";
-        // var_dump($_FILES); 
+        var_dump($_FILES); 
 
         if (!empty($_FILES) && $_FILES['fichier']['name'] !== "") {
             $file_nom  = $_FILES["fichier"]["name"];
             $file_type  = strrchr($file_nom, '.');
             $type_autorise = [".png", ".jpg", ".jpeg", ".jfif", ".jpeg"];
             $file_tmp_name = $_FILES["fichier"]["tmp_name"];
-            $file_destination = 'media/' . $file_nom;
+            $file_destination = 'files/' . $file_nom;
+            $file_size = $_FILES["fichier"]["size"];
+
 
             if (in_array($file_type, $type_autorise)) {
-
+                if($file_size <= 1000000){
                 if (move_uploaded_file($file_tmp_name, $file_destination)) {
                     $this->requete->addImage($file_nom, $file_destination);
+                    // echo "image conforme";
+                    // header("Refresh:0");
+                    $_SESSION["err"] = 1;
                 } else {
 
-                    echo "Une erreur est survenue lors de l'envoie du fichier";
+                    $msgErr = "Une erreur est survenue lors de l'envoie du fichier";
                 }
-                echo "image conforme";
-                header("Refresh:0");
-                // $_SESSION["err"] = 1;
+            }else{
+                    $msgErr = "Le fichier est trop volumineux";
+                }
             } else {
 
-                echo "Vous pouvez seulement utiliser ces formats ";
-                foreach ($type_autorise as $type)
-                    echo $type . " ";
+                $msgErr = "Vous pouvez utiliser ce format de fichier";
+                
             }
         } else if(isset($_SESSION['profil'])) {
-            echo "Aucun fichier reçut";
+            $msgErr = "Aucun fichier reçut";
         } 
+
+        if(isset($msgErr)) {
+            return  $msgErr;
+        } else{
+            // echo"chocolartaeaze";
+            return true;
+        }
     }
 
     public function deleteImgUser(){

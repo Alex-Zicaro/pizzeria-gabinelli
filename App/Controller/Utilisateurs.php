@@ -55,25 +55,31 @@ Class Utilisateurs extends Controller{
                 // echo"je suis ici affiche toi zakelazkeazeazm";
                 
 
-                    $this->imageC->secondForm();
-                
+                    $msgErr = $this->imageC->addImage();
 
-                $email = htmlspecialchars(strip_tags($_POST["email"]));
-                $password = htmlspecialchars(strip_tags($_POST["password"]));
+                    if($msgErr !==  true){
+                        // echo 'on rentre ici';
+                        return $msgErr;
+                        
+                    }
+                
+                $email = $this->controller->security($_POST["email"]);
+                $password = $this->controller->security($_POST["password"]);
                 $password = password_hash($password, PASSWORD_BCRYPT); 
-                $prenom = htmlspecialchars(strip_tags($_POST["prenom"]));
-                $nom = htmlspecialchars(strip_tags($_POST["nom"]));
-                $civilite = htmlspecialchars(strip_tags($_POST["civilite"]));
+                $prenom = $this->controller->security($_POST["prenom"]);
+                $nom = $this->controller->security($_POST["nom"]);
+                $civilite = $this->controller->security($_POST["civilite"]);
 
                 if (isset($_SESSION['err']) && $_SESSION['err'] == 1) {
-                    $image = $this->image->trouverLeDernierId();
+                    $image = $this->imageC->requete->trouverLeDernierId();
                     $id_image = $image['id'];
+
                 } else if(empty($_SESSION['err'])) {
                     if ($civilite == 'Madame') {
                         $id_image = 1;
                     
                     } else if ($civilite == 'Monsieur') {
-                        $id_image = 2; // pas d'image
+                        $id_image = 2; 
                     }
                 }
                 $droit = 'client';
@@ -115,7 +121,7 @@ Class Utilisateurs extends Controller{
 
     public function userConnect()
     {
-var_dump($_SESSION['profil']);
+// var_dump($_SESSION['profil']);
         if (isset($_SESSION["profil"]["id"])) {
             $data = $this->utilisateur->getAll($_SESSION["profil"]["id"]);
             $image = $this->imageC->requete->selectImage($data['id_image']);

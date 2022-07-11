@@ -7,8 +7,9 @@ $utilisateur = new Utilisateurs;
 $image = new Images;
 
 $utilisateurActuelle = $utilisateur->userConnect();
-$UtilisateurImageDir = $image->requete->selectImage($utilisateurActuelle["id"]);
+
 var_dump($utilisateurActuelle);
+// session_destroy();
 ?>
 
 <!DOCTYPE html>
@@ -40,7 +41,7 @@ var_dump($utilisateurActuelle);
                                 <div class="card-block text-center text-white flexer ">
 
                                     <div class="m-b-25">
-                                        <img src="" class="img-radius" alt="User-Profile-Image">
+                                        <img src="<?=$utilisateurActuelle[0]['img_dir'] ?>" class="img-radius" alt="Utilisateur-Profile-Image">
                                     </div>
 
                                     <div class="end">
@@ -88,7 +89,7 @@ var_dump($utilisateurActuelle);
     </div>
     <?php endif;
     
-    if($_GET['modif'] === true): ?>
+    if(isset($_GET['modif']) && $_GET['modif'] === true): ?>
         <div class="page-content page-container" id="page-content">
         <div class="padding">
             <div class="row container d-flex justify-content-center">

@@ -19,7 +19,7 @@ class Images extends Modele {
     public function addImage($nom, $img_dir)
     {
 
-        $sql = "INSERT INTO images(nom,img_dir) VALUES (:nom , :img_dir)";
+        $sql = "INSERT INTO images(nom_img,img_dir) VALUES (:nom , :img_dir)";
         $query = parent::getBdd()->prepare($sql);
         $query->execute(['nom' => $nom, 'img_dir' => $img_dir]);
     }
@@ -45,13 +45,13 @@ class Images extends Modele {
 on return true si c'est une femme else homme false
 */
 
-    public function selectImage(?int $id = 0){
+    public function selectImage(int $id = 0){
         $sql = "SELECT img_dir , nom_img FROM images WHERE id = :id";
         $query = parent::getBdd()->prepare($sql);
         $query->execute(['id' => $id]);
         $data = $query->fetch();
 
-        
+        // var_dump($data);
         return $data;
 }
     
