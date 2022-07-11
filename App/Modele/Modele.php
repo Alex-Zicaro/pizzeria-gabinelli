@@ -39,7 +39,7 @@ Class Modele {
         return static::$bdd;
     }
 
-    public function getAll($id){
+    public function getAllbyChamp($id){
         $sql = "SELECT * FROM $this->table WHERE id = :id";
         $query = static::getBdd()->prepare($sql);
         $query->execute(array('id' => $id));
@@ -65,6 +65,18 @@ Class Modele {
         $produit = $query->fetch();
         return $produit;
     }
+
+    public function updateByIdAndChamp($id, $champ, $valeur)
+    {
+        $sql = "UPDATE $this->table SET $champ = :valeur WHERE id = :id";
+        $query = static::getBdd()->prepare($sql);
+        $query->execute([
+            'id' => $id,
+            'valeur' => $valeur
+        ]);
+    }
+
+    
 
     
 

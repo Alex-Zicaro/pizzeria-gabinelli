@@ -21,6 +21,7 @@ var_dump($utilisateurActuelle);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" href="View/CSS/profil.css">
+    <link rel="stylesheet" href="View/CSS/include.css">
     <title>Pizzeria gabinelli</title>
 </head>
 

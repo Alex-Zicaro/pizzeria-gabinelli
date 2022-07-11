@@ -8,27 +8,24 @@ class Produits extends Modele{
     {
 
         if ($id_categorie !== null) {
-            $sql = "SELECT categories.nom AS categ, sous_categorie.nom AS sous_categ, produits.id , produits.nom , produits.description , produits.prix , produits.quantite
+            $sql = "SELECT categories.nom AS categ, produits.id , produits.nom , produits.description , produits.prix , produits.quantite
             FROM produits
             INNER JOIN categories ON produits.id_categorie = categories.id 
-            INNER JOIN sous_categorie ON categories.id = sous_categorie.id_categorie
             INNER JOIN images ON produits.id_image = images.id
             WHERE categories.id = :id_categorie ";
             $prepare = parent::getBdd()->prepare($sql);
             $prepare->execute([':id_categorie' => $id_categorie]);
         } else if ($order == 1 && $id_categorie == null) {
 
-            $sql = "SELECT images.nom AS image_nom , images.img_dir ,  categories.nom AS categ, sous_categorie.nom AS sous_categ , produits.id , produits.nom, produits.presentation , produits.description , produits.prix , produits.quantite FROM produits
+            $sql = "SELECT img_nom , images.img_dir ,  categories.nom AS categ, produits.id , produits.nom, produits.presentation , produits.description , produits.prix , produits.quantite FROM produits
             INNER JOIN categories ON produits.id_categorie = categories.id
-            INNER JOIN sous_categorie ON categories.id = sous_categorie.id_categorie
             INNER JOIN images ON produits.id_image = images.id ORDER BY id DESC";
 
             $prepare = parent::getBdd()->prepare($sql);
             $prepare->execute();
         } else {
-            $sql = "SELECT images.nom AS image_nom , images.img_dir ,  categories.nom AS categ, sous_categorie.nom AS sous_categ , produits.id , produits.nom, produits.presentation , produits.description , produits.prix , produits.quantite FROM produits
+            $sql = "SELECT images.nom AS image_nom , images.img_dir ,  categories.nom AS categ,  produits.id , produits.nom, produits.presentation , produits.description , produits.prix , produits.quantite FROM produits
             INNER JOIN categories ON produits.id_categorie = categories.id
-            INNER JOIN sous_categorie ON categories.id = sous_categorie.id_categorie
             INNER JOIN images ON produits.id_image = images.id";
 
             $prepare = parent::getBdd()->prepare($sql);
@@ -44,10 +41,8 @@ class Produits extends Modele{
     {
 
 
-        $sql = "SELECT images.img_dir, images.nom , categories.nom AS categ , sous_categorie.nom AS sous_nom, produits.id , produits.nom , produits.presentation , produits.description , produits.prix , produits.quantite FROM produits
-            INNER JOIN categories ON produits.id_categorie = categories.id 
-            INNER JOIN sous_categorie ON categories.id = sous_categorie.id_categorie
-            INNER JOIN images ON produits.id_image = images.id
+        $sql = "SELECT images.img_dir, images.nom , categories.nom AS categ , produits.id , produits.nom , produits.presentation , produits.description , produits.prix , produits.quantite FROM produits
+            INNER JOIN categories ON produits.id_categorie = categories.id             INNER JOIN images ON produits.id_image = images.id
             WHERE produits.id = :id_produit ";
         $query = parent::getBdd()->prepare($sql);
         $query->execute(['id_produit' => $id_produit]);
@@ -61,9 +56,8 @@ class Produits extends Modele{
 
         foreach ($array as $value) {
 
-            $sql = "SELECT images.nom AS image_nom , images.img_dir ,  categories.nom AS categ, sous_categorie.nom AS sous_categ , produits.id , produits.nom, produits.presentation , produits.description , produits.prix , produits.quantite FROM produits
+            $sql = "SELECT images.nom AS image_nom , images.img_dir ,  categories.nom AS categ, produits.id , produits.nom, produits.presentation , produits.description , produits.prix , produits.quantite FROM produits
         INNER JOIN categories ON produits.id_categorie = categories.id
-        INNER JOIN sous_categorie ON categories.id = sous_categorie.id_categorie
         INNER JOIN images ON produits.id_image = images.id 
         WHERE produits.id = :value ";
 
@@ -78,17 +72,7 @@ class Produits extends Modele{
     }
 
 
-    public function selectCateg()
-    {
 
-        $sql = "SELECT DISTINCT  categ.nom AS nomCateg , sous_categ.nom , categ.id AS idCateg 
-        FROM categories AS categ 
-        WHERE categ.id = sous_categ.id_categorie";
-        $prep = parent::getBdd()->prepare($sql);
-        $prep->execute();
-        $data = $prep->fetchAll();
-        return $data;
-    }
 
     public function selectsCateg()
     {
@@ -99,19 +83,12 @@ class Produits extends Modele{
         $data = $prep->fetchAll();
         return $data;
     }
-    public function SelectsSousCateg()
-    {
 
-        $sql = "SELECT * FROM sous_categorie";
-        $prep = parent::getBdd()->prepare($sql);
-        $prep->execute();
-        $data = $prep->fetchAll();
-        return $data;
-    }
 
     /**
      * Compte tout les produits sinon s'il y a un param vous compter les produits de la catégorie
      * pagination
+     * à revoir pas besoin des sous categ
      */
     public function countProduits(?int $id_categorie = 0, ?int $sous_categ_path = 0): int
     {
@@ -141,48 +118,23 @@ class Produits extends Modele{
     }
 
 
-    public function addProduit($nom, $description, $presentation, $prix, $quantite, $id_categorie, $id_sous_categ, $id_image)
+    public function addProduit($nom, $description, $presentation, $prix, $id_categorie, $id_sous_categ, $id_image)
     {
 
-        $sql = "INSERT INTO produits(nom, description , presentation , prix , quantite , id_categorie, id_sous_categorie , id_image) 
-    VALUES (:nom, :description, :presentation, :prix ,:quantite , :id_categorie , :id_sous_categorie , :id_image)";
+        $sql = "INSERT INTO produits(nom, description , presentation , prix  , id_categorie, id_image) 
+    VALUES (:nom, :description, :presentation, :prix , :id_categorie , :id_image)";
 
         $query = parent::getBdd()->prepare($sql);
         $query->execute([
-            'nom' => $nom, 'description' => $description, 'presentation' => $presentation,
-            'prix' => $prix, 'quantite' => $quantite, 'id_categorie' => $id_categorie,
-            'id_sous_categorie' => $id_sous_categ, 'id_image' => $id_image
+            'nom' => $nom, 'description' => $description, 
+            'presentation' => $presentation,
+            'id_categorie' => $id_categorie,
+            'id_image' => $id_image
 
         ]);
     }
 
-    public function trouverLacateg($id_sous_categ)
-    {
 
-        $sql = "SELECT categories.nom, categories.id , sous_categorie.nom AS sous_nom FROM sous_categorie 
-        INNER JOIN categories ON categories.id = sous_categorie.id_categorie
-        WHERE sous_categorie.id = :id_sous_categ";
-        $query = parent::getBdd()->prepare($sql);
-        $query->execute(['id_sous_categ' => $id_sous_categ]);
-        $data = $query->fetch();
-        return $data;
-    }
-
-    public function lastProduit()
-    {
-        $sql = "SELECT * FROM produits ORDER BY id DESC LIMIT 1";
-        $query = parent::getBdd()->prepare($sql);
-        $query->execute();
-        $produit = $query->fetch();
-        return $produit;
-    }
-    public function deleteRequete($id_produit)
-    {
-
-        $sql = "DELETE FROM produits WHERE id = :id_produit";
-        $query = parent::getBdd()->prepare($sql);
-        $query->execute(['id_produit' => $id_produit]);
-    }
 
     public function update(string $nom, int $id): void
     {
@@ -240,11 +192,9 @@ class Produits extends Modele{
     public function FourLastProduit()
     {
         $sql = "SELECT produits.id , produits.nom ,id_image , images.img_dir , presentation , prix ,
-        categories.nom AS nom_categorie , sous_categorie.nom AS nom_sous_categorie
+        categories.nom AS nom_categorie 
         FROM produits
         INNER JOIN categories ON categories.id = produits.id_categorie
-        INNER JOIN sous_categorie ON sous_categorie.id = produits.id_sous_categorie
-
         INNER JOIN images ON id_image = images.id
         ORDER BY id DESC LIMIT 4 ";
         $query = parent::getBdd()->prepare($sql);
@@ -252,6 +202,7 @@ class Produits extends Modele{
         $data = $query->fetchAll();
         return $data;
     }
+    // à refaire
     public function PagePagination($premier, $parPage, ?int $id_categorie = 0, ?bool $sous_categ_path = false)
     {
 // var_dump($id_categorie);
@@ -331,28 +282,10 @@ class Produits extends Modele{
         ]);
     }
 
-    public function addSousCateg($nom, $id_categorie)
-    {
-        $sql = "INSERT INTO sous_categorie (nom,id_categorie) VALUES (:nom,:id_categorie)";
-        $query = parent::getBdd()->prepare($sql);
-        $query->execute([
-            'nom' => $nom,
-            'id_categorie' => $id_categorie
-        ]);
-    }
 
     public function modifierCateg($nom, $id)
     {
         $sql = "UPDATE categories SET nom = :nom WHERE id = :id";
-        $query = parent::getBdd()->prepare($sql);
-        $query->execute([
-            'nom' => $nom,
-            'id' => $id
-        ]);
-    }
-    public function modifierSousCateg($nom, $id)
-    {
-        $sql = "UPDATE sous_categorie SET nom = :nom WHERE id = :id";
         $query = parent::getBdd()->prepare($sql);
         $query->execute([
             'nom' => $nom,
@@ -367,50 +300,5 @@ class Produits extends Modele{
         $query->execute([
             'id' => $id
         ]);
-    }
-
-    public function queLesSousCateg($id_categorie)
-    {
-        $sql = "SELECT DISTINCT sous_categorie.nom , sous_categorie.id  
-        FROM sous_categorie 
-        INNER JOIN categories On sous_categorie.id_categorie = categories.id
-        WHERE id_categorie = :id_categorie";
-        $query = parent::getBdd()->prepare($sql);
-        $query->execute([
-            'id_categorie' => $id_categorie
-        ]);
-        $data = $query->fetchAll();
-        return $data;
-    }
-
-    public function deleteSousCateg($id)
-    {
-        $sql = "DELETE FROM sous_categorie WHERE id = :id";
-        $query = parent::getBdd()->prepare($sql);
-        $query->execute([
-            'id' => $id
-        ]);
-    }
-
-    public function sousCategByIdCateg($id_categorie)
-    {
-
-        $sql = "SELECT * FROM sous_categorie WHERE id_categorie = :id_categorie";
-        $query = parent::getBdd()->prepare($sql);
-        $query->execute([
-            'id_categorie' => $id_categorie
-        ]);
-        $data = $query->fetchAll();
-        return $data;
-    }
-
-    public function countSousCateg($id_sous_categ){
-        $sql ="SELECT COUNT(*) AS nb FROM produits WHERE id_sous_categorie = :id_sous_categ";
-        $query = parent::getBdd()->prepare($sql);
-        $query->execute([
-            'id_sous_categ' => $id_sous_categ
-        ]);
-        $data = $query->fetch();
-        return $data;
     }
 }

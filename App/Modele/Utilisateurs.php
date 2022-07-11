@@ -17,7 +17,7 @@ class Utilisateurs extends Modele{
 
     public function sqlRegister($email, $password, $prenom, $nom, $droit, $civilite,$id_image ,  ) :void
     {
-        var_dump($email , $password, $prenom, $nom, $droit, $civilite,$id_image);
+        // var_dump($email , $password, $prenom, $nom, $droit, $civilite,$id_image);
         $insertmbr = parent::getBdd()->prepare(
         "INSERT INTO utilisateurs(email, password, prenom, nom, droit ,civilite, id_image) 
         VALUES(:email,:password ,:prenom ,:nom ,:droit,:civilite,:id_image);"); // Prépare une requête à l'exécution et retourne un objet (PDO)
