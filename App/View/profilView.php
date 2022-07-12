@@ -8,7 +8,7 @@ $image = new Images;
 
 $utilisateurActuelle = $utilisateur->userConnect();
 
-var_dump($utilisateurActuelle);
+// var_dump($utilisateurActuelle);
 // session_destroy();
 ?>
 
