@@ -1,5 +1,57 @@
+
+/* footer */
+
 .space-evenly {
-  display: flex;
-  justify-content: space-evenly;
-  flex-direction: row;
+    display: flex !important;
+    gap:1.5rem;
+    flex-wrap: wrap;
+
+    padding-bottom: 2rem;
+    
 }
+
+.footer{
+    /* top:1rem; right:1rem; */
+    flex:1 1 25rem;
+    text-align: center;
+    padding:2rem;
+    background:black;
+
+}
+
+.space-even .footer p,h3{
+    color:white;
+    font-size: 0.7rem;
+}
+
+div .space-evenly {
+    display: flex;
+}
+
+footer div {
+    display: flex;
+}
+
+.logo {
+
+    width: 54px;
+    height: 54px;
+}
+
+.colonne{
+    display: flex;
+    flex-direction: column;
+}
+
+
+  .button-color-green{
+    top:50%;
+    color: #fff;
+    border:none; 
+    border-radius:10px; 
+    padding:15px;
+    padding-bottom: 30px;
+    max-height:30px; 
+    max-width: 120px;
+    background-color: #04711e ;
+  }

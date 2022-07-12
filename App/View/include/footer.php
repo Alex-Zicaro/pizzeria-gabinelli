@@ -1,18 +1,23 @@
-<div class= "space-even">
-    <div>
+<div class="space-even">
 
-        <img src="" alt="">
-        <h6>Pizza Gabinelli</h6>
-    </div>
-    <div>
-        <p>41 , Allé de la libération</p>
-        <p>31370 RIEUMES</p>
-        <p>France</p>
-        <p>05.34.48.09.63</p>
-        <a href="">
-            <button>
-                Afficher la carte
-            </button>
-        </a>
-    </div>
+<div class="footer colonne">
+    <img class="logo" src="View/media/logo_pizzeria_gabinelli.png" alt="">
+    <h3>Pizzeria Gabinelli</h3>
+    
+</div>
+
+<div class="footer colonne">
+    <i class="fas fa-phone"></i>
+    <h3>Adresse :</h3>
+    <p>41 ,Allé de la Libération</p>
+    <p>31370 RIEUMES</p>
+    <p>France</p>
+    <p>05.34.48.09.63</p>
+    <button>Afficher la carte</button>
+</div>
+
+<div class="footer">
+    <button class="button-color-green" >Avis google</button>
+</div>
+
 </div>

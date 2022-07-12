@@ -39,7 +39,7 @@ Class Modele {
         return static::$bdd;
     }
 
-    public function getAllbyChamp($id){
+    public function getAll($id){
         $sql = "SELECT * FROM $this->table WHERE id = :id";
         $query = static::getBdd()->prepare($sql);
         $query->execute(array('id' => $id));
