@@ -50,8 +50,27 @@ footer div {
     border:none; 
     border-radius:10px; 
     padding:15px;
+    /* padding-bottom: 30px; */
+    /* max-height:30px;  */
+    /* max-width: 120px; */
+    background-color: #04711e ;
+  }
+
+  .button-color-green2{
+    top:50%;
+    color: #fff;
+    border:none; 
+    border-radius:10px; 
+    padding:15px;
     padding-bottom: 30px;
     max-height:30px; 
     max-width: 120px;
     background-color: #04711e ;
+  }
+
+  
+
+  .button-color-green:hover , .button-color-green2:hover{
+    background-color: #0a8e2e ;
+    transition: 1s;
   }

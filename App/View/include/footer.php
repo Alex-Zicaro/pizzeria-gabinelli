@@ -13,11 +13,11 @@
     <p>31370 RIEUMES</p>
     <p>France</p>
     <p>05.34.48.09.63</p>
-    <button>Afficher la carte</button>
+    <button class="button-color-green">Afficher la carte</button>
 </div>
 
 <div class="footer">
-    <button class="button-color-green" >Avis google</button>
+    <button class="button-color-green2" >Avis google</button>
 </div>
 
 </div>
