@@ -1,5 +1,6 @@
 /*! JTTPLv5.0 CAPTAIN | STYLE.SCSS:CSS  | (c)jalis 2016 all rights reserved */
-@import url("https://fonts.googleapis.com/css2?family=Catamaran:wght@400;500;600;700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400&family=Oswald:wght@300&display=swap');
+
 
 @font-face {
     font-family: "pamega";
@@ -550,7 +551,8 @@ body.contact .p-contact {
 body {
     position: relative;
     font-size: 15px;
-    font-family: "Catamaran", sans-serif;
+    font-family: 'Noto Sans', sans-serif;
+    font-family: 'Oswald', sans-serif;
     text-align: left;
     background: #fff;
     color: #1f1f1f;
@@ -4313,7 +4315,8 @@ html.jgo-no-objectfit *[class*="diaporama"] .slick-list .slick-track .slick-slid
     padding: 18px;
     width: 100%;
     color: #fff;
-    font-family: "Catamaran", sans-serif
+    font-family: 'Noto Sans', sans-serif;
+    font-family: 'Oswald', sans-serif;
 }
 
 body.ie8 .placeH1 {
@@ -4380,7 +4383,8 @@ body.ie8 .placeH1 {
     padding: 9px;
     width: 100%;
     color: #fff;
-    font-family: "Catamaran", sans-serif
+    font-family: 'Noto Sans', sans-serif;
+    font-family: 'Oswald', sans-serif;
 }
 
 body.ie8 .diaporama--accueil .diapolegende {
@@ -4436,7 +4440,8 @@ body.ie8 .diaporama--accueil .diapolegende {
 }
 
 .titre-2 {
-    font-family: "Catamaran", sans-serif;
+    font-family: 'Noto Sans', sans-serif;
+    font-family: 'Oswald', sans-serif;
     text-transform: uppercase;
     letter-spacing: 1pt;
     font-size: 17pt;
@@ -7548,7 +7553,8 @@ body.ie8 .the-map .my--btplan {
     font-size: 11pt;
     position: relative;
     cursor: pointer;
-    font-family: "Catamaran", sans-serif;
+    font-family: 'Noto Sans', sans-serif;
+    font-family: 'Oswald', sans-serif;
     z-index: 2;
     text-transform: uppercase;
     overflow: hidden
@@ -7596,7 +7602,8 @@ body.ie8 .the-map .my--btplan {
     font-weight: 600;
     padding: 15px 18px !important;
     display: inline-block;
-    font-family: "Catamaran", sans-serif !important;
+    font-family: 'Noto Sans', sans-serif !important;
+    font-family: 'Oswald', sans-serif   !important;
     background-color: #f05023 !important;
     color: #fff !important;
     text-decoration: none !important;
@@ -7780,11 +7787,13 @@ body.ie8 .the-map .my--btplan {
 }
 
 .font-family-typo {
-    font-family: "Catamaran", sans-serif
+    font-family: 'Noto Sans', sans-serif;
+    font-family: 'Oswald', sans-serif;
 }
 
 .font-family-titre {
-    font-family: "Catamaran", sans-serif
+    font-family: 'Noto Sans', sans-serif;
+    font-family: 'Oswald', sans-serif;
 }
 
 .font-family-alt {
@@ -7934,7 +7943,8 @@ span.char {
     font-size: 28pt;
     font-weight: 100;
     text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.8);
-    font-family: "Catamaran", sans-serif;
+    font-family: 'Noto Sans', sans-serif;
+    font-family: 'Oswald', sans-serif;
     color: #fff
 }
 
@@ -7954,7 +7964,8 @@ span.char {
 .headline3 {
     font-size: 16pt;
     text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.8);
-    font-family: "Catamaran", sans-serif;
+    font-family: 'Noto Sans', sans-serif;
+    font-family: 'Oswald', sans-serif;
     color: #fff;
     font-weight: 300
 }
@@ -7985,7 +7996,8 @@ body.ie8 #aarpi-intro {
     border: 1px solid #fff;
     padding: 20px;
     background: rgba(0, 0, 0, 0.3);
-    font-family: "Catamaran", sans-serif;
+    font-family: 'Noto Sans', sans-serif;
+    font-family: 'Oswald', sans-serif;
     font-weight: 300
 }
 
@@ -7998,7 +8010,8 @@ body.ie8 #aarpi-intro {
     color: #fff;
     text-align: center;
     font-weight: 300;
-    font-family: "Catamaran", sans-serif;
+    font-family: 'Noto Sans', sans-serif;
+    font-family: 'Oswald', sans-serif;
     padding-top: 5px;
     text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.8)
 }
@@ -8021,7 +8034,8 @@ body.ie8 #aarpi-intro {
     border: 1px solid #fff;
     padding: 12px;
     background: rgba(0, 0, 0, 0.3);
-    font-family: "Catamaran", sans-serif;
+    font-family: 'Noto Sans', sans-serif;
+    font-family: 'Oswald', sans-serif;
     font-weight: 300
 }
 
@@ -8034,7 +8048,8 @@ body.ie8 #aarpi-intro {
     color: #fff;
     text-align: center;
     font-weight: 300;
-    font-family: "Catamaran", sans-serif;
+    font-family: 'Noto Sans', sans-serif;
+    font-family: 'Oswald', sans-serif;
     padding-top: 5px;
     text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.8)
 }
