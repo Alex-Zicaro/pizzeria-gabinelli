@@ -186,7 +186,7 @@ display-flex, .booking-content {
     -ms-border-radius: 24px; }
     .active:after {
       position: absolute;
-      content: 'Person';
+      
       right: 17px;
       top: 50%;
       transform: translateY(-50%);

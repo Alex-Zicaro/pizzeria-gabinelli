@@ -1,76 +1,79 @@
-
 /* footer */
 
 .space-evenly {
-    display: flex !important;
-    gap:1.5rem;
-    flex-wrap: wrap;
+  display: flex !important;
+  gap: 1.5rem;
+  flex-wrap: wrap;
 
-    padding-bottom: 2rem;
-    
-}
-
-.footer{
-    /* top:1rem; right:1rem; */
-    flex:1 1 25rem;
-    text-align: center;
-    padding:2rem;
-    background:black;
+  padding-bottom: 2rem;
 
 }
 
-.space-even .footer p,h3{
-    color:white;
-    font-size: 0.7rem;
+.footer {
+  /* top:1rem; right:1rem; */
+  flex: 1 1 25rem;
+  text-align: center;
+  padding: 2rem;
+  background: black;
+
+}
+
+.space-even .footer p,
+h3 {
+  color: white;
+  font-size: 0.7rem;
 }
 
 div .space-evenly {
-    display: flex;
+  display: flex;
 }
 
 footer div {
-    display: flex;
+  display: flex;
 }
 
 .logo {
 
-    width: 54px;
-    height: 54px;
+  width: 54px;
+  height: 54px;
 }
 
-.colonne{
-    display: flex;
-    flex-direction: column;
+.colonne {
+  display: flex;
+  flex-direction: column;
 }
 
 
-  .button-color-green{
-    top:50%;
-    color: #fff;
-    border:none; 
-    border-radius:10px; 
-    padding:15px;
-    /* padding-bottom: 30px; */
-    /* max-height:30px;  */
-    /* max-width: 120px; */
-    background-color: #04711e ;
-  }
+.button-color-green {
+  top: 50%;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 15px;
+  /* padding-bottom: 30px; */
+  /* max-height:30px;  */
+  /* max-width: 120px; */
+  background-color: #04711e;
+}
 
-  .button-color-green2{
-    top:50%;
-    color: #fff;
-    border:none; 
-    border-radius:10px; 
-    padding:15px;
-    padding-bottom: 30px;
-    max-height:30px; 
-    max-width: 120px;
-    background-color: #04711e ;
-  }
+.button-color-green2 {
+  top: 50%;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 15px;
+  padding-bottom: 30px;
+  max-height: 30px;
+  max-width: 120px;
+  background-color: #04711e;
+}
 
-  
 
-  .button-color-green:hover , .button-color-green2:hover{
-    background-color: #0a8e2e ;
-    transition: 1s;
-  }
+
+.button-color-green:hover,
+.button-color-green2:hover {
+  background-color: #0a8e2e;
+  transition: 1s;
+}
+
+
