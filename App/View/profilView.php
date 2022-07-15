@@ -1,13 +1,16 @@
 <?php
 
-use App\Controller\{Utilisateurs, Images};
+use App\Controller\{Utilisateurs, Images, Adresses};
 
 
 $utilisateur = new Utilisateurs;
 $image = new Images;
+$adresse = new Adresses;
 
 $utilisateurActuelle = $utilisateur->userConnect();
 
+
+$userAdresse = $adresse->getAdresse($_SESSION['profil']['id']);
 // var_dump($utilisateurActuelle);
 // session_destroy();
 ?>
@@ -22,6 +25,7 @@ $utilisateurActuelle = $utilisateur->userConnect();
 
     <link rel="stylesheet" href="View/CSS/profil.css">
     <link rel="stylesheet" href="View/CSS/include.css">
+    <link rel="stylesheet" href="View/CSS/inscription.css">
     <title>Gabinelli - RIEUMES | Italienne cuisine proche de moi</title>
 <link rel="canonical" href="https://gabinelli-pizzeria-rieumes.eatbu.com/?lang=fr"/>
 <meta name="description" content="Vous pouvez commander à emporter | RIEUMES - Si vous voulez manger un repas italien et &ecirc;tes en qu&ecirc;te d&rsquo;un &eacute;tablissement o&ugrave; passer la soir&eacute;e, vous &ecirc;tes les bienvenus chez nous. Restaurant italien pris&eacute; au centre : Laissez-vous tenter et profitez de la cuisine italienne. Nous sommes r&eacute;put&eacute;s pour notre excellent fast-food. Go&ucirc;tez par exemple &agrave; notre pizza pris&eacute;e. Go&ucirc;tez aussi volontiers un bon verre de vin ou un verre de bi&egrave;re aromatique lorsque vous viendrez nous voir. Venez d&eacute;guster un d&icirc;ner d&eacute;licieux chez nous ! Places de parking particuli&egrave;rement pratiques : Profitez de notre parking gratuit. Contactez-nous et r&eacute;servez d&egrave;s aujourd&rsquo;hui. Il vous suffit de nous contacter par t&eacute;l. au +330562626261. Chez nous, vous pouvez payer soit en esp&egrave;ces soit par carte VISA, carte Maestro, MasterCard ou paiement d&eacute;mat&eacute;rialis&eacute;. Nos plats sont &eacute;galement disponibles &agrave; emporter. Nous sommes ouverts tous les jours de 18h00 &agrave; 22h00."/>
@@ -52,10 +56,17 @@ $utilisateurActuelle = $utilisateur->userConnect();
 
 
 <header>
-    <?php $utilisateur->headerFront(); ?>
+    <?php 
+    // session_destroy();
+    $utilisateur->headerFront(); 
+    var_dump($utilisateurActuelle[0]['img_dir']);
+    var_dump($_GET['modif']);
+        ?>
 </header>
 <main>
-<?php if(empty($_GET['modif']) || $_GET['modif'] !== true): ?>
+<?php if($_GET['modif'] != 'true'  || empty($_GET['adresse']) ){
+        echo "ezaezaeazaez";
+        ?>
 
     <div class="page-content page-container" id="page-content">
         <div class="padding">
@@ -67,17 +78,25 @@ $utilisateurActuelle = $utilisateur->userConnect();
                                 <div class="card-block text-center text-white flexer ">
 
                                     <div class="m-b-25">
-                                        <img src="<?=$utilisateurActuelle[0]['img_dir'] ?>" class="img-radius" alt="Utilisateur-Profile-Image">
+                                        <img src="<?=$utilisateurActuelle[0]['img_dir'];
+                                        ?>" class="img-radius" alt="User Profile">
+                                        
                                     </div>
-
+                                    <?php if($userAdresse == false): ?>
                                     <div class="end">
-                                        <a href="">
+                                        <a href="profil?adresse=true">
+                                            <button class="button">
+                                                Ajouter une adresse
+                                            </button>
+                                        </a>
+                                        <?php endif; ?>
+                                        <a href="profil?modif=true">
 
                                             <button class="button button-color-black margin-bot-4">
                                                 Modifier
                                             </button>
                                         </a>
-                                        <a href="">
+                                        <a href="profil?delete=true">
 
                                             <button class="button button-color-red">
                                                 Supprimer
@@ -113,9 +132,11 @@ $utilisateurActuelle = $utilisateur->userConnect();
             </div>
         </div>
     </div>
-    <?php endif;
+    <?php }
     
-    if(isset($_GET['modif']) && $_GET['modif'] === true): ?>
+    else if(isset($_GET['modif']) && $_GET['modif'] == 'true'){
+    echo 'testsqdfdqsdfqfs';
+    ?>
         <div class="page-content page-container" id="page-content">
         <div class="padding">
             <div class="row container d-flex justify-content-center">
@@ -123,56 +144,104 @@ $utilisateurActuelle = $utilisateur->userConnect();
                     <div class="card user-card-full">
                         <div class="row m-l-0 m-r-0">
                             <div class="col-sm-4 bg-c-lite-green user-profile">
-                                <div class="card-block text-center text-white flexer ">
+                                
+                            <div class="main">
+			<div class="container">
+				<div class="booking-content">
+					<div class="booking-form">
+						<form id="booking-form" enctype="multipart/form-data" method="POST">
+							<h2>Profil</h2>
+							<?php if (isset($msgErr) && $msgErr !== 'Votre compte a bien été créé !') {
+				?><p class="alert alert-danger"><?= $msgErr;}?></p> 
 
-                                    <div class="m-b-25">
-                                        <img src="" class="img-radius" alt="User-Profile-Image">
-                                    </div>
+<?php if (isset($msgErr) && $msgErr == 'Votre compte a bien été créé !') {
+				?><p class="alert alert-success"><?= $msgErr;}?></p> 
+				
+				
 
-                                    <div class="end">
-                                        <a href="">
+							<div class="form-group form-input">
+								<input type="text" name="prenom" id="prenom" value="<?php
+								if(isset($_POST['prenom']))
 
-                                            <button class="button button-color-black margin-bot-4">
-                                                Modifier
-                                            </button>
-                                        </a>
-                                        <a href="">
+									echo $controller->security($_POST['prenom']) ;
+								?>" required />
+								<label for="prenom" class="form-label" id="prenom">*Votre prenom</label>
+							</div>
 
-                                            <button class="button button-color-red">
-                                                Supprimer
-                                            </button>
-                                        </a>
-                                    </div>
+							<div class="form-group form-input">
+								<input type="text" name="nom" id="nom" value="<?php
+								if(isset($_POST['nom']))
 
-                                </div>
-                            </div>
-                            <div class="col-sm-8">
-                                <div class="card-block">
-                                    <h6 class="m-b-20 p-b-5 b-b-default f-w-600">Information</h6>
-                                    <div class="row">
-                                        <div class="col-sm-6">
-                                            <p class="m-b-10 f-w-600">Email</p>
-                                            <h6 class="text-muted f-w-400"><?= $utilisateurActuelle['email'] ?></h6>
-                                        </div>
-                                        <div class="col-sm-6">
-                                            <p class="m-b-10 f-w-600">Prenom</p>
-                                            <h6 class="text-muted f-w-400"><?= $utilisateurActuelle['prenom'] ?></h6>
-                                        </div>
-                                        <div class="col-sm-6">
-                                            <p class="m-b-10 f-w-600">Nom</p>
-                                            <h6 class="text-muted f-w-400"><?= $utilisateurActuelle['nom'] ?></h6>
-                                        </div>
-                                    </div>
+									echo $controller->security($_POST['nom']) ;
+								?>
+								" required />
+								<label for="nom" class="form-label">*Votre nom</label>
+							</div>
 
-                                </div>
-                            </div>
+							<div class="form-group form-input">
+								<input type="email" name="email" id="email" value="<?php
+								if(isset($_POST['email']))
+
+									echo $controller->security($_POST['email']) ;
+								?>" required />
+								<label for="email" class="form-label">*Votre Email</label>
+							</div>
+
+
+
+							<div class="form-group form-input">
+								<input type="password" name="password" id="password" autocomplete = "off" required />
+								<label for="password" class="form-label">*Votre mot de passe</label>
+							</div>
+
+							<div class="form-group form-input">
+								<input type="password" name="confirmation" id="confirmation" autocomplete = "off" required />
+								<label for="confirmation" class="form-label">*Confirmation</label>
+							</div>
+
+							<div class="form-group form-input">
+								<input class="form-control" type="file" name="fichier" id="fichier">
+								<label class="form-label" for="fichier"> <b>Votre image</b> </label>
+							</div>
+							<fieldset>
+
+								<legend>*Choisir sa civilité </legend>
+
+								<div class="form-group form-input">
+									<input type="radio" name="civilite" id="Madame" value="Madame" value="" required />
+									<label for="Madame" class="">Mme.</label>
+								</div>
+
+								<div class="form-group form-input">
+									<input type="radio" name="civilite" id="Monsieur" value="Monsieur" value="" required />
+									<label for="Monsieur" class="">Mr.</label>
+								</div>
+
+							</fieldset>
+
+
+
+
+							<!-- <input type="submit" name="envoyer" id="envoyer" value="" required /> -->
+							<!-- <label for="envoyer" class="envoyer">S'inscrire</label> -->
+
+
+							<input type="submit" name="Envoyer" class="padding-top">
+
+							<p class="padding-top"><i>* = obligatoire</i></p>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <?php endif; ?>
+    </div>
+    <?php } ?>
 </main>
 
 <footer>
