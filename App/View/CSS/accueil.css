@@ -42,8 +42,8 @@ audio:not([controls]) {
 
 html {
     font-size: 100%;
-    -ms-text-size-adjust: 100%;
-    -webkit-text-size-adjust: 100%
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%
 }
 
 html,
@@ -351,7 +351,7 @@ legend,
 label,
 object {
     margin: 0;
-    padding: 0;
+    /* padding: 0; */
     border: 0;
     outline: none
 }
@@ -923,7 +923,7 @@ html.jgo-cssvhunit:not(.badios) .fullscreen {
 
 a,
 a:visited {
-    color: #f05023;
+    /* color: #f05023; */
     text-decoration: none
 }
 
@@ -1370,19 +1370,16 @@ html.jgo-no-objectfit .img--back img {
 
 header {
     position: relative;
+    background-color: black;
     width: 100%;
     top: 0;
     left: 0
 }
 
-@media only screen and (min-width: 1025px) {
-    header {
-        position: fixed
-    }
-}
+
 
 header .header-bandeau {
-    background: #fff;
+    background: black;
     padding: 0;
     transition: all 225ms 0ms ease-in-out
 }
@@ -1489,7 +1486,7 @@ body.ie8 #www {
     right: 0;
     padding: 4px 0;
     box-sizing: border-box;
-    background-color: #f05023;
+    background-color: #04711e;
     margin-left: 15px
 }
 
@@ -1973,7 +1970,7 @@ nav.nav>ul>li>span>span {
     margin: 0;
     background: transparent;
     overflow: hidden;
-    color: #000;
+    color: #fff;
     font-size: 14px;
     text-align: center;
     font-weight: 500;
@@ -1990,7 +1987,7 @@ nav.nav>ul>li>span>span:before {
     height: 60%;
     top: 20%;
     right: 1px;
-    background: rgba(240, 80, 35, 0.5);
+    background: #04711e;
     box-shadow: 1px 0 0 rgba(255, 255, 255, 0.2);
     content: ' '
 }
@@ -2044,7 +2041,7 @@ nav.nav>ul>li:hover>span>span,
 nav.nav>ul>li.active>a,
 nav.nav>ul>li.active>span>a,
 nav.nav>ul>li.active>span>span {
-    color: #f05023 !important;
+    color: #04711e !important;
     background: transparent;
     transition: all 225ms 0ms ease-in-out
 }
@@ -2149,6 +2146,8 @@ nav.nav>ul>li:active>span>ul {
 
 @media only screen and (min-width: 1025px) {
     nav.nav {
+        display: flex;
+        justify-content: flex-end;
         position: relative;
         background: transparent;
         height: auto;
@@ -2299,7 +2298,7 @@ input#ouvre-menu:checked~.plan--premier #btMenu>span>span:nth-child(2) {
 }
 
 input#ouvre-menu:checked~.plan--premier header.is-scrolled nav.nav>ul:before {
-    position: fixed;
+    /* position: fixed; */
     display: block;
     z-index: 200;
     width: 100%;
@@ -4739,218 +4738,6 @@ a.rss {
     width: 230px
 }
 
-form {
-    position: relative;
-    display: block
-}
-
-form input[type=text],
-form input[type=submit]:not(.bt),
-form textarea,
-form select,
-form input[type=password],
-form input[type=email] {
-    position: relative;
-    display: block;
-    width: 100%;
-    padding: 12px 18px;
-    background: rgba(255, 255, 255, 0.85);
-    border: 1px solid #ddd;
-    color: #000;
-    outline: 0;
-    border-radius: 3px
-}
-
-form input[type=text]:focus,
-form input[type=submit]:not(.bt):focus,
-form textarea:focus,
-form select:focus,
-form input[type=password]:focus,
-form input[type=email]:focus {
-    z-index: 20;
-    background: #fff;
-    color: #000;
-    border-color: #909090
-}
-
-form input[type=text].half,
-form input[type=submit]:not(.bt).half,
-form textarea.half,
-form select.half,
-form input[type=password].half,
-form input[type=email].half {
-    width: 50%;
-    float: left;
-    border-radius: 3px 0 0 3px
-}
-
-form input[type=text].half:nth-child(even),
-form input[type=submit]:not(.bt).half:nth-child(even),
-form textarea.half:nth-child(even),
-form select.half:nth-child(even),
-form input[type=password].half:nth-child(even),
-form input[type=email].half:nth-child(even) {
-    border-radius: 0 3px 3px 0;
-    border-left: none
-}
-
-form input[type=text].alerte,
-form input[type=text].alert,
-form input[type=submit]:not(.bt).alerte,
-form input[type=submit]:not(.bt).alert,
-form textarea.alerte,
-form textarea.alert,
-form select.alerte,
-form select.alert,
-form input[type=password].alerte,
-form input[type=password].alert,
-form input[type=email].alerte,
-form input[type=email].alert {
-    border: 1px solid #f33 !important;
-    color: #c66 !important;
-    font-weight: bolder !important;
-    background: transparent url() !important;
-    background-image: none;
-    background-color: #ffb3b3 !important
-}
-
-form input[type=text].alerte:focus,
-form input[type=text].alert:focus,
-form input[type=submit]:not(.bt).alerte:focus,
-form input[type=submit]:not(.bt).alert:focus,
-form textarea.alerte:focus,
-form textarea.alert:focus,
-form select.alerte:focus,
-form select.alert:focus,
-form input[type=password].alerte:focus,
-form input[type=password].alert:focus,
-form input[type=email].alerte:focus,
-form input[type=email].alert:focus {
-    border-color: #f33;
-    box-shadow: 0px 0px 10px #f33;
-    color: #862d2d !important
-}
-
-form input[type=text].valide,
-form input[type=text].valid,
-form input[type=submit]:not(.bt).valide,
-form input[type=submit]:not(.bt).valid,
-form textarea.valide,
-form textarea.valid,
-form select.valide,
-form select.valid,
-form input[type=password].valide,
-form input[type=password].valid,
-form input[type=email].valide,
-form input[type=email].valid {
-    border: 1px solid #40bf40;
-    color: #5aa65a;
-    font-weight: bold;
-    background: none;
-    background-image: none;
-    background-color: #d9f2d9
-}
-
-form input[type=text].valide:focus,
-form input[type=text].valid:focus,
-form input[type=submit]:not(.bt).valide:focus,
-form input[type=submit]:not(.bt).valid:focus,
-form textarea.valide:focus,
-form textarea.valid:focus,
-form select.valide:focus,
-form select.valid:focus,
-form input[type=password].valide:focus,
-form input[type=password].valid:focus,
-form input[type=email].valide:focus,
-form input[type=email].valid:focus {
-    border-color: #40bf40;
-    box-shadow: 0px 0px 10px #40bf40;
-    color: #404040
-}
-
-form .bt {
-    border-radius: 3px
-}
-
-form.frmContactForm ul {
-    display: block;
-    display: flex;
-    display: -webkit-flex;
-    display: -moz-flex;
-    flex-wrap: wrap
-}
-
-form.frmContactForm li {
-    flex: 1 1 auto;
-    width: 100%;
-    margin-bottom: 3px;
-    margin: 9px 0
-}
-
-@media only screen and (min-width: 480px) {
-    form.frmContactForm li:not(.input--contact) {
-        margin: 3px 0
-    }
-
-    form.frmContactForm li.input--contact {
-        width: 50%;
-        margin: 0 0 3px 0
-    }
-
-    form.frmContactForm li.input--contact:nth-of-type(even) {
-        margin-left: 3px;
-        width: calc(50% - 3px)
-    }
-}
-
-input[placeholder],
-textarea[placeholder],
-[placeholder],
-*[placeholder] {
-    color: color-check(#000, 30%)
-}
-
-input[placeholder].alerte,
-input[placeholder].alert,
-textarea[placeholder].alerte,
-textarea[placeholder].alert,
-[placeholder].alerte,
-[placeholder].alert,
-*[placeholder].alerte,
-*[placeholder].alert {
-    color: #bf4040 !important
-}
-
-::-webkit-input-placeholder {
-    color: color-check(#000, 30%)
-}
-
-::-webkit-input-placeholder.alerte,
-::-webkit-input-placeholder.alert {
-    color: #bf4040 !important
-}
-
-::-moz-placeholder {
-    color: color-check(#000, 30%)
-}
-
-::-moz-placeholder.alerte,
-::-moz-placeholder.alert {
-    color: #bf4040 !important
-}
-
-:-ms-input-placeholder {
-    color: color-check(#000, 30%)
-}
-
-:-ms-input-placeholder.alerte,
-:-ms-input-placeholder.alert {
-    color: #bf4040 !important
-}
-
-input:-moz-placeholder {
-    color: color-check(#000, 30%)
-}
 
 input:-moz-placeholder.alerte,
 input:-moz-placeholder.alert {

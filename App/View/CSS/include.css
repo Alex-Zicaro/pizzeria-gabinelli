@@ -1,6 +1,7 @@
 /* footer */
 
 .space-evenly {
+  display: flex;
   display: flex !important;
   gap: 1.5rem;
   flex-wrap: wrap;
