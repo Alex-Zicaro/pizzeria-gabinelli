@@ -1,3 +1,11 @@
+<?php
+
+use App\Controller\{Utilisateurs,Controller};
+
+$utilisateur = new Utilisateurs();
+
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -33,11 +41,12 @@
     <meta property="place:location:longitude" content="1.1178673" />
     <link rel="stylesheet" href="View/CSS/accueil.css">
     <link rel="stylesheet" href="View/CSS/accueil2.css">
+    <link rel="stylesheet" href="View/CSS/include.css">
 </head>
 
 <body>
     <header>
-
+    <?php $utilisateur->headerFront(); ?>
     </header>
 
     <section class="position-relative">
@@ -460,6 +469,10 @@
     <div class="centrage p-contact z-index-3">
 
     </div>
+
+    <footer>
+        <?php include_once('include/footer.php'); ?>
+    </footer>
 </body>
 
 </html>
