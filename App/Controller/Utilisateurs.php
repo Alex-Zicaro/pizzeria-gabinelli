@@ -317,9 +317,9 @@ Class Utilisateurs extends Controller{
     {
 
         if (isset($_SESSION["profil"]) && !empty($_SESSION["profil"])) {
-            include_once("view/include/headerOnline.php");
+            include_once("View/include/headerOnline.php");
         } else {
-            include_once("view/include/header.php");
+            include_once("View/include/header.php");
         }
     }
 

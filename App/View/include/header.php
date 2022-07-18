@@ -1,6 +1,4 @@
-<link rel="stylesheet" href="../CSS/accueil.css">
-<link rel="stylesheet" href="../CSS/accueil2.css">
-<link rel="stylesheet" href="../CSS/include.css">
+
 <header class="header ">
 
     <div class="header-bandeau ">

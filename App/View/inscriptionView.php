@@ -49,9 +49,13 @@ if (isset($_POST['Envoyer'])) {
 <meta property="place:location:longitude" content="1.1178673"/>
 
 	<link rel="stylesheet" href="View/CSS/inscription.css">
+	<link rel="stylesheet" href="View/CSS/include.css">
+	<link rel="stylesheet" href="View/CSS/accueil.css">
+<link rel="stylesheet" href="View/CSS/accueil2.css">
+
 
 	<!-- CSS only -->
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+	<!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous"> -->
 	<meta name="robots" content="">
 
 <body>
@@ -155,7 +159,7 @@ if (isset($_POST['Envoyer'])) {
 	</main>
 
 	<footer>
-		<?php include_once ('footer.php'); ?>
+		<?php include_once ('include/footer.php'); ?>
 	</footer>
 
 </body>
