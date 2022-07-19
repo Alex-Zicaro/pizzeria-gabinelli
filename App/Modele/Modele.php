@@ -59,10 +59,27 @@ Class Modele {
 
     public function getLast()
     {
-        $sql = "SELECT * FROM " . $this->table .  "ORDER BY id DESC LIMIT 1";
+        $sql = "SELECT * FROM $this->table ORDER BY id DESC LIMIT 1";
         $query = static::getBdd()->prepare($sql);
         $query->execute();
         $produit = $query->fetch();
+        return $produit;
+    }
+
+    public function getLastById($id){
+        $sql = "SELECT * FROM  $this->table   WHERE id = :id";
+        $query = static::getBdd()->prepare($sql);
+        $query->execute(array('id' => $id));
+        $produit = $query->fetch();
+        return $produit;
+
+    }
+
+    public function getFourLast(){
+        $sql = "SELECT * FROM $this->table  ORDER BY id DESC LIMIT 4";
+        $query = static::getBdd()->prepare($sql);
+        $query->execute();
+        $produit = $query->fetchAll();
         return $produit;
     }
 

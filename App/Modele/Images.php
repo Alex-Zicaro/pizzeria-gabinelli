@@ -78,16 +78,40 @@ on return true si c'est une femme else homme false
     
     }
 
-    public function derniereImageUser(){
+    public function quatreDernierImage(){
 
         $sql = "SELECT img_dir , images.id FROM images 
         INNER JOIN utilisateurs ON images.id = utilisateurs.id_image
-        WHERE images.id = utilisateurs.id_image  LIMIT 4
+        WHERE images.id = utilisateurs.id_image ORDER BY id DESC LIMIT 4
         ";
         $query = parent::getBdd()->prepare($sql);
         $query->execute();
         $data = $query->fetchAll();
         return $data;
+    }
+
+    public function derniereImageUserById($id){
+
+        $sql = "SELECT img_dir , images.id FROM images 
+        INNER JOIN utilisateurs ON images.id = utilisateurs.id_image
+        WHERE images.id = utilisateurs.id_image  AND utilisateurs.id = :id
+        ";
+        $query = parent::getBdd()->prepare($sql);
+        $query->execute(['id' => $id]);
+        $data = $query->fetch();
+        return $data;
+    }
+
+    public function quatreDernierUserEtImage(){
+            
+            $sql = "SELECT img_dir , images.id , utilisateurs.email , utilisateurs.prenom , utilisateurs.nom , utilisateurs.civilite FROM images 
+            INNER JOIN utilisateurs ON images.id = utilisateurs.id_image
+            WHERE images.id = utilisateurs.id_image ORDER BY id DESC LIMIT 4
+            ";
+            $query = parent::getBdd()->prepare($sql);
+            $query->execute();
+            $data = $query->fetchAll();
+            return $data;
     }
 
 }

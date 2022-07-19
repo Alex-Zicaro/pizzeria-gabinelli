@@ -1,0 +1,501 @@
+@import url(fonts.css);
+
+:root
+{
+    --var-main-color: rgb(42, 42, 56);
+    --var-main-color-shadow: orange;
+}
+
+*
+{
+    z-index: 0;
+    padding: 0;
+    margin: 0;
+}
+
+main section {
+    width: auto;
+}
+
+header, footer
+{
+    overflow: hidden;
+    padding: 1em;
+    display: flex;
+    background-color: var(--var-main-color);
+    height: 20%;
+}
+
+#header {
+    flex-direction: row;
+    align-items: center;
+}
+
+header a, footer a, #sub-header a
+{
+    text-decoration: none;
+    color: white;
+    font-size: 2em;
+}
+
+header a:hover, footer a:hover
+{
+
+    color: white;
+    text-decoration: underline;
+}
+
+header, #sub-header
+{
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 0;
+    padding: 0;
+    user-select: none;
+}
+
+h1
+{
+    font-family: Coolvetica;
+}
+
+#logo
+{
+    padding: 0.5em;
+    width: fit-content;
+    font-family: Coolvetica;
+    letter-spacing: 1px;
+    font-size: 25px;
+    font-weight: 100;
+}
+
+#sub-header
+{
+    display: flex;
+    flex-direction: row;
+    background-color: orange;
+    justify-content: space-evenly;
+    box-shadow: inset 0 5px 5px rgba(0, 0, 0, 0.2);
+}
+
+#sub-header a
+{
+    text-decoration: none;
+    margin: auto 0;
+    color: var(--var-main-color);
+}
+
+#sub-header img
+{
+    height: 1em;
+    width: auto;
+}
+
+footer
+{
+    position: static;
+    bottom: 0;
+    width: 100%;
+    box-sizing: border-box;
+    flex-direction: column;
+    border-top: 10px solid var(--var-main-color-shadow);
+}
+
+footer a
+{
+    width: fit-content;
+    margin: auto;
+}
+
+form, #profil
+{    
+    width: 70%; 
+    margin: auto;
+    border-radius: 1em;
+    padding: 2em;
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(238, 238, 238);
+    border-bottom: 5px solid rgb(211, 211, 211);
+    justify-content: center;
+    text-align: center;
+}
+
+#profil *
+{
+    text-align: center;
+    margin: 1% auto;
+}
+
+#fullname input
+{
+    width: 100%;
+}
+
+.inputText
+{
+    height: 1.5vh;
+    padding: 1em;
+    margin: 0.5em;
+    border-radius: 10px;
+    border-width: 0;
+    box-shadow: 1px 3px 3px black;
+}
+
+form input, form label
+{
+    margin: 0.5em;
+}
+
+form input
+{
+    padding: 0 1%;
+}
+
+form fieldset
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 50%;
+    margin: 0.5em auto;
+}
+
+section
+{
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    margin: 5%;
+}
+
+#fullname
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+    margin: 0 0.5em;
+}
+
+.produit
+{
+    display: flex;
+    flex-direction: row;
+    width: 80%;
+    background-color: rgba(0, 0, 0, 0.2);
+    padding: 2em;
+    margin: auto;
+    border-radius: 2em;
+}
+
+.infos
+{
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    margin-left: 5%;
+    word-wrap: break-word;
+}
+
+.bottom
+{
+    margin-top: auto;
+}
+
+#produit-img
+{
+    border-radius: 5%;
+    width: 50%;
+    height: 50%;
+}
+
+.liste-produits
+{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.section-produits
+{
+    margin-top: 5%;
+    margin-left: 5%;
+    border-top: 1px solid black;
+    flex-wrap: wrap;
+}
+
+.article-card
+{
+    width: 20%;
+    background-color: rgba(0, 0, 0, 0.2);
+    padding: 2em;
+    margin: 1em 1em;
+    border-radius: 5%;
+    text-decoration: none;
+    justify-content: center;
+    text-align: center;
+    color: black;
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.5);
+    text-overflow: hidden;
+    word-wrap: break-word;
+    word-break: break-word;
+}
+
+.article-card:hover
+{
+    color: black;
+    background-color: rgba(0, 0, 0, 0.25);
+}
+
+.article-card h2
+{
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.article-card *:not(h2, img) {
+    font-size: 14px;
+}
+
+.article-card img
+{
+    width: 50%;
+    height: auto;
+    border-radius: 5%;
+}
+
+#cart-form
+{
+    padding: 1em;
+}
+
+#inputs
+{
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    text-align: center;
+    align-items: baseline;
+}
+
+#inputs *
+{
+    text-align: center;
+    height: 3em;
+    width: 5em;
+}
+
+#submit-to-cart
+{
+    background-image: url(img/caddie.png);
+    background-size: 2em;
+    background-repeat: no-repeat;
+    background-position: 90%;
+    width: 100%;
+    text-align: left;
+    padding: 10px;
+    border-radius: 20px;
+    border-width: 0;
+    background-color: orange;
+
+    transition-property: background-color;
+    transition-duration: 0.25s;
+}
+
+#submit-to-cart:hover
+{
+    background-color: rgb(255, 185, 56);
+}
+
+#cashout tr:nth-child(2n+1)
+{
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+#form-3
+{
+    margin: 1em;
+    text-align: justify;
+}
+
+.user-img { 
+    width: 15em;
+    height: 15em;
+    border-radius: 50%;
+    box-shadow: 0 0 3px black;
+    object-fit: cover;
+}
+
+.small-pfp {
+    width: 5em;
+    height: 5em;
+    border-radius: 50%;
+    box-shadow: 0 0 3px black;
+    object-fit: cover;
+}
+
+a {
+    text-decoration: none !important;
+}
+
+article > h4 {
+    background-color: rgba(0, 0, 0, 0.2);
+    border-bottom: 1px solid black;
+    margin-top: 1em;
+}
+
+article > h2 {
+    border-top: 3px double black;
+    margin-top: 1.5em;
+}
+
+#admin-section {
+    border-radius: 3em;
+    background-color: rgba(0, 0, 0, 0.1);
+    padding: 1em;
+}
+
+
+
+
+#search-bar {
+    padding: 0;
+    background: none;
+    border: none;
+}
+
+#search-bar * {
+    border: none;
+    border-radius: 5px;
+    background-color: rgba(0, 0, 0, 0.1);
+    padding: 0.5em;
+    color: rgba(255, 255, 255, 0.7);
+
+    transition-duration: 0.5s;
+    transition-property: background-color;
+}
+
+#search-bar *:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.miniature {
+    height: 5em;
+    width: 5em;
+    object-fit: cover;
+    margin: auto;
+}
+
+.produit-preview * {
+    font-size: 8px;
+}
+
+#produit-table, #image-table {
+    margin: auto;
+}
+
+#produit-table td, #image-table td {
+    padding: 0.2em;
+    border: 1px solid black;
+}
+
+#image-table td {
+    padding: 1em;
+}
+
+.article-row .miniature {
+    float: left;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+.dropdown ul {
+    background-color: white;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: lightgrey;
+    min-width: 200px;
+    /* z-index: 2; */
+}
+  
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+  
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+.card {
+    background-color: #fff;
+    border-radius: 10px;
+    border: none;
+    position: relative;
+    margin-bottom: 30px;
+    box-shadow: 0 0.46875rem 2.1875rem rgba(90,97,105,0.1), 0 0.9375rem 1.40625rem rgba(90,97,105,0.1), 0 0.25rem 0.53125rem rgba(90,97,105,0.12), 0 0.125rem 0.1875rem rgba(90,97,105,0.1);
+}
+.l-bg-cherry {
+    background: linear-gradient(to right, #493240, #f09) !important;
+    color: #fff;
+}
+
+.l-bg-blue-dark {
+    background: linear-gradient(to right, #373b44, #4286f4) !important;
+    color: #fff;
+}
+
+.l-bg-green-dark {
+    background: linear-gradient(to right, #0a504a, #38ef7d) !important;
+    color: #fff;
+}
+
+.l-bg-orange-dark {
+    background: linear-gradient(to right, #a86008, #ffba56) !important;
+    color: #fff;
+}
+
+.card .card-statistic-3 .card-icon-large .fas, .card .card-statistic-3 .card-icon-large .far, .card .card-statistic-3 .card-icon-large .fab, .card .card-statistic-3 .card-icon-large .fal {
+    font-size: 110px;
+}
+
+.card .card-statistic-3 .card-icon {
+    text-align: center;
+    line-height: 50px;
+    margin-left: 15px;
+    color: #000;
+    position: absolute;
+    right: -5px;
+    top: 20px;
+    opacity: 0.1;
+}
+
+.l-bg-cyan {
+    background: linear-gradient(135deg, #289cf5, #84c0ec) !important;
+    color: #fff;
+}
+
+.l-bg-green {
+    background: linear-gradient(135deg, #23bdb8 0%, #43e794 100%) !important;
+    color: #fff;
+}
+
+.l-bg-orange {
+    background: linear-gradient(to right, #f9900e, #ffba56) !important;
+    color: #fff;
+}
+
+.l-bg-cyan {
+    background: linear-gradient(135deg, #289cf5, #84c0ec) !important;
+    color: #fff;
+}

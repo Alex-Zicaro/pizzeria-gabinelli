@@ -6,7 +6,7 @@
 
             <div class="no-margin-l margin-auto" id="logo">
                 <a href="accueil" title="Pizzeria Gabinelli">
-                    <img class="logo" src="../media/logo_pizzeria_gabinelli.png" alt="Pizzeria Gabinelli" width="200" />
+                    <img class="logo" src="../files/femme.png" alt="Pizzeria Gabinelli" width="200" />
                 </a>
             </div>
             <label id="btMenu" for="ouvre-menu" class=" no-margin-top">
