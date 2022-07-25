@@ -61,10 +61,9 @@ if (isset($_POST['Envoyer']))
 	
 	<main>
 		<div class="main">
-			<div class="container">
+			<div class="container1">
 				<div class="booking-content">
 					<div class="booking-image">
-						<img class="booking-img" src="View/media/pizzaInscription.jpg" alt="image d'une pizza">
 					</div>
 					<div class="booking-form">
 						<form id="booking-form" method="POST">

@@ -68,7 +68,6 @@ if (isset($_POST['Envoyer'])) {
 			<div class="container">
 				<div class="booking-content">
 					<div class="booking-image">
-						<img class="booking-img" src="View/media/pizzaInscription.jpg" alt="image d'une pizza">
 					</div>
 					<div class="booking-form">
 						<form id="booking-form" enctype="multipart/form-data" method="POST">

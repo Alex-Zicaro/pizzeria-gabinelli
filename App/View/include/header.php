@@ -1,3 +1,13 @@
+<?php
+
+use App\Controller\{Utilisateurs, Controller , Images , Commentaires , Produits};
+
+$produit = new Produits;
+
+$categories = $produit->produit->selectCategories();
+
+?>
+
 
 <header class="header ">
 
@@ -25,7 +35,7 @@
 
                         <li class="normal-padding-right-l">
                             <div class="bloc display-flex-l flex-align-items-center display-none" id="tel">
-                                <a class="font-size-big font-weight-bold" href="tel:+33488927544" onclick="gtag('event', 'Appel Téléphonique');">
+                                <a class="font-size-big font-weight-bold" href="tel:+33534480963" onclick="gtag('event', 'Appel Téléphonique');">
                                     <span class="hotliner">Commande :</span>
                                     <span class="tx">05 34 48 09 63</span>
                                 </a>
@@ -41,36 +51,31 @@
                             </a>
                         </li>
                         <li>
-                            <a href="la-carte-w1.html" title="La carte">
+                            <a href="panier" title="La carte">
                                 panier
                             </a>
                         <li>
 
-                            <a href="nos-pizzas-w1.html" title="Nos pizzas">
+                            <a href="produits" title="Nos pizzas">
                                 Nos pizzas
                             </a>
                             <ul>
+                                <?php foreach($categories as $categorie){
+                                    // var_dump($categorie);
+                                    ?>
                                 <li>
-                                    <a href="nos-pizzas-pizzas-traditionnelles-w1.html" title="Pizzas traditionnelles">
-                                        Base tomate
+                                    <a href="produits?categorie=<?= $categorie['id'] ?>" title="Pizza <?= $categorie['nom_categ'] ?>">
+                                        <?= $categorie['nom_categ'] ?>
                                     </a>
                                 </li>
-                                <li>
-                                    <a href="nos-pizzas-pizzas-specialites-w1.html" title="Pizzas spécialités">
-                                        Les spéciales
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="nos-pizzas-pizzas-sucrees-w1.html" title="Pizzas sucrées">
-                                        Base crème
-                                    </a>
-                                </li>
+                                <?php } ?>
+
                             </ul>
                         </li>
 
 
                         <li>
-                            <a href="les-salades-w1.html" title="Les salades">
+                            <a href="contact" title="Les salades">
                                 Contact
                             </a>
                         </li>

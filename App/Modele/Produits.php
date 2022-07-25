@@ -75,7 +75,7 @@ class Produits extends Modele{
 
 
 
-    public function selectsCateg()
+    public function selectCategories()
     {
 
         $sql = "SELECT * FROM categories";

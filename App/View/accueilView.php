@@ -42,6 +42,7 @@ $utilisateur = new Utilisateurs();
     <link rel="stylesheet" href="View/CSS/accueil.css">
     <link rel="stylesheet" href="View/CSS/accueil2.css">
     <link rel="stylesheet" href="View/CSS/include.css">
+    <!-- <link rel="stylesheet" href="View/CSS/inscription.css"> -->
 </head>
 
 <body>

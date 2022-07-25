@@ -5,7 +5,7 @@ use App\Controller\{Utilisateurs,Images,Produits};
 $utilisateur = new Utilisateurs;
 $produit = new Produits;
 $image = new Images;
-$categories = $produit->produit->selectsCateg();
+$categories = $produit->produit->selectCategories();
 
 // $produits = $produit->afficherLesProduits(); // array des produits
 
@@ -68,7 +68,7 @@ $produits = $produit->Pagination();
                 <?php if (empty($_GET['categorie'])) {
                     echo "Tout les produits";
                 } else {
-                    echo "Catégorie : " . ($produits[0][0]['categ']);
+                    echo "Catégorie : " . ($produits[0][0]['nom_categ']);
                 }
                 ?>
 
