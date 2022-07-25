@@ -49,49 +49,6 @@ $utilisateur = new Utilisateurs();
     <?php $utilisateur->headerFront(); ?>
     </header>
 
-    <section class="position-relative">
-        <div class="diaporama--accueil bg-noir slick-diapo-accueil">
-            <div class="img--back no-js">
-                <noscript><img src="public/img/big/20170405203825jpg5979b041254d0jpg_5faa4e2bcc29d.jpg" /></noscript>
-                <img data-lazy="public/img/big/20170405203825jpg5979b041254d0jpg_5faa4e2bcc29d.jpg" alt="" />
-                <div class="diaporama-cache"></div>
-            </div>
-            <div class="img--back no-js">
-                <noscript><img src="public/img/big/3934136380870568294jpg5f64a0308cfd9jpg_5faa4e3c126f4.jpg" /></noscript>
-                <img data-lazy="public/img/big/3934136380870568294jpg5f64a0308cfd9jpg_5faa4e3c126f4.jpg" alt="" />
-                <div class="diaporama-cache"></div>
-            </div>
-        </div>
-
-        <div class="accueil-selector display-flex flex-direction-column flex-justify-center">
-            <div class="centrage">
-                <div class="text-align-center text-color-blanc font-weight-bold">
-                    <div class="font-family-alt size-qualite">La qualité dans les délais</div>
-                    <div class="font-size-normal"></div>
-                </div>
-            </div>
-            <div class="centrage">
-                <div class="diapo-txt big-padding-l normal-padding">
-
-                    <div class="text-color-blanc text-align-center font-size-bloc small-margin-bottom">
-                        <span class="font-family-alt livraison">Livraison de pizzas</span>
-                        <br>
-                        <span class="font-weight-bold">à MARSEILLE <br>7J/7 midi et soir</span>
-                    </div>
-
-                    <div class="bloc display-flex" id="tel_diapo">
-                        <a class="font-size-big font-weight-bold" href="tel:+33488927544" onclick="gtag('event', 'Appel Téléphonique');">
-                            <i class="material-icons">call</i>
-                            <span class="tx">04 88 92 75 44</span>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="scroll-down go" data-go=".diaporama--accueil" data-go-origin="bottom" data-go-shift="100"></div>
-
-    </section>
 
 
 

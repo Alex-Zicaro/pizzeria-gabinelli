@@ -4926,7 +4926,7 @@ html.jgo-cssvhunit body:not(.badios) .fit-y-min-perfect-header-scroll {
     }
 }
 
-@media only screen and (min-width: 1025px) {
+@media only screen and (min-width: 800px) {
     .onepixel-margin-l {
         margin: 1px
     }
@@ -5641,25 +5641,25 @@ html.jgo-cssvhunit body:not(.badios) .fit-y-min-perfect-header-scroll {
     }
 }
 
-@media only screen and (min-width: 1025px) and (max-width: 800px) and (min-width: 0px) {
+@media only screen and (min-width: 800px) and (max-width: 800px) and (min-width: 0px) {
     .font-size-big {
         font-size: 1.98em
     }
 }
 
-@media only screen and (min-width: 1025px) {
+@media only screen and (min-width: 800px) {
     .font-size-title {
         font-size: 2.5em
     }
 }
 
-@media only screen and (min-width: 1025px) and (max-width: 800px) and (min-width: 0px) {
+@media only screen and (max-width: 800px) and (min-width: 0px) {
     .font-size-title {
         font-size: 2em
     }
 }
 
-@media only screen and (min-width: 1025px) {
+@media only screen and (min-width: 800px) {
     .text-align-left-l {
         text-align: left
     }

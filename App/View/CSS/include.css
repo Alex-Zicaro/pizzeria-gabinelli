@@ -77,4 +77,11 @@ footer div {
   transition: 1s;
 }
 
+#img_error_404{
+  display: flex;
+  justify-content: center;
+  min-width: 300px;
+  min-height:300px ;
+}
+
 

@@ -120,4 +120,12 @@ class Utilisateurs extends Modele{
         $data = $query->fetch();
         return $data;
     }
+    
+    public function isAdmin($id){
+        $sql = "SELECT droit FROM utilisateurs WHERE id = :id";
+        $query = parent::getBdd()->prepare($sql);
+        $query->execute(["id" => $id]);
+        $data = $query->fetch();
+        return $data;
+    }
 }

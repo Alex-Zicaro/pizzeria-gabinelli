@@ -8,8 +8,8 @@ Class Controller {
         
     }
 
-    function security($var) {
-        $var = htmlspecialchars( htmlentities( trim( strip_tags($var))));
+    public function security($var) {
+        $var = htmlspecialchars(trim( strip_tags($var)));
         return $var;
     }
 

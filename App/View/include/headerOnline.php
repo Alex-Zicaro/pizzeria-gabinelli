@@ -36,22 +36,22 @@
             <nav class="nav no-margin-top">
                 <ul class="lutin">
                     <li class="active">
-                        <a href="connexion" title="Accueil">
-                            Connexion
+                        <a href="profil" title="Accueil">
+                            Profil
                         </a>
                     </li>
                     <li>
-                        <a href="la-carte-w1.html" title="La carte">
+                        <a href="panier" title="La carte">
                             panier
                         </a>
                     <li>
 
-                        <a href="nos-pizzas-w1.html" title="Nos pizzas">
+                        <a href="produits" title="Nos pizzas">
                             Nos pizzas
                         </a>
                         <ul>
                             <li>
-                                <a href="nos-pizzas-pizzas-traditionnelles-w1.html" title="Pizzas traditionnelles">
+                                <a href="produits" title="Pizzas traditionnelles">
                                     Base tomate
                                 </a>
                             </li>

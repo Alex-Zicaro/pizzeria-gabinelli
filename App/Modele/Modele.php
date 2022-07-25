@@ -101,4 +101,3 @@ Class Modele {
 }
 
 
-$obj = new Modele;

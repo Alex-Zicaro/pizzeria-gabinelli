@@ -1,7 +1,7 @@
 
 <?php
 
-use App\Controller\{Utilisateurs, Controller , Images , Commentaires};
+use App\Controller\{Utilisateurs, Controller , Images , Commentaires , Produits};
 
 $utilisateur = new Utilisateurs;
 
@@ -9,11 +9,15 @@ $controller = new Controller;
 
 $commentaire = new Commentaires;
 
+$produit = new Produits;
+
 $image = new Images;
 
 $lastUtilisateur = $image->requete->quatreDernierUserEtImage();
 
 $lastCom = $commentaire->commentaire->fourLastCom();
+
+$lastProduit = $produit->produit->FourLastProduit();
 
 
 
@@ -29,7 +33,7 @@ $lastCom = $commentaire->commentaire->fourLastCom();
     <link rel="stylesheet" href="View/CSS/accueil.css">
 	<link rel="stylesheet" href="View/CSS/accueil2.css">
 	<link rel="stylesheet" href="View/CSS/include.css">
-    <link rel="stylesheet" href="View/CSS/admin.css">
+    <link rel="stylesheet" href="View/CSS/style.css">
     <!-- CSS only -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
     <title>Pizzeria gabinelli</title>
@@ -43,7 +47,7 @@ $lastCom = $commentaire->commentaire->fourLastCom();
 
 <section id="admin-section">
     <h1 class="d-flex justify-content-center mb-5">Espace Admin</h1>
-    <article>
+    
         <h2><strong>Modération utilisateurs</strong></h2>
 
         <div class="row">
@@ -81,23 +85,35 @@ foreach ($lastUtilisateur as  $utilisateur) {
 </div>
 
 
-        <h4>Commentaires des utilisateurs</h4>
+<h4>Commentaires des utilisateurs</h4>
+<article class="row">
         <?php foreach ($lastCom as $com) {
             // var_dump($com);
         ?>
 
-            <h3><b><?= $com['titre'] ?></b></h3>
+<div class="col-md-3">
+        <div class="card">
+                <img src="<?= $com['img_dir'] ?>" class="card-img-top" alt="...">
+            
+            <div class="card-body">
 
-            <p><?= $com['contenu'] ?></p>
+            <h5 class="card-title"><?= $com['titre'] ?></h5>
+                <p class="card-text"><?= $com['email'] ?></p>
+                <p class="card-text"><?= $com['contenu'] ?> </p>
+                <p class="card-text"><?= $com['note'] ?>/10</p>
 
-            <p>note a revoir <?= $com['note'] ?></p>
+                <a href="admin?deleteCom=<?= $com['id'] //fonction delete à mettre ?>" class=""> 
+                    <button class="btn btn-danger">Supprimer</button>
+                </a>
+            </div>
+        </div>
+    </div>
 
-            <p>écrit par : <?= $com['login'] ?></p>
 
         <?php } ?>
         <a href="gestionComment">Voir plus...</a>
 
-    </article>
+        </article>
     <article>
 
         
@@ -109,13 +125,27 @@ foreach ($lastUtilisateur as  $utilisateur) {
         </a>
         <h4>Dernier produits publiés</h4>
         <?php
+        // var_dump($lastProduit);
         foreach ($lastProduit as $produit) {
+            // var_dump($produit);
         ?>
-            <a href="produit?produit=<?= $produit["id"] ?>&modif=1">
+                <div class="col-md-3">
+        <div class="card">
+                <img src="<?= $produit['img_dir'] ?>" class="card-img-top" alt="...">
+            
+            <div class="card-body">
 
-                <img src="<?= $produit["img_dir"] ?>" alt="" style="width: 8em;">
+            <h5 class="card-title"><?= $produit['nom'] ?></h5>
+                <p class="card-text"><?= $produit['nom_categ'] ?></p>
+                <p class="card-text"><?= $produit['prix'] ?> €</p>
 
-            </a>
+
+                <a href="produit?produit=<?= $produit['id'] ?>" class="">
+                    <button class="btn btn-danger">Voir</button>
+                </a>
+            </div>
+        </div>
+    </div>
         <?php
 
         }
@@ -144,4 +174,4 @@ foreach ($lastUtilisateur as  $utilisateur) {
     </footer>
     
 </body>
-</html>
+ 

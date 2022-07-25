@@ -636,7 +636,7 @@ body:not(.accueil) .plan--premier {
     padding-top: auto
 }
 
-@media only screen and (min-width: 1025px) {
+@media only screen and (min-width: 800px) {
     body:not(.accueil) .plan--premier {
         padding-top: auto
     }
@@ -680,7 +680,7 @@ body:not(.accueil) .plan--premier {
     }
 }
 
-@media only screen and (min-width: 1025px) {
+@media only screen and (min-width: 800px) {
     .ratio-l:before {
         padding-top: 66.66667%
     }
@@ -696,7 +696,7 @@ body:not(.accueil) .plan--premier {
     }
 }
 
-@media only screen and (min-width: 1025px) {
+@media only screen and (min-width: 800px) {
     .ratio--portrait-l:before {
         padding-top: 150%
     }
@@ -712,7 +712,7 @@ body:not(.accueil) .plan--premier {
     }
 }
 
-@media only screen and (min-width: 1025px) {
+@media only screen and (min-width: 800px) {
     .ratio--carre-l:before {
         padding-top: 100%
     }
@@ -728,79 +728,79 @@ body:not(.accueil) .plan--premier {
     }
 }
 
-@media only screen and (min-width: 1025px) {
+@media only screen and (min-width: 800px) {
     .ratio--pano-l:before {
         padding-top: 45%
     }
 }
 
-@media only screen and (min-width: 1025px) {
+@media only screen and (min-width: 800px) {
     .ratio--pano--normal:before {
         padding-top: 45%
     }
 }
 
-@media only screen and (min-width: 1025px) and (min-width: 640px) {
+@media only screen and (min-width: 800px) and (min-width: 640px) {
     .ratio--pano--normal-s:before {
         padding-top: 45%
     }
 }
 
-@media only screen and (min-width: 1025px) and (min-width: 1025px) {
+@media only screen and (min-width: 800px) and (min-width: 1025px) {
     .ratio--pano--normal-l:before {
         padding-top: 45%
     }
 }
 
-@media only screen and (max-width: 1024px) and (min-width: 0px) {
+@media only screen and (max-width: 800px) and (min-width: 0px) {
     .ratio--pano--normal:before {
         padding-top: 66.66667%
     }
 }
 
-@media only screen and (max-width: 1024px) and (min-width: 0px) and (min-width: 640px) {
+@media only screen and (max-width: 800px) and (min-width: 0px) and (min-width: 640px) {
     .ratio--pano--normal-s:before {
         padding-top: 66.66667%
     }
 }
 
-@media only screen and (max-width: 1024px) and (min-width: 0px) and (min-width: 1025px) {
+@media only screen and (max-width: 800px) and (min-width: 0px) and (min-width: 1025px) {
     .ratio--pano--normal-l:before {
         padding-top: 66.66667%
     }
 }
 
-@media only screen and (min-width: 1025px) {
+@media only screen and (min-width: 800px) {
     .ratio--portraitpano:before {
         padding-top: 150%
     }
 }
 
-@media only screen and (min-width: 1025px) and (min-width: 640px) {
+@media only screen and (min-width: 800px) and (min-width: 640px) {
     .ratio--portraitpano-s:before {
         padding-top: 150%
     }
 }
 
-@media only screen and (min-width: 1025px) and (min-width: 1025px) {
+@media only screen and (min-width: 800px) and (min-width: 1025px) {
     .ratio--portraitpano-l:before {
         padding-top: 150%
     }
 }
 
-@media only screen and (max-width: 1024px) and (min-width: 0px) {
+@media only screen and (max-width: 800px) and (min-width: 0px) {
     .ratio--portraitpano:before {
         padding-top: 66.66667%
     }
 }
 
-@media only screen and (max-width: 1024px) and (min-width: 0px) and (min-width: 640px) {
+@media only screen and (max-width: 800px) and (min-width: 0px) and (min-width: 640px) {
     .ratio--portraitpano-s:before {
         padding-top: 66.66667%
     }
 }
 
-@media only screen and (max-width: 1024px) and (min-width: 0px) and (min-width: 1025px) {
+@media only screen and (max-width: 800px) and (min-width: 0px) and (min-width: 1025px) {
     .ratio--portraitpano-l:before {
         padding-top: 66.66667%
     }
@@ -836,43 +836,43 @@ body:not(.accueil) .plan--premier {
     }
 }
 
-@media only screen and (max-width: 500px) and (min-width: 0px) and (min-width: 1025px) {
+@media only screen and (max-width: 500px) and (min-width: 0px) and (min-width: 800px) {
     .ratio--carrepano-l:before {
         padding-top: 66.66667%
     }
 }
 
-@media only screen and (min-width: 1025px) {
+@media only screen and (min-width: 800px) {
     .ratio--carre--normal:before {
         padding-top: 100%
     }
 }
 
-@media only screen and (min-width: 1025px) and (min-width: 640px) {
+@media only screen and (min-width: 800px) and (min-width: 640px) {
     .ratio--carre--normal-s:before {
         padding-top: 100%
     }
 }
 
-@media only screen and (min-width: 1025px) and (min-width: 1025px) {
+@media only screen and (min-width: 800px) and (min-width: 1025px) {
     .ratio--carre--normal-l:before {
         padding-top: 100%
     }
 }
 
-@media only screen and (max-width: 1024px) and (min-width: 0px) {
+@media only screen and (max-width: 800px) and (min-width: 0px) {
     .ratio--carre--normal:before {
         padding-top: 66.66667%
     }
 }
 
-@media only screen and (max-width: 1024px) and (min-width: 0px) and (min-width: 640px) {
+@media only screen and (max-width: 800px) and (min-width: 0px) and (min-width: 640px) {
     .ratio--carre--normal-s:before {
         padding-top: 66.66667%
     }
 }
 
-@media only screen and (max-width: 1024px) and (min-width: 0px) and (min-width: 1025px) {
+@media only screen and (max-width: 800px) and (min-width: 0px) and (min-width: 1025px) {
     .ratio--carre--normal-l:before {
         padding-top: 66.66667%
     }
@@ -882,7 +882,7 @@ body:not(.accueil) .plan--premier {
     padding-top: 100%
 }
 
-@media only screen and (min-width: 1025px) {
+@media only screen and (min-width: 800px) {
     .ratio--slideshow:before {
         padding-top: 37.5%
     }
@@ -952,7 +952,7 @@ body:not(.accueil) .fil-ariane.padd-ariane {
     padding-bottom: 9px
 }
 
-@media only screen and (min-width: 1025px) {
+@media only screen and (min-width: 800px) {
     .fil-ariane {
         text-align: left
     }
@@ -1276,7 +1276,7 @@ html.jgo-no-objectfit .img--back img {
     }
 }
 
-@media only screen and (min-width: 1025px) {
+@media only screen and (min-width: 800px) {
     .img--back-l {
         overflow: hidden;
         text-align: inherit
@@ -1388,7 +1388,7 @@ header .header-bandeau>.centrage {
     z-index: 3
 }
 
-@media only screen and (max-width: 1024px) and (min-width: 0px) {
+@media only screen and (max-width: 800px) and (min-width: 0px) {
     header .header-bandeau {
         padding: 10px 0 10px 0px
     }
@@ -1408,7 +1408,7 @@ header .header-line {
     flex-wrap: wrap
 }
 
-@media only screen and (min-width: 1025px) {
+@media only screen and (min-width: 800px) {
     header .header-line {
         justify-content: flex-start;
         width: 100%
@@ -1473,7 +1473,7 @@ body.ie8 #www {
     left: 0
 }
 
-@media only screen and (max-width: 1024px) and (min-width: 0px) {
+@media only screen and (max-width: 800px) and (min-width: 0px) {
     #www {
         display: none
     }
@@ -1490,7 +1490,7 @@ body.ie8 #www {
     margin-left: 15px
 }
 
-@media only screen and (max-width: 1024px) and (min-width: 0px) {
+@media only screen and (max-width: 800px) and (min-width: 0px) {
     #tel {
         display: none
     }
@@ -1717,7 +1717,7 @@ body:not(.tototest) #devis1 {
     background-color: #f05023
 }
 
-@media only screen and (max-width: 1024px) and (min-width: 0px) {
+@media only screen and (max-width: 800px) and (min-width: 0px) {
     #rdv {
         display: none
     }
@@ -1789,7 +1789,7 @@ body.ie8 #slogan {
     top: 0
 }
 
-@media only screen and (max-width: 1024px) and (min-width: 0px) {
+@media only screen and (max-width: 800px) and (min-width: 0px) {
     #slogan {
         font-size: 50px
     }
@@ -1879,7 +1879,7 @@ nav.nav {
     transition: all 225ms 0ms ease-in-out
 }
 
-@media only screen and (max-width: 1024px) and (min-width: 0px) {
+@media only screen and (max-width: 800px) and (min-width: 0px) {
     nav.nav {
         right: -50%
     }
@@ -1889,13 +1889,13 @@ body.menu-active nav.nav {
     right: 0
 }
 
-@media only screen and (min-width: 1025px) {
+@media only screen and (min-width: 800px) {
     nav.nav {
         background-color: transparent !important
     }
 }
 
-@media only screen and (min-width: 1025px) {
+@media only screen and (min-width: 800px) {
     nav.nav .lutin {
         padding: 0 0 4px 0;
         justify-content: flex-end;
@@ -1903,19 +1903,19 @@ body.menu-active nav.nav {
     }
 }
 
-@media only screen and (min-width: 1025px) {
+@media only screen and (min-width: 800px) {
     nav.nav .lutin>li:nth-child(6) {
         display: none
     }
 }
 
-@media only screen and (max-width: 1024px) and (min-width: 0px) {
+@media only screen and (max-width: 800px) and (min-width: 0px) {
     nav.nav .santa {
         display: none !important
     }
 }
 
-@media only screen and (min-width: 1025px) {
+@media only screen and (min-width: 800px) {
     nav.nav .santa {
         margin: 0 0 0 auto !important;
         transition: all 225ms 0ms ease-in-out
@@ -1932,7 +1932,7 @@ nav.nav>ul {
     max-width: 320px
 }
 
-@media only screen and (max-width: 1024px) and (min-width: 0px) {
+@media only screen and (max-width: 800px) and (min-width: 0px) {
     nav.nav>ul {
         margin-left: auto;
         margin-right: auto
@@ -1948,7 +1948,7 @@ nav.nav>ul>li {
     border: 1px solid rgba(0, 0, 0, 0.2)
 }
 
-@media only screen and (max-width: 1024px) and (min-width: 0px) {
+@media only screen and (max-width: 800px) and (min-width: 0px) {
     nav.nav>ul>li {
         margin: 0 0 5px 0 !important
     }
@@ -1992,7 +1992,7 @@ nav.nav>ul>li>span>span:before {
     content: ' '
 }
 
-@media only screen and (max-width: 1024px) and (min-width: 0px) {
+@media only screen and (max-width: 800px) and (min-width: 0px) {
 
     nav.nav>ul>li>a:before,
     nav.nav>ul>li>span>a:before,
@@ -2144,7 +2144,7 @@ nav.nav>ul>li:active>span>ul {
     transition: all 225ms 0ms ease-in-out
 }
 
-@media only screen and (min-width: 1025px) {
+@media only screen and (min-width: 800px) {
     nav.nav {
         display: flex;
         justify-content: flex-end;
@@ -2190,14 +2190,14 @@ nav.nav>ul>li:active>span>ul {
     }
 }
 
-@media only screen and (min-width: 1025px) and (max-width: 1320px) and (min-width: 0px) {
+@media only screen and (min-width: 800px) and (max-width: 1320px) and (min-width: 0px) {
     nav.nav>ul>li>ul {
         left: auto;
         right: 0
     }
 }
 
-@media only screen and (min-width: 1025px) {
+@media only screen and (min-width: 800px) {
 
     nav.nav>ul>li>ul>li>a,
     nav.nav>ul>li>ul>li>span>a,
@@ -2228,7 +2228,7 @@ nav.nav>ul>li:active>span>ul {
     top: 0;
     right: 0;
     padding: 16px 12px;
-    background: #f05023;
+    background: #04711e;
     transition: all 225ms 0ms ease-in-out
 }
 
@@ -2254,7 +2254,7 @@ nav.nav>ul>li:active>span>ul {
     transition: all 225ms 0ms ease-in-out
 }
 
-@media only screen and (min-width: 1025px) {
+@media only screen and (min-width: 800px) {
     #btMenu {
         display: none
     }
@@ -2498,7 +2498,7 @@ input#ouvre-menu:checked~.footer-jalis {
     }
 }
 
-@media only screen and (min-width: 1025px) {
+@media only screen and (min-width: 800px) {
     .grille-images {
         display: block;
         display: flex;
@@ -2684,7 +2684,7 @@ iframe[src*="facebook"] {
     box-shadow: 0 1px 20px rgba(0, 0, 0, 0.6)
 }
 
-@media only screen and (max-width: 1024px) and (min-width: 0px) {
+@media only screen and (max-width: 800px) and (min-width: 0px) {
     .fiche-encart-txt {
         max-width: 340px
     }
@@ -2721,7 +2721,7 @@ iframe[src*="facebook"] {
     box-shadow: 0 1px 20px rgba(0, 0, 0, 0.6)
 }
 
-@media only screen and (max-width: 1024px) and (min-width: 0px) {
+@media only screen and (max-width: 800px) and (min-width: 0px) {
     .accueil-selector .diapo-txt {
         max-width: 340px
     }
@@ -2742,7 +2742,7 @@ iframe[src*="facebook"] {
     font-size: 30px
 }
 
-@media only screen and (max-width: 1024px) and (min-width: 0px) {
+@media only screen and (max-width: 800px) and (min-width: 0px) {
     .font-size-bloc {
         font-size: 25px
     }
@@ -2752,7 +2752,7 @@ iframe[src*="facebook"] {
     font-size: 45px
 }
 
-@media only screen and (max-width: 1024px) and (min-width: 0px) {
+@media only screen and (max-width: 800px) and (min-width: 0px) {
     .livraison {
         font-size: 38px
     }
@@ -2770,7 +2770,7 @@ iframe[src*="facebook"] {
     top: -20vh
 }
 
-@media only screen and (max-width: 1024px) and (min-width: 0px) {
+@media only screen and (max-width: 800px) and (min-width: 0px) {
     .size-qualite {
         font-size: 60px;
         top: -15vh
@@ -2805,7 +2805,7 @@ iframe[src*="facebook"] {
     padding: 36px 18px
 }
 
-@media only screen and (max-width: 1024px) and (min-width: 0px) {
+@media only screen and (max-width: 800px) and (min-width: 0px) {
     .jayStyle .deplaceeffet {
         padding: 36px 16px 36px 16px
     }
@@ -2849,7 +2849,7 @@ iframe[src*="facebook"] {
     transition: all .7s 0ms cubic-bezier(0.77, 0, 0.175, 1)
 }
 
-@media only screen and (min-width: 1025px) {
+@media only screen and (min-width: 800px) {
     .grey {
         filter: grayscale(100%);
         transition: all 1s 0ms ease-in-out
@@ -3008,7 +3008,7 @@ iframe[src*="facebook"] {
     }
 }
 
-@media only screen and (min-width: 1025px) {
+@media only screen and (min-width: 800px) {
     *[class*="grid"][class*="through2-l"]>* {
         width: calc(50% - 9px)
     }
@@ -3227,7 +3227,7 @@ body.ie8 .line:before {
     top: 18px
 }
 
-@media only screen and (max-width: 1024px) and (min-width: 0px) {
+@media only screen and (max-width: 800px) and (min-width: 0px) {
     .line {
         display: none
     }
@@ -3254,7 +3254,7 @@ body.ie8 .line2:before {
     top: 18px
 }
 
-@media only screen and (max-width: 1024px) and (min-width: 0px) {
+@media only screen and (max-width: 800px) and (min-width: 0px) {
     .line2 {
         display: none
     }
@@ -4132,7 +4132,7 @@ body.ie8 .scroll-down {
     left: 0
 }
 
-@media only screen and (max-width: 1024px) and (min-width: 0px) {
+@media only screen and (max-width: 800px) and (min-width: 0px) {
     .scroll-down {
         display: none
     }
@@ -4272,7 +4272,7 @@ html.jgo-no-objectfit *[class*="diaporama"] .slick-list .slick-track .slick-slid
     }
 }
 
-@media only screen and (min-width: 1025px) {
+@media only screen and (min-width: 800px) {
 
     *[class*="diaporama"] .slick-list .slick-track .img--back-l,
     *[class*="diaporama"] .slick-list .slick-track .slick-slide>div-l {
@@ -4322,13 +4322,13 @@ body.ie8 .placeH1 {
     left: 0
 }
 
-@media only screen and (min-width: 1025px) {
+@media only screen and (min-width: 800px) {
     .placeH1 {
         bottom: 0px
     }
 }
 
-@media only screen and (max-width: 1024px) and (min-width: 0px) {
+@media only screen and (max-width: 800px) and (min-width: 0px) {
     .placeH1 {
         bottom: 60px
     }
@@ -4340,7 +4340,7 @@ body.ie8 .placeH1 {
     }
 }
 
-@media only screen and (min-width: 1025px) {
+@media only screen and (min-width: 800px) {
     .masque {
         z-index: 10;
         position: absolute;
@@ -4362,7 +4362,7 @@ body.ie8 .placeH1 {
     width: 0
 }
 
-@media only screen and (max-width: 1024px) and (min-width: 0px) {
+@media only screen and (max-width: 800px) and (min-width: 0px) {
     .diaporama--accueil {
         height: 500px
     }
@@ -4709,7 +4709,7 @@ a.rss {
     font-size: 22px
 }
 
-@media only screen and (max-width: 1024px) and (min-width: 0px) {
+@media only screen and (max-width: 800px) and (min-width: 0px) {
     .satisfaction {
         justify-content: center
     }
@@ -6216,7 +6216,7 @@ input:-moz-placeholder.alert {
     display: none
 }
 
-@media only screen and (min-width: 1025px) {
+@media only screen and (min-width: 800px) {
     .plan--premier {
         margin-top: 100px
     }
@@ -6227,7 +6227,7 @@ input:-moz-placeholder.alert {
     }
 }
 
-@media only screen and (min-width: 1025px) {
+@media only screen and (min-width: 800px) {
 
     #dpe_consommation,
     #dpe_emission {
@@ -6237,7 +6237,7 @@ input:-moz-placeholder.alert {
     }
 }
 
-@media only screen and (max-width: 1024px) and (min-width: 0px) {
+@media only screen and (max-width: 800px) and (min-width: 0px) {
     html {
         padding-bottom: 83px;
         height: auto !important
@@ -6307,7 +6307,7 @@ ul.menufx>li>a.picto--tel {
     }
 }
 
-@media only screen and (min-width: 1025px) {
+@media only screen and (min-width: 800px) {
     ul.menufx {
         display: none
     }
@@ -6680,7 +6680,7 @@ body.ie8 .slideshow3 .slick-next {
     padding: 20px
 }
 
-@media only screen and (min-width: 1025px) {
+@media only screen and (min-width: 800px) {
     .slideshow.type2 .slick-slide .slide-txt {
         max-width: 40%;
         position: absolute;
@@ -6798,7 +6798,7 @@ body.ie8 .slick-diapo-accueil .slick-next {
     content: ''
 }
 
-@media only screen and (max-width: 1024px) and (min-width: 0px) {
+@media only screen and (max-width: 800px) and (min-width: 0px) {
 
     .slick-diapo-accueil .slick-prev,
     .slick-diapo-accueil .slick-next {
@@ -6819,7 +6819,7 @@ body.ie8 .slick-diapo-accueil .slick-next {
     content: ''
 }
 
-@media only screen and (max-width: 1024px) and (min-width: 0px) {
+@media only screen and (max-width: 800px) and (min-width: 0px) {
     .slick-diapo-accueil .slick-prev {
         right: 30px
     }
@@ -6954,7 +6954,7 @@ body.ie8 .slick-diapo-accueil .slick-next {
     display: none
 }
 
-@media only screen and (min-width: 1025px) {
+@media only screen and (min-width: 800px) {
     .decale-annonce {
         padding-top: 80px
     }
@@ -6969,7 +6969,7 @@ body.ie8 .slick-diapo-accueil .slick-next {
     top: -60px
 }
 
-@media only screen and (max-width: 1024px) and (min-width: 0px) {
+@media only screen and (max-width: 800px) and (min-width: 0px) {
     .decale-M2 {
         top: 0
     }
@@ -6981,7 +6981,7 @@ body.ie8 .slick-diapo-accueil .slick-next {
     grid-gap: 36px
 }
 
-@media only screen and (max-width: 1024px) and (min-width: 0px) {
+@media only screen and (max-width: 800px) and (min-width: 0px) {
     .grid-carte {
         grid-template-columns: 1fr
     }
@@ -7012,7 +7012,7 @@ body.ie8 .slick-diapo-accueil .slick-next {
     }
 }
 
-@media only screen and (max-width: 1024px) and (min-width: 0px) {
+@media only screen and (max-width: 800px) and (min-width: 0px) {
     .grid-container {
         grid-template-columns: 1fr 1fr;
         grid-template-areas: "title encart1""encart2 encart3""encart4 encart5"
@@ -7076,14 +7076,14 @@ body.ie8 .slick-diapo-accueil .slick-next {
     justify-content: center
 }
 
-@media only screen and (min-width: 1025px) {
+@media only screen and (min-width: 800px) {
     .grille-flex-miniature a {
         margin: 0 0 4px 4px;
         width: calc((100% - 40px) / 10)
     }
 }
 
-@media only screen and (max-width: 1024px) and (min-width: 0px) {
+@media only screen and (max-width: 800px) and (min-width: 0px) {
     .grille-flex-miniature a {
         margin: 0 0 4px 4px;
         width: calc((100% - 20px) / 5)
@@ -7273,7 +7273,7 @@ body.ie8 .slick-diapo-accueil .slick-next {
     opacity: .25
 }
 
-@media only screen and (max-width: 1024px) and (min-width: 0px) {
+@media only screen and (max-width: 800px) and (min-width: 0px) {
     .image-pizza1 {
         display: none
     }
@@ -7302,7 +7302,7 @@ body.ie8 .slick-diapo-accueil .slick-next {
     opacity: .4
 }
 
-@media only screen and (max-width: 1024px) and (min-width: 0px) {
+@media only screen and (max-width: 800px) and (min-width: 0px) {
     .image-olive2 {
         display: none
     }
@@ -7423,13 +7423,13 @@ body.ie8 .the-map .my--btplan {
     right: 0
 }
 
-@media only screen and (max-width: 1024px) and (min-width: 0px) {
+@media only screen and (max-width: 800px) and (min-width: 0px) {
     .formew {
         display: none
     }
 }
 
-@media only screen and (min-width: 1025px) {
+@media only screen and (min-width: 800px) {
     .bloc--acc .un {
         width: 80%
     }
@@ -7461,20 +7461,20 @@ body.ie8 .the-map .my--btplan {
     }
 }
 
-@media only screen and (max-width: 1024px) and (min-width: 0px) {
+@media only screen and (max-width: 800px) and (min-width: 0px) {
     .bloc--acc .img-abs {
         right: 0;
         left: auto
     }
 }
 
-@media only screen and (min-width: 1025px) {
+@media only screen and (min-width: 800px) {
     .order-1 {
         order: -1
     }
 }
 
-@media only screen and (min-width: 1025px) {
+@media only screen and (min-width: 800px) {
     .order2 {
         order: 2
     }
@@ -7515,7 +7515,7 @@ body.ie8 .the-map .my--btplan {
     padding: 15vh 0
 }
 
-@media only screen and (max-width: 1024px) and (min-width: 0px) {
+@media only screen and (max-width: 800px) and (min-width: 0px) {
     .margin-flash {
         padding: 15vh 0 5vh 0
     }
@@ -7551,7 +7551,7 @@ body.ie8 .the-map .my--btplan {
     padding-bottom: 15vh
 }
 
-@media only screen and (max-width: 1024px) and (min-width: 0px) {
+@media only screen and (max-width: 800px) and (min-width: 0px) {
     .extrabig-padding-y-laius {
         padding-top: 80px;
         padding-bottom: 60px
@@ -7599,7 +7599,7 @@ body.ie8 .the-map .my--btplan {
     font-size: 2.5em
 }
 
-@media only screen and (max-width: 1024px) and (min-width: 0px) {
+@media only screen and (max-width: 800px) and (min-width: 0px) {
     .font-size-verybig {
         font-size: 40px
     }
@@ -7621,7 +7621,7 @@ body.ie8 .the-map .my--btplan {
     font-size: 3em
 }
 
-@media only screen and (max-width: 1024px) and (min-width: 0px) {
+@media only screen and (max-width: 800px) and (min-width: 0px) {
     .font-size-h1 {
         font-size: 40px
     }
@@ -7637,7 +7637,7 @@ body.ie8 .the-map .my--btplan {
     font-size: 1.65em
 }
 
-@media only screen and (max-width: 1024px) and (min-width: 0px) {
+@media only screen and (max-width: 800px) and (min-width: 0px) {
     .font-size-h2 {
         font-size: 30px
     }
@@ -7653,7 +7653,7 @@ body.ie8 .the-map .my--btplan {
     font-size: 45pt
 }
 
-@media only screen and (max-width: 1024px) and (min-width: 0px) {
+@media only screen and (max-width: 800px) and (min-width: 0px) {
     .font-size-strate {
         font-size: 35pt
     }
@@ -7669,13 +7669,13 @@ body.ie8 .the-map .my--btplan {
     font-size: 14px
 }
 
-@media only screen and (min-width: 1025px) {
+@media only screen and (min-width: 800px) {
     .text-align-center-left {
         text-align: center
     }
 }
 
-@media only screen and (max-width: 1024px) and (min-width: 0px) {
+@media only screen and (max-width: 800px) and (min-width: 0px) {
     .text-align-center-left {
         text-align: left
     }
@@ -7690,19 +7690,19 @@ body.ie8 .the-map .my--btplan {
     line-height: 1.5em
 }
 
-@media only screen and (min-width: 1025px) {
+@media only screen and (min-width: 800px) {
     *[class*="colonne"][class*="--2"] {
         column-count: 2
     }
 }
 
-@media only screen and (min-width: 1025px) {
+@media only screen and (min-width: 800px) {
     *[class*="colonne"][class*="--3"] {
         column-count: 3
     }
 }
 
-@media only screen and (min-width: 1025px) {
+@media only screen and (min-width: 800px) {
     *[class*="colonne"][class*="--4"] {
         column-count: 4
     }
@@ -7741,7 +7741,7 @@ span.char {
     }
 }
 
-@media only screen and (max-width: 1024px) and (min-width: 0px) {
+@media only screen and (max-width: 800px) and (min-width: 0px) {
     .headline2 {
         font-size: 13px;
         padding: 20px 0
@@ -7757,7 +7757,7 @@ span.char {
     font-weight: 300
 }
 
-@media only screen and (max-width: 1024px) and (min-width: 0px) {
+@media only screen and (max-width: 800px) and (min-width: 0px) {
     .headline3 {
         font-size: 13px;
         padding: 20px 0
@@ -7803,7 +7803,7 @@ body.ie8 #aarpi-intro {
     text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.8)
 }
 
-@media only screen and (max-width: 1024px) and (min-width: 0px) {
+@media only screen and (max-width: 800px) and (min-width: 0px) {
     #aarpi-intro {
         margin: 8px auto 0
     }
@@ -7841,7 +7841,7 @@ body.ie8 #aarpi-intro {
     text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.8)
 }
 
-@media only screen and (max-width: 1024px) and (min-width: 0px) {
+@media only screen and (max-width: 800px) and (min-width: 0px) {
     #aarpi-footer {
         margin: 8px auto 0
     }
@@ -7895,7 +7895,7 @@ body.ie8 #aarpi-intro {
     display: flex
 }
 
-@media only screen and (max-width: 1024px) and (min-width: 0px) {
+@media only screen and (max-width: 800px) and (min-width: 0px) {
     .intro {
         display: none !important
     }
@@ -7906,7 +7906,7 @@ body.ie8 #aarpi-intro {
     padding: 0 65px
 }
 
-@media only screen and (max-width: 1024px) and (min-width: 0px) {
+@media only screen and (max-width: 800px) and (min-width: 0px) {
     .center .slick-slide {
         padding: 0 18px
     }

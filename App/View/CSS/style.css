@@ -3,12 +3,12 @@
 :root
 {
     --var-main-color: rgb(42, 42, 56);
-    --var-main-color-shadow: orange;
+    --var-main-color-shadow: #04711e;
 }
 
 *
 {
-    z-index: 0;
+    /* z-index: 0; */
     padding: 0;
     margin: 0;
 }
@@ -17,95 +17,24 @@ main section {
     width: auto;
 }
 
-header, footer
-{
-    overflow: hidden;
-    padding: 1em;
-    display: flex;
-    background-color: var(--var-main-color);
-    height: 20%;
-}
 
-#header {
-    flex-direction: row;
-    align-items: center;
-}
 
-header a, footer a, #sub-header a
-{
-    text-decoration: none;
-    color: white;
-    font-size: 2em;
-}
 
-header a:hover, footer a:hover
-{
 
-    color: white;
-    text-decoration: underline;
-}
 
-header, #sub-header
-{
-    display: flex;
-    flex-direction: column;
-    padding-bottom: 0;
-    padding: 0;
-    user-select: none;
-}
-
-h1
-{
-    font-family: Coolvetica;
-}
 
 #logo
 {
     padding: 0.5em;
-    width: fit-content;
+
     font-family: Coolvetica;
     letter-spacing: 1px;
     font-size: 25px;
     font-weight: 100;
 }
 
-#sub-header
-{
-    display: flex;
-    flex-direction: row;
-    background-color: orange;
-    justify-content: space-evenly;
-    box-shadow: inset 0 5px 5px rgba(0, 0, 0, 0.2);
-}
 
-#sub-header a
-{
-    text-decoration: none;
-    margin: auto 0;
-    color: var(--var-main-color);
-}
 
-#sub-header img
-{
-    height: 1em;
-    width: auto;
-}
-
-footer
-{
-    position: static;
-    bottom: 0;
-    width: 100%;
-    box-sizing: border-box;
-    flex-direction: column;
-    border-top: 10px solid var(--var-main-color-shadow);
-}
-
-footer a
-{
-    width: fit-content;
-    margin: auto;
-}
 
 form, #profil
 {    
@@ -139,7 +68,7 @@ form, #profil
     margin: 0.5em;
     border-radius: 10px;
     border-width: 0;
-    box-shadow: 1px 3px 3px black;
+    box-shadow: 1px 3px 3px grey;
 }
 
 form input, form label
@@ -221,7 +150,7 @@ section
 {
     margin-top: 5%;
     margin-left: 5%;
-    border-top: 1px solid black;
+    border-top: 1px solid grey;
     flex-wrap: wrap;
 }
 
@@ -298,7 +227,7 @@ section
     padding: 10px;
     border-radius: 20px;
     border-width: 0;
-    background-color: orange;
+    background-color: #04711e;
 
     transition-property: background-color;
     transition-duration: 0.25s;
@@ -306,7 +235,7 @@ section
 
 #submit-to-cart:hover
 {
-    background-color: rgb(255, 185, 56);
+    background-color: #3e7e4d;
 }
 
 #cashout tr:nth-child(2n+1)
@@ -324,7 +253,7 @@ section
     width: 15em;
     height: 15em;
     border-radius: 50%;
-    box-shadow: 0 0 3px black;
+    box-shadow: 0 0 3px grey;
     object-fit: cover;
 }
 
@@ -332,7 +261,7 @@ section
     width: 5em;
     height: 5em;
     border-radius: 50%;
-    box-shadow: 0 0 3px black;
+    box-shadow: 0 0 3px grey;
     object-fit: cover;
 }
 
@@ -342,12 +271,12 @@ a {
 
 article > h4 {
     background-color: rgba(0, 0, 0, 0.2);
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid grey;
     margin-top: 1em;
 }
 
 article > h2 {
-    border-top: 3px double black;
+    border-top: 3px double grey;
     margin-top: 1.5em;
 }
 
@@ -357,8 +286,14 @@ article > h2 {
     padding: 1em;
 }
 
+#checkout-button {
+    padding: 0.5em;
+    border-radius: 10px;
+}
 
-
+#checkout-button:hover {
+    background-color: #04711e;
+}
 
 #search-bar {
     padding: 0;
@@ -398,7 +333,7 @@ article > h2 {
 
 #produit-table td, #image-table td {
     padding: 0.2em;
-    border: 1px solid black;
+    border: 1px solid grey;
 }
 
 #image-table td {
@@ -450,20 +385,7 @@ article > h2 {
     color: #fff;
 }
 
-.l-bg-blue-dark {
-    background: linear-gradient(to right, #373b44, #4286f4) !important;
-    color: #fff;
-}
 
-.l-bg-green-dark {
-    background: linear-gradient(to right, #0a504a, #38ef7d) !important;
-    color: #fff;
-}
-
-.l-bg-orange-dark {
-    background: linear-gradient(to right, #a86008, #ffba56) !important;
-    color: #fff;
-}
 
 .card .card-statistic-3 .card-icon-large .fas, .card .card-statistic-3 .card-icon-large .far, .card .card-statistic-3 .card-icon-large .fab, .card .card-statistic-3 .card-icon-large .fal {
     font-size: 110px;
@@ -480,22 +402,3 @@ article > h2 {
     opacity: 0.1;
 }
 
-.l-bg-cyan {
-    background: linear-gradient(135deg, #289cf5, #84c0ec) !important;
-    color: #fff;
-}
-
-.l-bg-green {
-    background: linear-gradient(135deg, #23bdb8 0%, #43e794 100%) !important;
-    color: #fff;
-}
-
-.l-bg-orange {
-    background: linear-gradient(to right, #f9900e, #ffba56) !important;
-    color: #fff;
-}
-
-.l-bg-cyan {
-    background: linear-gradient(135deg, #289cf5, #84c0ec) !important;
-    color: #fff;
-}

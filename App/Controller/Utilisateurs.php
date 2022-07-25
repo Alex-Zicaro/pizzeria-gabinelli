@@ -8,7 +8,7 @@ use PHPMailer\PHPMailer\Exception;
 require '../vendor/phpmailer/phpmailer/src/Exception.php';
 require '../vendor/phpmailer/phpmailer/src/SMTP.php';
 require '../vendor/phpmailer/phpmailer/src/PHPMailer.php';
-require_once('../vendor/autoload.php');
+
 
 //revoir le code ici 
 
@@ -133,25 +133,17 @@ Class Utilisateurs extends Controller{
         }
     }
 
-    public function IsAdmin()
-    {
-        if (isset($_SESSION["profil"]["id_droits"]) && $_SESSION["profil"]["id_droits"] == 42) {
-            return true;
-        } else {
+    public function userAdmin($id){
+        $heIsAdmin = $this->utilisateur->isAdmin($id);
+        if($heIsAdmin == 'client'){
             return false;
-        }
-    }
-
-    public function userAdmin()
-    {
-
-        if (isset($_SESSION["profil"]["id_droits"]) && $_SESSION["profil"]["id_droits"] == 42) {
-
+        } else if ($heIsAdmin == 'admin'){
             return true;
-        } else {
-            header("location: profil");
         }
     }
+
+
+
 
 
     public function CUpdatemail($email, $id)

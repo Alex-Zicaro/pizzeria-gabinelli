@@ -78,8 +78,7 @@ $userAdresse = $adresse->getAdresse($_SESSION['profil']['id']);
                                 <div class="card-block text-center text-white flexer ">
 
                                     <div class="m-b-25">
-                                        <img src="<?=$utilisateurActuelle[0]['img_dir'];
-                                        ?>" class="img-radius" alt="User Profile">
+                                        <img src="<?=$utilisateurActuelle[0]['img_dir'];?>" class="img-radius" alt="<?= $utilisateurActuelle[0]['nom_img'] ?>">
                                         
                                     </div>
                                     <?php if($userAdresse == false): ?>

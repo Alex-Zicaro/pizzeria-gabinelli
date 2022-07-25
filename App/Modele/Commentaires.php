@@ -17,7 +17,7 @@ class Commentaires extends Modele
     public function selectComment($id_produit)
     {
 
-        $sql = "SELECT images.img_dir,  commentaires.id , commentaires.titre , commentaires.contenu , commentaires.note , utilisateurs.login , utilisateurs.id AS id_utilisateur  FROM commentaires
+        $sql = "SELECT images.img_dir,  commentaires.id , commentaires.titre , commentaires.contenu , commentaires.note , utilisateurs.prenom ,utilisateurs.droit, utilisateurs.id AS id_utilisateur  FROM commentaires
         INNER JOIN  produits ON commentaires.id_produit = produits.id
         INNER JOIN utilisateurs ON id_utilisateur = utilisateurs.id
         INNER JOIN images ON utilisateurs.id_image = images.id
@@ -56,8 +56,9 @@ class Commentaires extends Modele
 
     public function fourLastCom() : array{
 
-        $sql ="SELECT utilisateurs.email , commentaires.titre , commentaires.contenu , commentaires.note FROM commentaires 
+        $sql ="SELECT utilisateurs.email , utilisateurs.prenom , utilisateurs.nom , utilisateurs.civilite ,images.img_dir , images.nom_img ,commentaires.id , commentaires.titre , commentaires.contenu , commentaires.note FROM commentaires 
         INNER JOIN utilisateurs ON commentaires.id_utilisateur = utilisateurs.id
+        INNER JOIN images ON utilisateurs.id_image = images.id
         ORDER BY commentaires.id DESC LIMIT 4";
         $query = parent::getBdd()->prepare($sql);
         $query->execute();
