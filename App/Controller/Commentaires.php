@@ -36,13 +36,14 @@ class Commentaires extends Controller {
         }
 
         if(empty($msgErr)){
-            echo"good";
+            $msgErr = "Commentaire posté !";
             $this->commentaire->postComment($titre , $contenu , $note , $id_utilisateur , $id_produit);
-            header('Refresh:0');
-            die();
+            // header('Refresh:0');
+            // die();
+            return $msgErr;
         }
         else{
-            echo $msgErr;
+            return $msgErr;
         }
 
     }

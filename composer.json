@@ -13,6 +13,8 @@
     },
     "require": {
         "phpmailer/phpmailer": "^6.6",
-        "stripe/stripe-php": "^8.8"
+        "stripe/stripe-php": "^8.12",
+        "league/omnipay": "^3.2",
+        "omnipay/stripe": "^3.2"
     }
 }

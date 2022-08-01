@@ -111,6 +111,40 @@ class Utilisateurs extends Modele{
         $infologin = $requetegetlogin->fetch();
         return $infologin;
     }
+    public function RecupEmailfromtoken($token)
+    {
+
+        $stmt = parent::getBdd()->prepare('SELECT email from utilisateurs where token = :token');
+        $stmt->execute([
+            'token' => $token
+        ]);
+        $email = $stmt->fetchColumn();
+        return $email;
+    }
+
+    public function UpdateTokenfromMail($token, $email)
+    {
+        $sql = "UPDATE utilisateurs SET token = ? where email = ?";
+        $stmt = parent::getBdd()->prepare($sql);
+        $stmt->execute(array($token, $email));
+        return $stmt;
+    }
+
+    public function UpdatePasswordFromToken($hashedpassword, $email)
+    {
+        $sql = "UPDATE utilisateurs SET password = ?, token = NULL WHERE email = ?";
+        $stmt = parent::getBdd()->prepare($sql);
+        $stmt->execute(array($hashedpassword, $email));
+    }
+    public function getAllUser(){
+
+        $sql = "SELECT utilisateurs.droit, utilisateurs.id , utilisateurs.email , utilisateurs.prenom , utilisateurs.nom , utilisateurs.civilite , images.img_dir , images.nom_img FROM utilisateurs
+        LEFT JOIN images ON utilisateurs.id_image = images.id";
+        $query = parent::getBdd()->prepare($sql);
+        $query->execute();
+        $data = $query->fetchAll();
+        return $data;
+    }
 
     public function genderOfCurrentUser(){
 

@@ -57,7 +57,7 @@ class Produits extends Modele{
 
         foreach ($array as $value) {
 
-            $sql = "SELECT images.nom AS image_nom , images.img_dir ,  categories.nom AS categ, produits.id , produits.nom, produits.presentation , produits.description , produits.prix , produits.quantite FROM produits
+            $sql = "SELECT nom_img , images.img_dir ,  nom_categ, produits.id , produits.nom, produits.presentation , produits.description , produits.prix FROM produits
         INNER JOIN categories ON produits.id_categorie = categories.id
         INNER JOIN images ON produits.id_image = images.id 
         WHERE produits.id = :value ";
@@ -248,19 +248,7 @@ class Produits extends Modele{
         $data = $query->fetchAll();
         return $data;
     }
-    public function verifQuantite($quantite, $id_produit)
-    {
 
-        $sql = "SELECT quantite FROM produits WHERE id = :id_produit";
-        $query = parent::getBdd()->prepare($sql);
-        $query->execute(['id_produit' => $id_produit]);
-        $data = $query->fetch();
-        if ($quantite > $data['quantite']) {
-            return false;
-        } else {
-            return true;
-        }
-    }
 
     public function addCateg($nom)
     {

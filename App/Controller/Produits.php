@@ -262,15 +262,7 @@ $this->image->delete($produit["id"]);
             }
         }
 
-        public function verifeQuantite($quantite , $id_produit){
-            
-                $quantite = htmlspecialchars(strip_tags($quantite));
-                $id_produit = htmlspecialchars(strip_tags($id_produit));
-                $data = $this->produit->verifQuantite($quantite ,$id_produit);
 
-                return $data;
-            
-        }
         
         public function addLaCateg($nom){
             $nom = htmlspecialchars(strip_tags($nom));

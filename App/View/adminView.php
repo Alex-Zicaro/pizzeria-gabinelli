@@ -35,8 +35,7 @@ $lastProduit = $produit->produit->FourLastProduit();
 	<link rel="stylesheet" href="View/CSS/include.css">
     <link rel="stylesheet" href="View/CSS/style.css">
     <!-- CSS only -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
-    <title>Pizzeria gabinelli</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">    <title>Pizzeria gabinelli</title>
 </head>
 <body>
     <header>
@@ -50,9 +49,9 @@ $lastProduit = $produit->produit->FourLastProduit();
     
         <h2><strong>Modération utilisateurs</strong></h2>
 
+        
+        <h4>Derniers utilisateurs inscrits</h4>
         <div class="row">
-
-<h4>Derniers utilisateurs inscrits</h4>
     <?php
 
 foreach ($lastUtilisateur as  $utilisateur) {
@@ -80,9 +79,9 @@ foreach ($lastUtilisateur as  $utilisateur) {
     
     
     <?php } ?>
+</div>
     <a href="gestionUtilisateurs">Voir plus...</a>
 </a>
-</div>
 
 
 <h4>Commentaires des utilisateurs</h4>

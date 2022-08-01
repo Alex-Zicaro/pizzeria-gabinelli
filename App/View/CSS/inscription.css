@@ -3,7 +3,9 @@ display-flex, .booking-content {
     display: flex;
     display: -webkit-flex; }
   
-
+a{
+  display: none;
+}
   
   a:focus, a:active {
     text-decoration: none;
@@ -62,7 +64,7 @@ display-flex, .booking-content {
     margin: 0;
     padding: 0;
     font-weight: bold;
-    font-family: Poppins;
+    /* font-family: Poppins; */
     font-size: 21px;
     text-align: center;
     margin-bottom: 28px; }
@@ -226,7 +228,7 @@ display-flex, .booking-content {
     width: 100%;
     display: block;
     border: none;
-    font-family: Poppins;
+    /* font-family: Poppins; */
     color: #fff;
     background: transparent;
     border-bottom: 1px solid #999;

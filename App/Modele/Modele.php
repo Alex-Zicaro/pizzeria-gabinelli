@@ -47,6 +47,14 @@ Class Modele {
         return $data;
     }
 
+    public function getAllWithoutId(){
+        $sql = "SELECT * FROM $this->table ";
+        $query = static::getBdd()->prepare($sql);
+        $query->execute();
+        $data = $query->fetchAll();
+        return $data;
+    }
+
 
     public function deleteOneById($id) : void{
 

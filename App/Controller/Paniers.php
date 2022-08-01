@@ -123,8 +123,9 @@ class Paniers
     function supprimerArticle($idProduit)
     {
         //Si le panier existe
-
-        if ($this->creationPanier() && !$this->isVerrouille()) {
+        var_dump($this->creationPanier(),$this->isVerrouille());
+        // session_destroy();
+        if ($this->creationPanier() && $this->isVerrouille() === false || $this->isVerrouille() === null) {
             //Nous allons passer par un panier temporaire
             $tmp = array();
 
@@ -149,10 +150,10 @@ class Paniers
     }
     function modifierQTeArticle($idProduit, $qteProduit)
     {
-        $verif = $this->produitC->verifeQuantite($qteProduit, $idProduit);
-        if ($verif == true) {
-            //Si le panier existe  
-            if ($this->creationPanier() && !$this->isVerrouille()) {
+        
+            //Si le panier existe 
+            // var_dump($_SESSION['panier']); 
+            if (isset($_SESSION['panier']) ) {
                 //Si la quantité est positive on modifie sinon on supprime l'article
                 if ($qteProduit > 0) {
                     //Recherche du produit dans le panier
@@ -160,7 +161,7 @@ class Paniers
 
                     if ($positionProduit !== false) {
                         $_SESSION['panier']['qteProduit'][$positionProduit] = $qteProduit;
-                    }
+                    
                 } else
                     $this->supprimerArticle($idProduit);
             } else
@@ -272,8 +273,8 @@ class Paniers
 
 
             'mode' => 'payment',
-            'success_url' => 'http://localhost/boutique-en-ligne/app/succes?session_id={CHECKOUT_SESSION_ID}',
-            'cancel_url' => 'http://localhost/boutique-en-ligne/app/fail',
+            'success_url' => 'http://localhost/pizzeria-gabinelli/App/succes?session_id={CHECKOUT_SESSION_ID}',
+            'cancel_url' => 'http://localhost/pizzeria-gabinelli/App/fail',
 
         ]);
 
@@ -285,7 +286,7 @@ class Paniers
     {
 
         if (isset($prix) && $prix !== 0) {
-
+            // echo"mais est ce que on passe par ici aussi lzelaz";
             \Stripe\Stripe::setApiKey('sk_test_51KgrypCjcUSLVoiTemxsLRsQyRbomYCY6YPLjjj6bvrSTPl92ejOuw1CV3EZzUrJnn9ROrPnXccQD57DgVtMxDzA009eldOofQ');
 
             // header('Content-Type: application/json');
@@ -335,3 +336,4 @@ class Paniers
         // $app->run();
     }
 }
+// var_dump($_SESSION['panier']['verrou']);

@@ -273,20 +273,20 @@ Class Utilisateurs extends Controller{
         $mail = new PHPMailer(true);
 
         $token = uniqid();
-        $url = "http://localhost/boutique-en-ligne/app/token?token=$token";
+        $url = "http://localhost/pizzeria-gabinelli/App/token?token=$token";
         try {
-            //Server settings
-            $mail->SMTPDebug  = 0;                  //Enable verbose debug output
-            $mail->isSMTP();                                            //Send using SMTP
-            $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
-            $mail->SMTPAuth   = TRUE;                                  //Enable SMTP authentication
-            $mail->Username   = 'lesouk13@gmail.com';                     //SMTP username
-            $mail->Password   = 'Pizza1013';                               //SMTP password
-            $mail->SMTPSecure = "tls";         //Enable implicit TLS encryption
-            $mail->Port       = 587;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
+     //Server settings
+     $mail->SMTPDebug = 0;                      //Enable verbose debug output
+     $mail->isSMTP();                                            //Send using SMTP
+     $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
+     $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
+     $mail->Username   = 'lebotdu13002@gmail.com';                     //SMTP username
+     $mail->Password   = 'vhbrqpbxfisxajle'            ;                               //SMTP password
+     $mail->SMTPSecure = "tls";            //Enable implicit TLS encryption
+     $mail->Port       = 587;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
 
             //Recipients
-            $mail->setFrom('lesouk13@gmail.com', 'Mot de passe oublie');
+            $mail->setFrom('lebotdu13002@gmail.com', 'Mot de passe oublie');
             $mail->addAddress($email, '');     //Add a recipient
 
 
