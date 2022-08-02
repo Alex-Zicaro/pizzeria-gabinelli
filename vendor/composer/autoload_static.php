@@ -34,6 +34,11 @@ class ComposerStaticInit0d8039fefe9479feb64704cbda93548e
             'Omnipay\\Stripe\\' => 15,
             'Omnipay\\Common\\' => 15,
         ),
+        'N' => 
+        array (
+            'Nyholm\\Psr7\\' => 12,
+            'Nyholm\\Psr7Server\\' => 18,
+        ),
         'M' => 
         array (
             'Money\\' => 6,
@@ -77,8 +82,8 @@ class ComposerStaticInit0d8039fefe9479feb64704cbda93548e
         ),
         'Psr\\Http\\Message\\' => 
         array (
-            0 => __DIR__ . '/..' . '/psr/http-message/src',
-            1 => __DIR__ . '/..' . '/psr/http-factory/src',
+            0 => __DIR__ . '/..' . '/psr/http-factory/src',
+            1 => __DIR__ . '/..' . '/psr/http-message/src',
         ),
         'Psr\\Http\\Client\\' => 
         array (
@@ -96,6 +101,14 @@ class ComposerStaticInit0d8039fefe9479feb64704cbda93548e
         array (
             0 => __DIR__ . '/..' . '/omnipay/common/src/Common',
         ),
+        'Nyholm\\Psr7\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/nyholm/psr7/src',
+        ),
+        'Nyholm\\Psr7Server\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/nyholm/psr7-server/src',
+        ),
         'Money\\' => 
         array (
             0 => __DIR__ . '/..' . '/moneyphp/money/src',
@@ -106,8 +119,8 @@ class ComposerStaticInit0d8039fefe9479feb64704cbda93548e
         ),
         'Http\\Message\\' => 
         array (
-            0 => __DIR__ . '/..' . '/php-http/message-factory/src',
-            1 => __DIR__ . '/..' . '/php-http/message/src',
+            0 => __DIR__ . '/..' . '/php-http/message/src',
+            1 => __DIR__ . '/..' . '/php-http/message-factory/src',
         ),
         'Http\\Discovery\\' => 
         array (

@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use Stripe\Checkout\Session;
 use Stripe\Stripe;
+use Stripe\Webhook;
 
 Class StripePaye extends Controller {
 
@@ -43,6 +44,19 @@ Class StripePaye extends Controller {
         ]);
         header('HTTP/1.1 303 See Other');
         header('Location: ' . $session->url);
+    }
+
+    public function pont(\Psr\Http\Message\ServerRequestInterface $request){
+        $signature = $request->getHeaderLine('Stripe-Signature');
+        $body = (string) $request->getBody();
+        $event = Webhook::constructEvent(
+            $body,
+            $signature,
+            'whsec_b5d25112d7b1eb40613374ecb05f0ec79ac4b276b7b730876bf2435f0462c16b'
+        );
+        if($event->type == 'checkout.session.completed'){
+            file_put_contents('checkout.session.completed' , serialize($event));
+        }
     }
 }
 
