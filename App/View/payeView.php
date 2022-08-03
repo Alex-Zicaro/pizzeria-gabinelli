@@ -16,7 +16,7 @@ $produit = new Produits;
 $panier = new Paniers;
 
 
-$stripe = new StripePaye('sk_test_51KgrypCjcUSLVoiTemxsLRsQyRbomYCY6YPLjjj6bvrSTPl92ejOuw1CV3EZzUrJnn9ROrPnXccQD57DgVtMxDzA009eldOofQ');
+$stripe = new StripePaye('sk_test_51KgrypCjcUSLVoiTemxsLRsQyRbomYCY6YPLjjj6bvrSTPl92ejOuw1CV3EZzUrJnn9ROrPnXccQD57DgVtMxDzA009eldOofQ','whsec_b5d25112d7b1eb40613374ecb05f0ec79ac4b276b7b730876bf2435f0462c16b');
 
     $produits = $panier->afficherAuPanier($_SESSION['panier']['idProduit']);
     // var_dump($produits);

@@ -3,7 +3,7 @@
 use App\Controller\{Paniers, Produits , Utilisateurs , Commandes};
 use Slim\Http\{Request, Response};
 use Stripe\{Stripe, Charge};
-
+var_dump($_SESSION['items']);
 $utilisateur = new Utilisateurs;
 
 $panier = new Paniers;
