@@ -9,81 +9,159 @@ $categories = $produit->produit->selectCategories();
 ?>
 
 
-<header class="header ">
+<div class="super_container margin-bot-10">
+	
+	<!-- Header -->
+	
+	
 
-    <div class="header-bandeau ">
-        <div class="centrage display-flex-l flex-align-items-center-l flex-justify-space-between-l">
+		<!-- Top Bar -->
 
-            <div class="no-margin-l margin-auto" id="logo">
-                <a href="accueil" title="Pizzeria Gabinelli">
-                    <img class="logo" src="../files/femme.png" alt="Pizzeria Gabinelli" width="200" />
-                </a>
-            </div>
-            <label id="btMenu" for="ouvre-menu" class=" no-margin-top">
-                <span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </span>
-            </label>
-            <div class="display-flex flex-direction-column flex-align-items-end-l flex-grow-9">
-                <!-- ici -->
-                <nav class="nav no-margin-top display-flex">
+		<div class="top_bar">
+			<div class="container">
+				<div class="row">
+					<div class="col d-flex flex-row">
+						<div class="top_bar_contact_item"><div class="top_bar_icon"><img src="https://res.cloudinary.com/dxfq3iotg/image/upload/v1560918577/phone.png" alt=""></div>05.34.48.09.63</div>
+						<div class="top_bar_content ml-auto gauche">
+							<div class="top_bar_menu">
+								<ul class="standard_dropdown top_bar_dropdown">
 
-                    <ul class="santa hidden">
+									 <li>
+										<a href="#" style="color: white" >$ US dollar<i class="fas fa-chevron-down"></i></a>
+										<ul>
+											<li><a href="#">EUR Euro</a></li>
+											<li><a href="#">GBP British Pound</a></li>
+											<li><a href="#">JPY Japanese Yen</a></li>
+										</ul>
+									</li>
+								</ul>
+							</div>
+							<div class="top_bar_user">
+								<div class="user_icon"><img src="https://res.cloudinary.com/dxfq3iotg/image/upload/v1560918647/user.svg" alt=""></div>
+								<div><a href="#" style="color: white">Register</a></div>
+								<div><a href="#" style="color: white">Sign in</a></div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>		
+		</div>
 
+		<!-- Header Main -->
 
-                        <li class="normal-padding-right-l">
-                            <div class="bloc display-flex-l flex-align-items-center display-none" id="tel">
-                                <a class="font-size-big font-weight-bold" href="tel:+33534480963" onclick="gtag('event', 'Appel Téléphonique');">
-                                    <span class="hotliner">Commande :</span>
-                                    <span class="tx">05 34 48 09 63</span>
-                                </a>
-                            </div>
-                        </li>
-                    </ul>
-                </nav>
-                <nav class="nav no-margin-top">
-                    <ul class="lutin">
-                        <li class="active">
-                            <a href="connexion" title="Accueil">
-                                Connexion
-                            </a>
-                        </li>
-                        <li>
-                            <a href="panier" title="La carte">
-                                panier
-                            </a>
-                        <li>
+		<div class="header_main">
+			<div class="container">
+				<div class="row">
 
-                            <a href="produits" title="Nos pizzas">
-                                Nos pizzas
-                            </a>
-                            <ul>
-                                <?php foreach($categories as $categorie){
-                                    // var_dump($categorie);
-                                    ?>
-                                <li>
-                                    <a href="produits?categorie=<?= $categorie['id'] ?>" title="Pizza <?= $categorie['nom_categ'] ?>">
-                                        <?= $categorie['nom_categ'] ?>
-                                    </a>
-                                </li>
-                                <?php } ?>
+					<!-- Logo -->
+					
 
-                            </ul>
-                        </li>
+					<!-- Search -->
+					<div class="col-lg-6 col-12 order-lg-2 order-3 text-lg-left text-right">
+						<div class="header_search">
+							<div class="header_search_content">
+								<div class="header_search_form_container">
+									<form action="#" class="header_search_form clearfix">
+										<input type="search" required="required" id="search-bar" placeholder="Rechercher une pizza...">
+
+										<input type="submit" id="checkout-button" value="Rechercher"></input>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
 
 
-                        <li>
-                            <a href="contact" title="Les salades">
-                                Contact
-                            </a>
-                        </li>
-                        <li>
-                    </ul>
-                </nav>
-            </div>
-        </div>
-    </div>
 
-</header>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		
+		
+		<!-- Menu -->
+
+		<div class="page_menu">
+			<div class="container">
+				<div class="row">
+					<div class="col">
+						
+						<div class="page_menu_content">
+							
+							<div class="page_menu_search">
+								<form action="#">
+									<input type="search" required="required" class="page_menu_search_input" placeholder="Search for products...">
+								</form>
+							</div>
+							<ul class="page_menu_nav">
+
+								<li class="page_menu_item has-children">
+									<a href="#">Currency<i class="fa fa-angle-down"></i></a>
+									<ul class="page_menu_selection">
+										<li><a href="#">US Dollar<i class="fa fa-angle-down"></i></a></li>
+										<li><a href="#">EUR Euro<i class="fa fa-angle-down"></i></a></li>
+										<li><a href="#">GBP British Pound<i class="fa fa-angle-down"></i></a></li>
+										<li><a href="#">JPY Japanese Yen<i class="fa fa-angle-down"></i></a></li>
+									</ul>
+								</li>
+								<li class="page_menu_item">
+									<a href="#">Home<i class="fa fa-angle-down"></i></a>
+								</li>
+								<li class="page_menu_item has-children">
+									<a href="#">Super Deals<i class="fa fa-angle-down"></i></a>
+									<ul class="page_menu_selection">
+										<li><a href="#">Super Deals<i class="fa fa-angle-down"></i></a></li>
+										<li class="page_menu_item has-children">
+											<a href="#">Menu Item<i class="fa fa-angle-down"></i></a>
+											<ul class="page_menu_selection">
+												<li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
+												<li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
+												<li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
+												<li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
+											</ul>
+										</li>
+										<li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
+										<li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
+										<li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
+									</ul>
+								</li>
+								<li class="page_menu_item has-children">
+									<a href="#">Featured Brands<i class="fa fa-angle-down"></i></a>
+									<ul class="page_menu_selection">
+										<li><a href="#">Featured Brands<i class="fa fa-angle-down"></i></a></li>
+										<li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
+										<li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
+										<li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
+									</ul>
+								</li>
+								<li class="page_menu_item has-children">
+									<a href="#">Trending Styles<i class="fa fa-angle-down"></i></a>
+									<ul class="page_menu_selection">
+										<li><a href="#">Trending Styles<i class="fa fa-angle-down"></i></a></li>
+										<li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
+										<li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
+										<li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
+									</ul>
+								</li>
+								<li class="page_menu_item"><a href="blog.html">blog<i class="fa fa-angle-down"></i></a></li>
+								<li class="page_menu_item"><a href="contact.html">contact<i class="fa fa-angle-down"></i></a></li>
+							</ul>
+							
+							<div class="menu_contact">
+								<div class="menu_contact_item"><div class="menu_contact_icon"><img src="images/phone_white.png" alt=""></div>+38 068 005 3570</div>
+								<div class="menu_contact_item"><div class="menu_contact_icon"><img src="images/mail_white.png" alt=""></div><a href="mailto:fastsales@gmail.com">fastsales@gmail.com</a></div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+	
+	
+
+</div>

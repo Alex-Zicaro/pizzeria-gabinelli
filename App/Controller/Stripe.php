@@ -56,8 +56,8 @@ class StripePaye extends Controller
 
         // var_dump($request);
         $endpoint_secret = 'whsec_b5d25112d7b1eb40613374ecb05f0ec79ac4b276b7b730876bf2435f0462c16b';
-
-        $signature = $request->getHeaderLine('stripe-signature');
+        $signature = $request->getHeaderLine('Content-Signature');
+        var_dump($signature);
         $body = (string) $request->getBody();
         $event = Webhook::constructEvent(
             $body,
@@ -66,7 +66,6 @@ class StripePaye extends Controller
         );
         var_dump($event);
         file_put_contents('checkout.completed', serialize($event));
+    }
+}
 
-        var_dump($signature);
-}
-}

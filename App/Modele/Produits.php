@@ -262,7 +262,7 @@ class Produits extends Modele{
 
     public function modifierCateg($nom, $id)
     {
-        $sql = "UPDATE categories SET nom = :nom WHERE id = :id";
+        $sql = "UPDATE categories SET nom_categ = :nom WHERE id = :id";
         $query = parent::getBdd()->prepare($sql);
         $query->execute([
             'nom' => $nom,

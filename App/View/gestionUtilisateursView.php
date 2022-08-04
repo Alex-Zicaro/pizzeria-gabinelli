@@ -32,11 +32,11 @@ if (isset($_GET['id'])) {
             <head>
                 <meta charset="UTF-8">
                 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                <link rel="stylesheet" href="View/CSS/inscription.css">
-                <link rel="stylesheet" href="View/CSS/accueil.css">
-                <link rel="stylesheet" href="View/CSS/accueil2.css">
+                <link rel="stylesheet" href="View/CSS/style.css">
+                <!-- <link rel="stylesheet" href="View/CSS/accueil.css"> -->
+                <!-- <link rel="stylesheet" href="View/CSS/accueil2.css"> -->
                 <link rel="stylesheet" href="View/CSS/include.css">
-                <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous"> -->
+                <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
                 <title>Gabinelli - RIEUMES | Italienne cuisine proche de moi</title>
                 <link rel="canonical" href="https://gabinelli-pizzeria-rieumes.eatbu.com/?lang=fr" />
@@ -66,7 +66,7 @@ if (isset($_GET['id'])) {
                 <meta property="place:location:longitude" content="1.1178673" />
             </head>
 
-            <body>
+            <body class="bloc-principal">
             <header>
                 <?php $utilisateurs->headerFront(); ?>
             </header>
@@ -106,7 +106,9 @@ if (isset($_GET['id'])) {
     </section>
 </main>
 
-<?php include_once('View/include/header.php'); ?>
+<footer>
+    <?php include_once('View/include/footer.php'); ?>
+</footer>
 </body>
 
 </html>

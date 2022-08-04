@@ -1,42 +1,17 @@
 <?php
 
-use App\Controller\{Paniers, Produits , Utilisateurs , Commandes};
+use App\Controller\{Commandes, Produits, Utilisateurs};
 
-$utilisateur = new Utilisateurs;
+$historique = new Commandes;
 
-$panier = new Paniers;
+$produits = new Produits;
 
-$produit = new Produits;
+$utilisateurs = new Utilisateurs;
 
-$commande = new Commandes;
-
-$utilisateur->userConnect();
+$utilisateurs->userConnect();
 
 
-
-if(isset($_SESSION['panier']) && isset($_SESSION['profil'])){
-    $panier->PanierIntoBdd($_SESSION['panier']['idProduit'], $_SESSION['panier']['qteProduit'][0]);
-    $panier->supprimePanier();
-    $id_panier = $panier->paniers->foundPanier();
-    $id_adresse = $commande->commande->foundAdresse();
-    // var_dump($id_panier , $id_adresse);
-    $commande->addCommande($_SESSION['profil']['id'] , $id_adresse ,$id_panier);
-    header("Refresh:0");
-    die();
-}
-$userCommande = $commande->commande->foundCommande();
-$produits = $commande->commande->foundProduit($userCommande['panierId']);
-$nbCommande = $commande->commande->countCommande();
-// echo"<pre>";
-// var_dump($produits);
-// echo"</pre>";
-
-// echo"<pre>";
-// var_dump($userCommande);
-// echo"</pre>";
-
-
-
+// $test = 1;
 
 ?>
 <!DOCTYPE html>
@@ -75,66 +50,54 @@ $nbCommande = $commande->commande->countCommande();
 <meta property="place:location:latitude" content="43.4119704"/>
 <meta property="place:location:longitude" content="1.1178673"/>
 </head>
-
 <body>
-    <header><?php $utilisateur->headerFront(); ?></header>
-    <main>
-        
-        <h1>Votre <?php if($nbCommande != 1) echo $nbCommande . "ème"; else echo $nbCommande . "er"; ?> commande est confirmée ! </h1>
-        
-        <p>Commandé par : <i><?= $userCommande['email'] ;
-        var_dump($userCommande)?></i></p>
-        
-        <p>
-            acheter le <?= $userCommande['vente_date'] ?>
-        </p>
-        
-        
-<h2>Adresse de livraison : </h2>
+    <header>
+        <?php $utilisateurs->headerFront() ?>
+    </header>
 
-<p>Vous allez être livré(e) d'ici deux semaines au :
-    </p>
-    
-    <p><?= $userCommande['rue'] . " " . $userCommande['ville'] . " " . $userCommande['code_postal'] ?></p>
-    
-    <p></p>
-    
-    <p></p>
+<main>
+    <h2>Historique de vos commandes</h2>
     <?php
-foreach($produits as $produit):
-    // var_dump($produit);
+    $userHistoriques = $historique->afficherHistorique($_SESSION['profil']['id']);
+    // echo"<pre>";
+    // var_dump($userHistoriques);
+    // echo"</pre>";
+    
+    // var_dump($nbDeProduit);
+    // $nbDeProduit = $historique->countProduit($userHistoriques['panierId']);
+    foreach($userHistoriques as $key => $historique):
+        // if($historique['panierId'] == $historique['panierId']){
+            
+            // }
+            // echo"<pre>";
+            // var_dump($historique);
+            // echo"</pre>";
+            
+            // var_dump($historique['panierId']);
+            var_dump($historique);
     ?>
-<!-- afficher un produit -->
-<article class="produit-preview">
-    <tr>
-        <td>
-            <p>Article : <b><?= $produit["nom"] ?></b></p>
-        </td>
-                            <td>
-                                <a href="produit?produit=<?= $produit["id"] ?>">
-                                    
-                                    <img class="miniature" src="<?= $produit["img_dir"] ?>" alt="">
-                                    
-                                </a>
-                            </td>
-                            <td>
-                                <p><i><?= $produit["nom_categ"] ?></i></p>
-                            </td>
-                            <td>
-                                <p><?= $produit["description"] ?> </p>
-                            </td>
-                            <td>
-                                <p><?= $produit["prix"] * $produit['quantite'] ?>€</p>
-                            </td>
-                            
-                            
-                            <?php endforeach; ?>
-                            <h2>Merci pour votre achat !</h2>
-                            
-    <p>à bientôt</p>
+    <article class="row">
+        <div class="col-md-12">
+            <h3>Numéro de la commande : <?= $historique['panierId'] ?></h3>
+            
+            <p>Date de la commande : <?= $historique['vente_date'] ?></p>
+<?php if(isset($historique['ville'])){ ?>
+            <p>Adresse de livraison : <?= $historique['ville'] . " " . $historique['rue'] . " " . $historique['code_postal'] ?></p>
+            <p>Téléphone utilisé : <?= $historique['telephone'] ?></p>
+            <p>Statut de la commande : <?= $historique['statut_commande'] ?></p>
+            <?php } ?>
+            <p>Commandé par : <i><?= $historique['email'] ?></i></p>
+            <a href="commande?id=<?= $historique['panierId'] ?>">
+                <p>Voir les produits commandé</p>
+            </a>
+            
+            
+        </div>
+<hr>
+    <?php endforeach; ?>
 </main>
-<footer>
-    <?php include_once('View/include/footer.php'); ?>
-</footer>
+    <footer>
+        <?php include_once('View/include/footer.php'); ?>
+    </footer>
 </body>
 </html>

@@ -83,11 +83,14 @@ class Commandes extends Modele
 
     public function foundCommande()
     {
-        $sql = "SELECT commandes.vente_date , adresses.ville , adresses.rue , adresses.code_postal , adresses.telephone , paniers_produits.id_produit , paniers.id AS panierId FROM commandes 
+        $sql = "SELECT commandes.vente_date , adresses.ville , adresses.rue , adresses.code_postal , adresses.telephone , paniers_produits.id_produit , paniers.id AS panierId , utilisateurs.email
+         FROM commandes 
         INNER JOIN utilisateurs ON utilisateurs.id = commandes.id_utilisateur
         INNER JOIN adresses ON adresses.id = commandes.id_adresse
         INNER JOIN paniers ON paniers.id = commandes.id_panier
         INNER JOIN paniers_produits ON paniers_produits.id_panier = paniers.id
+        LEFT JOIN produits ON produits.id = paniers_produits.id_produit 
+        LEFT JOIN images ON images.id = produits.id_image AND utilisateurs.id_image = images.id
         -- INNER JOIN produits ON produits.id = paniers_produits.id_produit
         WHERE commandes.id_utilisateur = :id_utilisateur 
         ORDER BY vente_date DESC LIMIT 1 ";
@@ -153,7 +156,7 @@ class Commandes extends Modele
     }
 
     public function afficherHistorique(){
-        $sql = "SELECT DISTINCT paniers.id as panierId , commandes.vente_date , utilisateurs.login  FROM commandes 
+        $sql = "SELECT DISTINCT paniers.id as panierId , commandes.vente_date , utilisateurs.email  FROM commandes 
         INNER JOIN utilisateurs ON utilisateurs.id = commandes.id_utilisateur
         INNER JOIN paniers ON paniers.id = commandes.id_panier
         INNER JOIN paniers_produits ON paniers_produits.id_panier = paniers.id
@@ -170,13 +173,12 @@ class Commandes extends Modele
     }
 
     public function foundProduit($id_panier) : array{
-        $sql = "SELECT produits.id , produits.nom , produits.description , produits.prix , images.img_dir ,
-        categories.nom as categ , sous_categorie.nom as sous_categ , paniers_produits.quantite 
+        $sql = "SELECT produits.id , produits.nom , produits.description , produits.prix , images.img_dir , images.nom_img,
+        categories.nom_categ , paniers_produits.quantite 
         FROM paniers_produits
         INNER JOIN produits ON produits.id = paniers_produits.id_produit
         INNER JOIN images ON images.id = produits.id_image
         INNER JOIN categories ON categories.id = produits.id_categorie
-        INNER JOIN sous_categorie ON sous_categorie.id = produits.id_sous_categorie
         WHERE paniers_produits.id_panier = :id_panier ";
         
         $query = parent::getBdd()->prepare($sql);
@@ -208,12 +210,11 @@ class Commandes extends Modele
     public function produitDeLaCommande($id){
         // echo"eazeazeazezaezaeaz";
         $sql = "SELECT produits.id AS produitId , produits.nom , produits.description , produits.prix , paniers_produits.quantite as quantiteProduit , 
-        images.img_dir , categories.nom AS categ , sous_categorie.nom AS sous_categ
+        images.img_dir , categories.nom_categ
         FROM paniers_produits
         LEFT JOIN produits ON produits.id = paniers_produits.id_produit
         INNER JOIN images ON images.id = produits.id_image
         INNER JOIN categories ON categories.id = produits.id_categorie
-        INNER JOIN sous_categorie ON sous_categorie.id = produits.id_sous_categorie
         WHERE paniers_produits.id_panier = :id_panier ";
         
         $query = parent::getBdd()->prepare($sql);

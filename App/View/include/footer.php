@@ -1,5 +1,4 @@
 
-<link rel="stylesheet" href="../CSS/include.css">
 <div class="space-even" style="display: flex;">
 
 <div class="footer colonne">

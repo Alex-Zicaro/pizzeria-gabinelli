@@ -30,12 +30,12 @@ $lastProduit = $produit->produit->FourLastProduit();
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="View/CSS/accueil.css">
+    <!-- <link rel="stylesheet" href="View/CSS/accueil.css"> -->
 	<link rel="stylesheet" href="View/CSS/accueil2.css">
 	<link rel="stylesheet" href="View/CSS/include.css">
     <link rel="stylesheet" href="View/CSS/style.css">
     <!-- CSS only -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">    <title>Pizzeria gabinelli</title>
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">    <title>Pizzeria gabinelli</title> -->
 </head>
 <body>
     <header>
@@ -61,7 +61,7 @@ foreach ($lastUtilisateur as  $utilisateur) {
 
     <div class="col-md-3">
         <div class="card">
-                <img src="<?= $utilisateur['img_dir'] ?>" class="card-img-top" alt="...">
+                <img src="<?= $utilisateur['img_dir'] ?>" class="produit-img" alt="...">
             
             <div class="card-body">
 

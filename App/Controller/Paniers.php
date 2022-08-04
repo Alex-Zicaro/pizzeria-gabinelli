@@ -232,13 +232,7 @@ class Paniers
 
     public function PanierIntoBdd($idProduit, $qteproduit)
     {
-        $nombreArticle = count($idProduit);
-        // Retire le bon nombre de stock dans la bdd
-        for ($i = 0; $i < $nombreArticle; $i++) {
-            $quantite = $this->paniers->SelectQuantiteFromIdProduit($idProduit[$i]);
-            $newquantite = intval($quantite) - intval($qteproduit);
-            $this->paniers->UpdateQuantiteFromQteProduit($idProduit[$i], $newquantite);
-        }
+        
         //Insert du panier dans la bdd dans la table panier
         $this->Insertiondupanierdanslabdd();
         // Select du dernier panier créer de l'utilisateur

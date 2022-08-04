@@ -39,10 +39,13 @@ $utilisateur = new Utilisateurs();
     <meta property="restaurant:contact_info:website" content="https://gabinelli-pizzeria-rieumes.eatbu.com/" />
     <meta property="place:location:latitude" content="43.4119704" />
     <meta property="place:location:longitude" content="1.1178673" />
-    <link rel="stylesheet" href="View/CSS/accueil.css">
-    <link rel="stylesheet" href="View/CSS/accueil2.css">
+    <!-- <link rel="stylesheet" href="View/CSS/accueil.css"> -->
+    <!-- <link rel="stylesheet" href="View/CSS/accueil2.css"> -->
     <link rel="stylesheet" href="View/CSS/include.css">
+    <link rel="stylesheet" href="View/CSS/style.css">
     <!-- <link rel="stylesheet" href="View/CSS/inscription.css"> -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
 </head>
 
 <body>
@@ -52,8 +55,8 @@ $utilisateur = new Utilisateurs();
 
 
 
-
-    <div class=" position-relative ">
+<!-- top home page -->
+    <div class=" container ">
 
         <div aria-label="Breadcrumb" class="fil-ariane padpad"></div>
 

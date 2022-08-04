@@ -134,6 +134,10 @@ Class Utilisateurs extends Controller{
     }
 
     public function userAdmin($id){
+        if(!isset($_SESSION['profil'])){
+            header('location: connexion');
+            exit();
+        }
         $heIsAdmin = $this->utilisateur->isAdmin($id);
         if($heIsAdmin == 'client'){
             return false;
