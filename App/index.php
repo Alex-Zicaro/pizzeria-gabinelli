@@ -7,9 +7,14 @@ require "../vendor/autoload.php";
 use App\Controller\{Controller};
 
 $utilisateur = new Controller();
-
 $url = "";
 // session_destroy();
+
+if(isset($_GET['deco'])){
+    
+    unset($_SESSION['profil']);
+    header("location: accueil");
+}
 if (isset($_GET["url"])) {
     $url = explode("/", $_GET["url"]);
 }
@@ -35,4 +40,9 @@ if(isset($_GET["deconnexion"])){
         include_once "View/accueilView.php";
     }
     $_SESSION["url"] = $url;
+   if(isset($_GET['deco'])){
+    unset($_SESSION['profil']);
+    header("location: accueil");
+   }
+
     ?>

@@ -144,7 +144,7 @@ public function paginationCom(int $premier,int $parPage ,int $id_produit): array
         return $data;
 }
 public function Selectallcoms() {
-    $sql = "SELECT commentaires.id , commentaires.titre , commentaires.contenu , commentaires.note , utilisateurs.email , utilisateurs.id AS id_utilisateur  FROM commentaires
+    $sql = "SELECT commentaires.id , commentaires.titre , commentaires.contenu , commentaires.note , utilisateurs.email , utilisateurs.id AS id_utilisateur , utilisateurs.civilite , images.img_dir , images.nom_img  FROM commentaires
     INNER JOIN  produits ON commentaires.id_produit = produits.id
     INNER JOIN utilisateurs ON id_utilisateur = utilisateurs.id
     INNER JOIN images ON utilisateurs.id_image = images.id

@@ -6,7 +6,9 @@ $produits = new Produits;
 $images = new Images;
 $utilisateur = new Utilisateurs;
 
-$utilisateur->userAdmin($_SESSION['profil']['id']);
+if($utilisateur->userAdmin($_SESSION['profil']['id']) === false ){
+    header("location: error404.php");
+}
 
 $lesProduits = $produits->afficherLesProduits();
 if (isset($_GET['deleteProduit'])) {
@@ -67,10 +69,10 @@ if (isset($_GET['deleteProduit'])) {
     <main>
         <section>
             <article>
-
+            <h2 class="margin-bottom-20">Gestion Produits</h2>
                 <!-- Top produits -->
-                <h1 class="section-produits">Tout nos produits :</h1>
-                <table style="border: 2px double black;" id="produit-table">
+
+                <table class="centrer" style="border: 2px double black;" id="produit-table">
 
 
                     <?php
