@@ -14,8 +14,6 @@ class Images extends Controller
     public function __construct()
     {
         $this->requete = new \App\Modele\Images;
-
-        
     }
     /*
     *add image
@@ -23,7 +21,7 @@ class Images extends Controller
     public function addImage()
     {
         // echo"test";
-        var_dump($_FILES); 
+        var_dump($_FILES);
 
         if (!empty($_FILES) && $_FILES['fichier']['name'] !== "") {
             $file_nom  = $_FILES["fichier"]["name"];
@@ -35,45 +33,39 @@ class Images extends Controller
 
 
             if (in_array($file_type, $type_autorise)) {
-                if($file_size <= 1000000){
-                if (move_uploaded_file($file_tmp_name, $file_destination)) {
-                    $this->requete->addImage($file_nom, $file_destination);
-                    // echo "image conforme";
-                    // header("Refresh:0");
-                    $_SESSION["err"] = 1;
-                } else {
+                if ($file_size <= 3048576) {
+                    if (move_uploaded_file($file_tmp_name, $file_destination)) {
+                        $this->requete->addImage($file_nom, $file_destination);
+                        // echo "image conforme";
+                        // header("Refresh:0");
 
-                    $msgErr = "Une erreur est survenue lors de l'envoie du fichier";
-                }
-            }else{
+                    } else {
+                        $msgErr = "Une erreur est survenue lors de l'envoie du fichier";
+                    }
+                } else {
                     $msgErr = "Le fichier est trop volumineux";
                 }
             } else {
 
                 $msgErr = "Vous pouvez utiliser ce format de fichier";
-                
             }
-        } else if(isset($_SESSION['profil'])) {
+        } else if (isset($_SESSION['profil'])) {
             $msgErr = "Aucun fichier reçut";
-        } 
+        }
 
-        if(isset($msgErr)) {
+        if (isset($msgErr)) {
             return  $msgErr;
-        } else{
-            // echo"chocolartaeaze";
+        } else {
             return true;
         }
     }
 
-    public function deleteImgUser(){
-        if(isset($_GET["deleteImage"])){
+    public function deleteImgUser()
+    {
+        if (isset($_GET["deleteImage"])) {
             $id_image = strip_tags(htmlspecialchars($_GET["deleteImage"]));
             $this->requete->delete($id_image);
             header("location: gestionImage");
         }
-
     }
-
-
-
 }

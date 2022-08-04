@@ -118,19 +118,23 @@ class Produits extends Modele{
         return $result["nb_produits"];
     }
 
+    
 
-    public function addProduit($nom, $description, $presentation, $prix, $id_categorie, $id_sous_categ, $id_image)
+
+    public function addProduit($nom, $description, $presentation, $prix, $id_categorie, $id_image)
     {
-
+// var_dump($id_image);
         $sql = "INSERT INTO produits(nom, description , presentation , prix  , id_categorie, id_image) 
     VALUES (:nom, :description, :presentation, :prix , :id_categorie , :id_image)";
 
         $query = parent::getBdd()->prepare($sql);
         $query->execute([
-            'nom' => $nom, 'description' => $description, 
+            'nom' => $nom, 
+            'description' => $description, 
             'presentation' => $presentation,
+            'prix' => $prix,
             'id_categorie' => $id_categorie,
-            'id_image' => $id_image
+            'id_image' => $id_image['id']
 
         ]);
     }
@@ -239,8 +243,9 @@ class Produits extends Modele{
 
     public function searchBar($recherche)
     {
-        $sql = "SELECT produits.id , produits.nom , presentation , description , prix  , img_dir , nom_img FROM produits 
+        $sql = "SELECT categories.nom_categ , produits.id , produits.nom , presentation , description , prix  , img_dir , nom_img FROM produits 
         INNER JOIN images ON produits.id_image = images.id
+        INNER JOIN categories ON produits.id_categorie = categories.id
         WHERE produits.nom LIKE '%$recherche%' OR description LIKE '%$recherche%' OR presentation LIKE '%$recherche%' OR prix LIKE '%$recherche%'";
 
         $query = parent::getBdd()->prepare($sql);

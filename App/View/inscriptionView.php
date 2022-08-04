@@ -77,7 +77,7 @@ if (isset($_POST['Envoyer'])) {
 						<form id="booking-form" enctype="multipart/form-data" method="POST">
 							<h2 class="colorWhite">Inscription</h2>
 							<?php 
-							echo $msgErr;
+							// echo $msgErr;
 							if (isset($msgErr) && $msgErr !== 'Votre compte a bien été créé !') {
 				?><p style="color: #fff"><?= $msgErr;}?></p> 
 

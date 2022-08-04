@@ -90,8 +90,10 @@ if (isset($_POST['Envoyer']))
 							</div>
 
 							<input type="submit" name="Envoyer" class="padding-top">
+							<a href="mdpOublie">
+								<p class="padding-top"><i>mot de passe oublié ?</i></p>
 
-							<p class="padding-top"><i>* = obligatoire</i></p>
+							</a>
 						</form>
 					</div>
 				</div>

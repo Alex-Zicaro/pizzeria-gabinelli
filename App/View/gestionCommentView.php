@@ -2,19 +2,21 @@
 
 use App\Controller\{Produits, Utilisateurs, Commentaires};
 
-$commentaire = new Utilisateurs;
+$utilisateur = new Utilisateurs;
 $commentaires = new Commentaires;
 
-$commentaire->userAdmin($_SESSION['profil']['id']);
+if($utilisateur->userAdmin($_SESSION['profil']['id']) === false ){
+    header("location: error404.php");
+}
 
 $commentaires = $commentaires->Afficherlescoms();
 
 if (isset($_GET['delete'])) {
 
-    $infoUser = $commentaire->selectUser($_GET['id']);
+    $infoUser = $utilisateur->selectUser($_GET['id']);
     if ($infoUser['id_droits'] != 42) {
 
-        $commentaire->delete(1);
+        $utilisateur->delete(1);
     }
 }
 
@@ -62,27 +64,27 @@ if (isset($_GET['delete'])) {
 <body>
 
     <header>
-        <?php $commentaire->headerFront(); ?>
+        <?php $utilisateur->headerFront(); ?>
     </header>
 
     <main>
         <section class="row">
-
-            <?php foreach ($commentaires as $commentaire) {  ?>
+    <h2 class="margin-bottom-20">Gestion Commentaire</h2>
+            <?php foreach ($commentaires as $utilisateur) {  ?>
                 <article class="col-md-3">
 
                 <div class="col-md-3">
         <div class="card">
-                <img src="<?= $commentaire['img_dir'] ?>" class="card-img-top" alt="...">
+                <img src="<?= $utilisateur['img_dir'] ?>" class="card-img-top" alt="...">
             
             <div class="card-body">
 
-            <h5 class="card-title"><?= $commentaire['email'] ?></h5>
-                <p class="card-text"><?= $commentaire['titre'] ?></p>
-                <p class="card-text"><?= $commentaire['contenu'] ?></p>
-                <p class="card-text"><?= $commentaire['civilite'] ?> </p>
+            <h5 class="card-title"><?= $utilisateur['email'] ?></h5>
+                <p class="card-text">titre : <?= $utilisateur['titre'] ?></p>
+                <p class="card-text">contenue : <?= $utilisateur['contenu'] ?></p>
+                <p class="card-text"><?= $utilisateur['civilite'] ?> </p>
 
-                <a href="admin?delete=<?= $commentaire['id'] ?>" class="">
+                <a href="admin?delete=<?= $utilisateur['id'] ?>" class="">
                     <button class="btn btn-danger">Bannir</button>
                 </a>
             </div>

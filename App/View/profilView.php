@@ -9,7 +9,7 @@ $adresse = new Adresses;
 // var_dump($_SESSION);
 $utilisateurActuelle = $utilisateur->userConnect();
 
-
+// var_dump($_SESSION);
 $userAdresse = $adresse->getAdresse($_SESSION['profil']['id']);
 // var_dump($utilisateurActuelle);
 // session_destroy();
@@ -78,7 +78,7 @@ $userAdresse = $adresse->getAdresse($_SESSION['profil']['id']);
                                 <div class="card-block text-center text-white flexer ">
 
                                     <div class="m-b-25">
-                                        <img src="<?=$utilisateurActuelle[0]['img_dir'];?>" class="img-radius" alt="<?= $utilisateurActuelle[0]['nom_img'] ?>">
+                                        <img src="<?=$utilisateurActuelle[0]['img_dir'];?>" class="img-radius" alt="<?= $utilisateurActuelle[0]['nom_img'] ?>" style="">
                                         
                                     </div>
                                     <?php if($userAdresse == false): ?>

@@ -135,7 +135,7 @@ if (isset($_POST['vider'])) {
                      $montant = $obj->MontantGlobal($lesProduitsDupanier);
 
 
-                     echo "onarrivea rentrer ici quand lememe";
+                     // echo "onarrivea rentrer ici quand lememe";
                      $session = $obj->stripe($montant, 'article');
                   }
 

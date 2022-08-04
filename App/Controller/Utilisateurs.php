@@ -140,9 +140,13 @@ Class Utilisateurs extends Controller{
             exit();
         }
         $heIsAdmin = $this->utilisateur->isAdmin($id);
+        if(is_array($heIsAdmin))
+        $heIsAdmin = $heIsAdmin['droit'];
+        
         if($heIsAdmin == 'client'){
             return false;
         } else if ($heIsAdmin == 'admin'){
+            echo"true";
             return true;
         }
     }
@@ -286,7 +290,7 @@ Class Utilisateurs extends Controller{
      $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
      $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
      $mail->Username   = 'lebotdu13002@gmail.com';                     //SMTP username
-     $mail->Password   = 'vhbrqpbxfisxajle'            ;                               //SMTP password
+     $mail->Password   = 'xjraxilbhtbvgkee' ;                               //SMTP password
      $mail->SMTPSecure = "tls";            //Enable implicit TLS encryption
      $mail->Port       = 587;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
 

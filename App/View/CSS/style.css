@@ -14,6 +14,10 @@
 main section {
 	width: auto;
 }
+.centrer{
+	display: flex;
+	justify-content: center;
+}
 
 
 
@@ -123,9 +127,9 @@ section {
 .produit-img {
 	border-radius: 5%;
 	min-width: 50%;
-	min-height: 50%;
+	min-height: auto;
 	max-width: 50%;
-	max-height: 50%;
+	max-height: auto;
 }
 
 .liste-produits {
@@ -207,7 +211,7 @@ section {
 	border-radius: 20px;
 	border-width: 0;
 	background-color: #04711e;
-
+	max-width: 20vh;
 	transition-property: background-color;
 	transition-duration: 0.25s;
 }
@@ -795,7 +799,10 @@ a:hover {
 .user_icon img {
 	width: 100%;
 }
-
+.card-img-top{
+	max-width: 20%;
+	min-width: 20%;
+}
 .top_bar_user div {
 	display: inline-block;
 }
@@ -1834,6 +1841,7 @@ select option {
 	background: #111;
 	border-top-right-radius: 10px;
 	border-bottom-right-radius: 10px;
+	margin-left: 350px;
 }
 
 .form-radio {
@@ -2001,7 +2009,9 @@ input:-moz-placeholder {
 
 
 
-
+.margin-bottom-20 {
+	margin-bottom: 20px;
+}
 
 .label-radio {
 	display: block;
