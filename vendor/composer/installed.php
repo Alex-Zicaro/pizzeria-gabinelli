@@ -3,7 +3,7 @@
         'name' => '33623/pizzeria-gabinelli',
         'pretty_version' => 'dev-master',
         'version' => 'dev-master',
-        'reference' => '0067bca550eb437de4c7856b84e99eba30e78e80',
+        'reference' => '44925b0868c784c20b76d93876b61600d2d1ab6e',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -13,7 +13,7 @@
         '33623/pizzeria-gabinelli' => array(
             'pretty_version' => 'dev-master',
             'version' => 'dev-master',
-            'reference' => '0067bca550eb437de4c7856b84e99eba30e78e80',
+            'reference' => '44925b0868c784c20b76d93876b61600d2d1ab6e',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

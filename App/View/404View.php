@@ -14,8 +14,8 @@ $utilisateur = new Utilisateurs;
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gabinelli - RIEUMES | Italienne cuisine proche de moi</title>
-    <link rel="stylesheet" href="View/CSS/accueil.css">
-    <link rel="stylesheet" href="View/CSS/accueil2.css">
+    <!-- <link rel="stylesheet" href="View/CSS/accueil.css"> -->
+    <link rel="stylesheet" href="View/CSS/style.css">
     <link rel="stylesheet" href="View/CSS/include.css">
     
 <link rel="canonical" href="https://gabinelli-pizzeria-rieumes.eatbu.com/?lang=fr"/>

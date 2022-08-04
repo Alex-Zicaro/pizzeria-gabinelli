@@ -230,25 +230,27 @@ $this->image->delete($produit["id"]);
     }
 
     public function search(){
-            // var_dump($_POST);
-            if(isset($_POST["search"])){
-                unset($_SESSION["recherche"]);
-                // echo"ezaaaaaaaaa";
-                $recherche = htmlspecialchars(strip_tags($_POST["search"]));
-                $produits = $this->produit->searchBar($recherche);
-                if(empty($produits)){
-                    header('location: recherche');
-                    die();
-                }
-                else{
-                $_SESSION['recherche'] = $recherche;
-                
-                header("location: recherche");
+        // var_dump($_POST);
+        if(isset($_POST["search"])){
+            unset($_SESSION["recherche"]);
+            // echo"ezaaaaaaaaa";
+            $recherche = htmlspecialchars(strip_tags($_POST["search"]));
+            $produits = $this->produit->searchBar($recherche);
+            if(empty($produits)){
+                header('location: recherche');
                 die();
-                }
             }
-
+            else{
+            $_SESSION['recherche'] = $recherche;
+            
+            header("location: recherche");
+            die();
+            }
         }
+
+    }
+
+        
         public function affichageSearch(){
             
             if(isset($_SESSION['recherche'])){

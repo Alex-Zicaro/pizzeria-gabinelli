@@ -92,8 +92,8 @@ $categories = $produit->produit->selectCategories();
 						<div class="page_menu_content">
 							
 							<div class="page_menu_search">
-								<form action="#">
-									<input type="search" required="required" class="page_menu_search_input" placeholder="Search for products...">
+								<form method="POST" action="recherche">
+									<input type="search" name="search" required="required" class="page_menu_search_input" placeholder="Search for products...">
 								</form>
 							</div>
 							<ul class="page_menu_nav">

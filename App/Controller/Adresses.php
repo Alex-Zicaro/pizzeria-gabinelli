@@ -15,7 +15,7 @@ class Adresses extends Controller {
 
         $rowCountAdresse = $this->requete->rowCountAdresses();
         if($rowCountAdresse > 0) {
-            $this->requete->getAdresses($id);
+            $this->requete->getAdresse($id);
         } else {
             return false;
         }

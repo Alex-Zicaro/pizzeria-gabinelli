@@ -56,7 +56,12 @@ a{
   
 
   
- 
+form label{
+  color: #fff;
+}
+.colorWhite{
+  color: #fff;
+}
   
   h2 {
     line-height: 1.8;
@@ -106,7 +111,12 @@ a{
   
   .booking-img {
     border-top-left-radius: 10px;
-    border-bottom-left-radius: 10px; }
+    border-bottom-left-radius: 10px; 
+
+  }
+  .margin-left250{
+    margin-left: 250px;
+  }
   
   .booking-form {
     width: 41.67%;

@@ -70,12 +70,12 @@ if (isset($_POST['Envoyer'])) {
 		<div class="main">
 			<div class="container">
 				<div class="booking-content">
-					<div class="booking-image booking-img">
+					<!-- <div class="booking-image booking-img">
 					<img src="View/media/pizzaInscription.jpg" alt="">
-					</div>
+					</div> -->
 					<div class="booking-form">
 						<form id="booking-form" enctype="multipart/form-data" method="POST">
-							<h2>Inscription</h2>
+							<h2 class="colorWhite">Inscription</h2>
 							<?php 
 							echo $msgErr;
 							if (isset($msgErr) && $msgErr !== 'Votre compte a bien été créé !') {
@@ -135,12 +135,12 @@ if (isset($_POST['Envoyer'])) {
 								<legend>*Choisir sa civilité </legend>
 
 								<div class="form-group form-input">
-									<input type="radio" name="civilite" id="Madame" value="Madame" value="" required />
+									<input class="" type="radio" name="civilite" id="Madame" value="Madame" value="" required />
 									<label for="Madame" class="">Mme.</label>
 								</div>
 
 								<div class="form-group form-input">
-									<input type="radio" name="civilite" id="Monsieur" value="Monsieur" value="" required />
+									<input class="" type="radio" name="civilite" id="Monsieur" value="Monsieur" value="" required />
 									<label for="Monsieur" class="">Mr.</label>
 								</div>
 

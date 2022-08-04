@@ -8,7 +8,7 @@ class Produits extends Modele{
     {
 
         if ($id_categorie !== null) {
-            $sql = "SELECT categories.nom AS categ, produits.id , produits.nom , produits.description , produits.prix , produits.quantite
+            $sql = "SELECT categories.nom AS categ, produits.id , produits.nom , produits.description , produits.prix 
             FROM produits
             INNER JOIN categories ON produits.id_categorie = categories.id 
             INNER JOIN images ON produits.id_image = images.id
@@ -17,14 +17,14 @@ class Produits extends Modele{
             $prepare->execute([':id_categorie' => $id_categorie]);
         } else if ($order == 1 && $id_categorie == null) {
 
-            $sql = "SELECT img_nom , images.img_dir ,  categories.nom AS categ, produits.id , produits.nom, produits.presentation , produits.description , produits.prix , produits.quantite FROM produits
+            $sql = "SELECT img_nom , images.img_dir ,  categories.nom AS categ, produits.id , produits.nom, produits.presentation , produits.description , produits.prix  FROM produits
             INNER JOIN categories ON produits.id_categorie = categories.id
             INNER JOIN images ON produits.id_image = images.id ORDER BY id DESC";
 
             $prepare = parent::getBdd()->prepare($sql);
             $prepare->execute();
         } else {
-            $sql = "SELECT images.nom AS image_nom , images.img_dir ,  categories.nom AS categ,  produits.id , produits.nom, produits.presentation , produits.description , produits.prix , produits.quantite FROM produits
+            $sql = "SELECT images.nom AS image_nom , images.img_dir ,  categories.nom AS categ,  produits.id , produits.nom, produits.presentation , produits.description , produits.prix  FROM produits
             INNER JOIN categories ON produits.id_categorie = categories.id
             INNER JOIN images ON produits.id_image = images.id";
 
@@ -239,7 +239,7 @@ class Produits extends Modele{
 
     public function searchBar($recherche)
     {
-        $sql = "SELECT produits.id , produits.nom , presentation , description , prix , quantite , img_dir FROM produits 
+        $sql = "SELECT produits.id , produits.nom , presentation , description , prix  , img_dir , nom_img FROM produits 
         INNER JOIN images ON produits.id_image = images.id
         WHERE produits.nom LIKE '%$recherche%' OR description LIKE '%$recherche%' OR presentation LIKE '%$recherche%' OR prix LIKE '%$recherche%'";
 

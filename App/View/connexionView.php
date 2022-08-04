@@ -62,13 +62,13 @@ if (isset($_POST['Envoyer']))
 <body>
 	
 	<main>
-		<div class="main">
-			<div class="container">
+		<div class="main margin-left250">
+			<div class="container ">
 				<div class="booking-content">
-					<div class="booking-image">
+					<!-- <div class="booking-image">
 						<img src="View/media/pizzaInscription.jpg" alt="">
-					</div>
-					<div class="booking-form">
+					</div> -->
+					<div class="booking-form margin-left250">
 						<form id="booking-form" method="POST">
 							<h2>Connexion</h2>
 							<?php if (isset($msgErr)) {

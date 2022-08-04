@@ -1,3 +1,16 @@
+<?php
+
+use App\Controller\{Utilisateurs, Controller , Images , Commentaires , Produits};
+
+$produit = new Produits;
+
+$categories = $produit->produit->selectCategories();
+
+$produit->search();
+var_dump($_POST['search']);
+?>
+
+
 <div class="super_container margin-bot-10">
 	
 	<!-- Header -->
@@ -50,10 +63,10 @@
 						<div class="header_search">
 							<div class="header_search_content">
 								<div class="header_search_form_container">
-									<form action="#" class="header_search_form clearfix">
-										<input type="search" required="required" id="search-bar" placeholder="Rechercher une pizza...">
+									<form action="recherche" method="POST" class="header_search_form clearfix">
+										<input type="search" name="search" required="required" id="search-bar" placeholder="Rechercher une pizza...">
 
-										<input type="submit" id="checkout-button" value="Rechercher"></input>
+										<input type="submit" name="" id="checkout-button" value=""></input>
 									</form>
 								</div>
 							</div>
