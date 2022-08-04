@@ -38,8 +38,13 @@ class Commentaires extends Controller {
         if(empty($msgErr)){
             $msgErr = "Commentaire posté !";
             $this->commentaire->postComment($titre , $contenu , $note , $id_utilisateur , $id_produit);
-            // header('Refresh:0');
-            // die();
+            if(!headers_sent()){
+                header('Refresh:0');
+                die();
+            }
+            else if(headers_sent()) {
+                echo"<script>window.location.href='produit?produit=$id_produit'</script>";
+            }
             return $msgErr;
         }
         else{

@@ -58,11 +58,13 @@ Class Modele {
 
     public function deleteOneById($id) : void{
 
-        $sql = "DELETE FROM $this->table WHERE id = :id";
+        $sql = "DELETE FROM $this->table WHERE id = $id";
         $query = static::getBdd()->prepare($sql);
+        // var_dump($id);
         $query->execute([
-            'id' => $id
+            
         ]);
+        var_dump($query);
     }
 
     public function getLast()

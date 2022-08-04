@@ -4,6 +4,8 @@ use App\Controller\{Utilisateurs,Controller};
 
 $utilisateur = new Utilisateurs();
 
+// session_destroy();
+
 ?>
 
 <!DOCTYPE html>

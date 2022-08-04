@@ -1,5 +1,5 @@
 <?php
-use App\Controller\{Paniers, Produits, Images, Commentaires, Utilisateurs,Commandes};
+use App\Controller\{Paniers, Produits, Images, Commentaires, Utilisateurs,Commandes,Controller};
 
 $obj = new Produits;
 $image = new Images;
@@ -7,6 +7,7 @@ $commande = new Commandes;
 $commentaire = new Commentaires;
 $utilisateur = new Utilisateurs;
 $panier = new Paniers;
+$controller = new Controller;
 
 var_dump($_SESSION['url'])
 
@@ -86,8 +87,8 @@ if (isset($_GET["produit"])) {
     }
 }
 
-
-if ($obj->modifProduit() !== true) {
+var_dump($obj->modifProduit());
+if ($obj->modifProduit() != true) {
 
     if (isset($_POST["postCom"])) {
         // var_dump($_POST["contenu"]);
@@ -195,10 +196,14 @@ if ($obj->modifProduit() !== true) {
                             $commentaire->delete($_GET['supression']);
                             // il faut que je remetre bien l'url après la supression
                             // il faut imposé qu'un seul commentaire par utilisateur sûre un produit
-
-                            header('Location: produit?produit=' . $id_produit);
-
-                            die();
+                            if(!headers_sent()){
+                                header('Location: produit?produit=' . $id_produit);
+    
+                                die();
+                            }
+                            else if(headers_sent()) {
+                                echo"<script>window.location.href='produit?produit=$id_produit'</script>";
+                            }
                         }
 
             ?>
@@ -243,7 +248,7 @@ if ($obj->modifProduit() !== true) {
                     // var_dump($com['id_utilisateur']);
                     ?>
                     <img src="<?= $com["img_dir"] ?>" alt="" class="small-pfp">
-                    <h3>Titre : <?= $com["titre"]; ?></h3>
+                    <h3 style="color: black">Titre : <?= $com["titre"]; ?></h3>
 
                     <p><?= $com["note"]; ?>/10</p>
 

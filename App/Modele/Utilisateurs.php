@@ -34,6 +34,15 @@ class Utilisateurs extends Modele{
 
         header('Refresh:5;url=connexion');
     }
+    public function getOneUser($id){
+
+        $sql = "SELECT utilisateurs.droit , utilisateurs.id , utilisateurs.email , utilisateurs.prenom , utilisateurs.nom , utilisateurs.civilite ,  images.img_dir , images.nom_img , images.id as id_image FROM utilisateurs
+        LEFT JOIN images ON utilisateurs.id_image = images.id WHERE utilisateurs.id = :id";
+        $query = parent::getBdd()->prepare($sql);
+        $query->execute(["id" => $id]);
+        $data = $query->fetch();
+        return $data ;
+    }
 
 
     public function emailVerify($email)

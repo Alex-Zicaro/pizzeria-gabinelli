@@ -2,7 +2,7 @@
 <div class="space-even" style="display: flex;">
 
 <div class="footer colonne">
-    <img class="logo" src="View/media/logo_pizzeria_gabinelli.png" alt="">
+    <img class="logo" src="View/media/logo_pizzeria_gabinelli.png" alt="logo_pizzeria_gabinelli">
     <h3>Pizzeria Gabinelli</h3>
     
 </div>

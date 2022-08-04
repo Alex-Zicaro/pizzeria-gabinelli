@@ -127,19 +127,20 @@ class Produits extends Controller
 
     public function deleteProduit()
     {
-
+// var_dump($_GET['deleteProduit']);
         if (isset($_GET["deleteProduit"])) {
             $id_produit = (int) $_GET["deleteProduit"];
-
-            $this->produit->deleteOneById   ($id_produit);
+            // var_dump($id_produit);
+            $this->produit->deleteRequete($id_produit);
             header("location: gestionProduits");
         }
     }
 
     public function modifProduit()
     {
-
+echo"on rentre pas ";
         if (isset($_GET["modif"]) && $_GET["modif"] == 1) {
+            echo"par contre ici ouiiii";
 
             if ($this->utilisateur->userAdmin($_SESSION['profil']['id']) === true) {
                 return true;
@@ -236,19 +237,22 @@ $this->image->delete($produit["id"]);
             // echo"ezaaaaaaaaa";
             $recherche = htmlspecialchars(strip_tags($_POST["search"]));
             $produits = $this->produit->searchBar($recherche);
-            if(empty($produits)){
+            if(empty($produits) && !headers_sent()){
                 header('location: recherche');
                 die();
+            } else if(headers_sent()) {
+                echo"<script>window.location.href='recherche'</script>";
             }
             else{
+                header('location: recherche');
+            }
             $_SESSION['recherche'] = $recherche;
             
-            header("location: recherche");
-            die();
+            
             }
         }
 
-    }
+    
 
         
         public function affichageSearch(){

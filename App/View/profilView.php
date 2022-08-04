@@ -6,7 +6,7 @@ use App\Controller\{Utilisateurs, Images, Adresses};
 $utilisateur = new Utilisateurs;
 $image = new Images;
 $adresse = new Adresses;
-
+// var_dump($_SESSION);
 $utilisateurActuelle = $utilisateur->userConnect();
 
 

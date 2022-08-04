@@ -19,6 +19,15 @@ $lastCom = $commentaire->commentaire->fourLastCom();
 
 $lastProduit = $produit->produit->FourLastProduit();
 
+if (isset($_GET['delete'])) {
+
+    $infoUser = $utilisateur->selectUser($_GET['delete']);
+    // var_dump($infoUser);
+    if ($infoUser['droit'] != 'admin') {
+    // echo"test";
+        $utilisateur->delete();
+    }
+}
 
 
 // var_dump($lastImage);
@@ -57,6 +66,7 @@ $lastProduit = $produit->produit->FourLastProduit();
 foreach ($lastUtilisateur as  $utilisateur) {
     // faire une carte avec les infos de l'utilisateur
     // var_dump($utilisateur['img_dir']);
+    // var_dump($utilisateur);
     ?>
 
     <div class="col-md-3">
@@ -139,7 +149,7 @@ foreach ($lastUtilisateur as  $utilisateur) {
                 <p class="card-text"><?= $produit['prix'] ?> €</p>
 
 
-                <a href="produit?produit=<?= $produit['id'] ?>" class="">
+                <a href="produit?produit=<?= $produit['id'] ?>&modif=1" class="">
                     <button class="btn btn-danger">Voir</button>
                 </a>
             </div>
@@ -151,7 +161,7 @@ foreach ($lastUtilisateur as  $utilisateur) {
         ?>
         <a href="gestionProduits">Voir plus...</a>
         <br><br>
-        <a href="addproduits">
+        <a href="addproduit">
         <button class="btn btn-primary">Ajouter un produit</button>
         </a>
 

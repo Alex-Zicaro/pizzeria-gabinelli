@@ -8,7 +8,7 @@ class Produits extends Modele{
     {
 
         if ($id_categorie !== null) {
-            $sql = "SELECT categories.nom AS categ, produits.id , produits.nom , produits.description , produits.prix 
+            $sql = "SELECT img_nom as image_nom ,images.id as image_id ,categories.nom_categ AS categ, produits.id , produits.nom , produits.description , produits.prix 
             FROM produits
             INNER JOIN categories ON produits.id_categorie = categories.id 
             INNER JOIN images ON produits.id_image = images.id
@@ -17,14 +17,14 @@ class Produits extends Modele{
             $prepare->execute([':id_categorie' => $id_categorie]);
         } else if ($order == 1 && $id_categorie == null) {
 
-            $sql = "SELECT img_nom , images.img_dir ,  categories.nom AS categ, produits.id , produits.nom, produits.presentation , produits.description , produits.prix  FROM produits
+            $sql = "SELECT img_nom as image_nom , images.id as image_id , images.img_dir ,  categories.nom_categ AS categ, produits.id , produits.nom, produits.presentation , produits.description , produits.prix  FROM produits
             INNER JOIN categories ON produits.id_categorie = categories.id
             INNER JOIN images ON produits.id_image = images.id ORDER BY id DESC";
 
             $prepare = parent::getBdd()->prepare($sql);
             $prepare->execute();
         } else {
-            $sql = "SELECT images.nom AS image_nom , images.img_dir ,  categories.nom AS categ,  produits.id , produits.nom, produits.presentation , produits.description , produits.prix  FROM produits
+            $sql = "SELECT images.nom_img AS image_nom ,images.id as image_id , images.img_dir ,  categories.nom_categ AS categ,  produits.id , produits.nom, produits.presentation , produits.description , produits.prix  FROM produits
             INNER JOIN categories ON produits.id_categorie = categories.id
             INNER JOIN images ON produits.id_image = images.id";
 
@@ -252,7 +252,7 @@ class Produits extends Modele{
 
     public function addCateg($nom)
     {
-        $sql = "INSERT INTO categories (nom) VALUES (:nom)";
+        $sql = "INSERT INTO categories (nom_categ) VALUES (:nom)";
         $query = parent::getBdd()->prepare($sql);
         $query->execute([
             'nom' => $nom
@@ -277,5 +277,12 @@ class Produits extends Modele{
         $query->execute([
             'id' => $id
         ]);
+    }
+    public function deleteRequete($id_produit)
+    {
+
+        $sql = "DELETE FROM produits WHERE id = :id_produit";
+        $query = parent::getBdd()->prepare($sql);
+        $query->execute(['id_produit' => $id_produit]);
     }
 }

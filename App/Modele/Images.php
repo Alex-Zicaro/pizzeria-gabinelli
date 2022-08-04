@@ -104,7 +104,7 @@ on return true si c'est une femme else homme false
 
     public function quatreDernierUserEtImage(){
             
-            $sql = "SELECT img_dir , images.id , utilisateurs.email , utilisateurs.prenom , utilisateurs.nom , utilisateurs.civilite FROM images 
+            $sql = "SELECT img_dir , utilisateurs.id , utilisateurs.email , utilisateurs.prenom , utilisateurs.nom , utilisateurs.civilite FROM images 
             INNER JOIN utilisateurs ON images.id = utilisateurs.id_image
             WHERE images.id = utilisateurs.id_image ORDER BY id DESC LIMIT 4
             ";

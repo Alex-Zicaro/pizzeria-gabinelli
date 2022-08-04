@@ -1,37 +1,26 @@
 <?php
 
-use App\Controller\{Utilisateurs};
+use App\Controller\{Produits, Images, Utilisateurs};
 
-$utilisateurs = new Utilisateurs;
-// var_dump($_SESSION);
-if($utilisateurs->userAdmin($_SESSION['profil']['id']) === false ){
-    header("location: error404.php");
-}
+$produits = new Produits;
+$images = new Images;
+$utilisateur = new Utilisateurs;
 
-$utilisateurss = $utilisateurs->utilisateur->getAllUser();
+$utilisateur->userAdmin($_SESSION['profil']['id']);
 
-// var_dump($utilisateurs);
-// var_dump($_GET['id']);
-if (isset($_GET['delete'])) {
+$lesProduits = $produits->afficherLesProduits();
+if (isset($_GET['deleteProduit'])) {
 
-    $infoUser = $utilisateurs->selectUser($_GET['delete']);
-    var_dump($infoUser);
-    if ($infoUser['droit'] != 'admin') {
-    // echo"test";
-        $utilisateurs->delete(1);
-    }
+    $produits->deleteProduit(trim($_GET['deleteProduit']));
 }
 
 
-// var_dump($infoUser);
 ?>
 
+<!DOCTYPE html>
+<html lang="en">
 
-
-            <!DOCTYPE html>
-            <html lang="fr">
-
-            <head>
+<head>
                 <meta charset="UTF-8">
                 <meta name="viewport" content="width=device-width, initial-scale=1.0">
                 <link rel="stylesheet" href="View/CSS/style.css">
@@ -68,49 +57,70 @@ if (isset($_GET['delete'])) {
                 <meta property="place:location:longitude" content="1.1178673" />
             </head>
 
-            <body class="bloc-principal">
-            <header>
-                <?php $utilisateurs->headerFront(); ?>
-            </header>
+<body>
 
-            <main>
-    <section class="row">
+    <header>
+    <?php $utilisateur->headerFront(); ?>
+    </header>
 
-        <?php foreach ($utilisateurss as $utilisateur) {
-            // var_dump($utilisateur);
-            // var_dump($utilisateur);
-            if ($utilisateur['droit'] == 'admin') {
-                continue;
-            }
-        ?>
-                <article class="col-md-3">
 
-                    <div class="card">
-                        <img class="miniature" src="<?= $utilisateur['img_dir'] ?>" class="card-img-top" alt="non-available">
+    <main>
+        <section>
+            <article>
 
-                        <div class="card-body">
+                <!-- Top produits -->
+                <h1 class="section-produits">Tout nos produits :</h1>
+                <table style="border: 2px double black;" id="produit-table">
 
-                            <h5 class="card-title">Login : <?= $utilisateur['email'] ?></h5>
-                            <p class="card-text">Prenom : <?= $utilisateur['prenom'] ?></p>
-                            <p class="card-text">Nom : <?= $utilisateur['nom'] ?></p>
-                            <p class="card-text">Civilite : <?= $utilisateur['civilite'] ?> </p>
 
-                            <a href="gestionUtilisateurs?delete=<?= $utilisateur['id'] ?>">
-                                <button class="btn btn-danger">Bannir</button>
-                            </a>
-                        </div>
-                    </div>
+                    <?php
 
-                </article>
-            <?php
-        }
-            ?>
-    </section>
-</main>
+                    $nombreDeProduit = sizeof($lesProduits);
 
-<footer>
-    <?php include_once('View/include/footer.php'); ?>
-</footer>
+                    for ($i = 0; $i < $nombreDeProduit; $i++) { ?>
+                        <article class="produit-preview">
+                            <tr>
+                                <td>
+                                    <p><b><?= $lesProduits[$i]["nom"] ?></b></p>
+                                </td>
+                                <td>
+                                    <a href="produit?produit=<?= $lesProduits[$i]["id"] ?>">
+
+                                        <img class="miniature" src="<?= $lesProduits[$i]["img_dir"] ?>" alt="">
+
+                                    </a>
+                                </td>
+                                <td>
+                                    <p><i><?= $lesProduits[$i]["categ"] ?></i></p>
+                                </td>
+
+                                <td>
+                                    <p><?= $lesProduits[$i]["presentation"] ?> </p>
+                                </td>
+                                <td>
+                                    <p><?= $lesProduits[$i]["prix"] ?>€</p>
+                                </td>
+                                <td>
+                                    <a href="produit?produit=<?= $lesProduits[$i]['id'] ?>&modif=1">Modifier</a>
+                                    <a href="gestionProduits?deleteProduit=<?= $lesProduits[$i]['id'] ?>">Delete</a>
+                                </td>
+                                <!-- <td>
+                        
+                            <p>présenté l'état des stock (stock faible) (disponible</p>
+                        </tr> -->
+                        </article>
+
+                    <?php } ?>
+                </table>
+                <br>
+                <a href="admin">
+                    <button class="btn btn-danger">Retour</button>
+                </a>
+        </section>
+    </main>
+    <footer>
+        <?php include_once('View/include/footer.php'); ?>
+    </footer>
 </body>
 
 </html>

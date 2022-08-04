@@ -6,6 +6,7 @@ $produit = new Produits;
 
 $categories = $produit->produit->selectCategories();
 
+$produit->search();
 ?>
 
 
@@ -61,7 +62,7 @@ $categories = $produit->produit->selectCategories();
 						<div class="header_search">
 							<div class="header_search_content">
 								<div class="header_search_form_container">
-									<form action="#" class="header_search_form clearfix">
+									<form action="recherche" method="POST" class="header_search_form clearfix">
 										<input type="search" required="required" id="search-bar" placeholder="Rechercher une pizza...">
 
 										<input type="submit" id="checkout-button" value="Rechercher"></input>

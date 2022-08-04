@@ -123,7 +123,8 @@ Class Utilisateurs extends Controller{
     {
 // var_dump($_SESSION['profil']);
         if (isset($_SESSION["profil"]["id"])) {
-            $data = $this->utilisateur->getAll($_SESSION["profil"]["id"]);
+            $data = $this->utilisateur->getOneUser($_SESSION["profil"]["id"]);
+            // var_dump($data);
             $image = $this->imageC->requete->selectImage($data['id_image']);
             array_push($data, $image);
             return $data;
@@ -362,10 +363,10 @@ Class Utilisateurs extends Controller{
         if (isset($_GET['delete']) && $_GET['delete'] != 0) {
             $id = strip_tags(htmlspecialchars($_GET['delete']));
 
-            $this->utilisateur->deleteOne($id);
-            if ($page > 0) {
+            $this->utilisateur->deleteOneById($id);
+            if ($page == 0) {
                 header("location: admin");
-                // echo"gros couscous";
+                
 
                 die;
             } else {

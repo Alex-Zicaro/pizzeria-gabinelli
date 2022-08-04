@@ -23,9 +23,9 @@ $produits = $produit->Pagination();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gabinelli - RIEUMES | Italienne cuisine proche de moi</title>
     <link rel="stylesheet" href="View/CSS/style.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="stylesheet" href="View/CSS/accueil.css">
-    <link rel="stylesheet" href="View/CSS/accueil2.css">
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"> -->
+    <link rel="stylesheet" href="View/CSS/include.css">
+    <!-- <link rel="stylesheet" href="View/CSS/accueil2.css"> -->
 <link rel="canonical" href="https://gabinelli-pizzeria-rieumes.eatbu.com/?lang=fr"/>
 <meta name="description" content="Vous pouvez commander à emporter | RIEUMES - Si vous voulez manger un repas italien et &ecirc;tes en qu&ecirc;te d&rsquo;un &eacute;tablissement o&ugrave; passer la soir&eacute;e, vous &ecirc;tes les bienvenus chez nous. Restaurant italien pris&eacute; au centre : Laissez-vous tenter et profitez de la cuisine italienne. Nous sommes r&eacute;put&eacute;s pour notre excellent fast-food. Go&ucirc;tez par exemple &agrave; notre pizza pris&eacute;e. Go&ucirc;tez aussi volontiers un bon verre de vin ou un verre de bi&egrave;re aromatique lorsque vous viendrez nous voir. Venez d&eacute;guster un d&icirc;ner d&eacute;licieux chez nous ! Places de parking particuli&egrave;rement pratiques : Profitez de notre parking gratuit. Contactez-nous et r&eacute;servez d&egrave;s aujourd&rsquo;hui. Il vous suffit de nous contacter par t&eacute;l. au +330562626261. Chez nous, vous pouvez payer soit en esp&egrave;ces soit par carte VISA, carte Maestro, MasterCard ou paiement d&eacute;mat&eacute;rialis&eacute;. Nos plats sont &eacute;galement disponibles &agrave; emporter. Nous sommes ouverts tous les jours de 18h00 &agrave; 22h00."/>
 <meta property="og:description" content="Vous pouvez commander à emporter | RIEUMES - Si vous voulez manger un repas italien et &ecirc;tes en qu&ecirc;te d&rsquo;un &eacute;tablissement o&ugrave; passer la soir&eacute;e, vous &ecirc;tes les bienvenus chez nous. Restaurant italien pris&eacute; au centre : Laissez-vous tenter et profitez de la cuisine italienne. Nous sommes r&eacute;put&eacute;s pour notre excellent fast-food. Go&ucirc;tez par exemple &agrave; notre pizza pris&eacute;e. Go&ucirc;tez aussi volontiers un bon verre de vin ou un verre de bi&egrave;re aromatique lorsque vous viendrez nous voir. Venez d&eacute;guster un d&icirc;ner d&eacute;licieux chez nous ! Places de parking particuli&egrave;rement pratiques : Profitez de notre parking gratuit. Contactez-nous et r&eacute;servez d&egrave;s aujourd&rsquo;hui. Il vous suffit de nous contacter par t&eacute;l. au +330562626261. Chez nous, vous pouvez payer soit en esp&egrave;ces soit par carte VISA, carte Maestro, MasterCard ou paiement d&eacute;mat&eacute;rialis&eacute;. Nos plats sont &eacute;galement disponibles &agrave; emporter. Nous sommes ouverts tous les jours de 18h00 &agrave; 22h00."/>
@@ -58,7 +58,7 @@ $produits = $produit->Pagination();
     <?php $utilisateur->headerFront(); ?>
     </header>
     
-    <main>
+    
     <main>
 
         <div class="col-md-10 ">
@@ -104,8 +104,8 @@ $produits = $produit->Pagination();
             if ($produits[1] > 1) {
                 if (empty($_GET['categorie'])) {
 
-            ?>
-                    <nav>
+            ?>  
+                    <nav class="center">
                         <ul class="pagination">
                             <li class="page-item <?= ($produits[2] == 1) ? "disabled" : "" ?>">
                                 <a href="produits?page=<?= $produits[2] - 1 ?>" class="page-link">Précédente</a>
@@ -129,9 +129,11 @@ $produits = $produit->Pagination();
                     </nav>
                 <?php } else if (isset($_GET['categorie']) && $_GET['categorie'] != '0') {
                     ?>
-                        <nav>
-                            <ul class="pagination">
-                                <li class="page-item <?= ($produits[2] == 1) ? "disabled" : "" ?>">
+                        <nav class="center">
+                            
+
+                                <ul class="pagination">
+                                    <li class="page-item <?= ($produits[2] == 1) ? "disabled" : "" ?>">
                                     <a href="produits?page=<?= $produits[2] - 1 ?>&categorie=<?= $_GET['categorie'] ?>" class="page-link">Précédente</a>
                                 </li>
                                 <?php
@@ -140,16 +142,17 @@ $produits = $produit->Pagination();
                                     <li class="page-item <?= ($produits[2] == $page) ? "active" : "" ?>">
                                         <a href="produits?page=<?= $page ?>&categorie=<?= $_GET['categorie'] ?>" class="page-link"><?= $page ?></a>
                                     </li>
-                                <?php
+                                    <?php
 
-                                }
-                                // var_dump($produits[1] , $produit[2]);
-                                ?>
+}
+// var_dump($produits[1] , $produit[2]);
+?>
                                 <li class="page-item <?= ($produits[2] == $produits[1]) ? "disabled" : "" ?>">
                                     <a href="produits?page=<?= $produits[2] + 1 ?>&categorie=<?= $_GET['categorie'] ?>" class="page-link">Suivante</a>
                                 </li>
-
+                                
                             </ul>
+                        
                     <?php
                 }
             }
@@ -157,9 +160,9 @@ $produits = $produit->Pagination();
 
 
     </main>
-    </main>
-    <footer>
 
+    <footer>
+            <?php include_once('View/include/footer.php'); ?>
     </footer>
 </body>
 </html>

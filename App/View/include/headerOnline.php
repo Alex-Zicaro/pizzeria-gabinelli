@@ -7,7 +7,7 @@ $produit = new Produits;
 $categories = $produit->produit->selectCategories();
 
 $produit->search();
-var_dump($_POST['search']);
+// var_dump($_POST['search']);
 ?>
 
 
@@ -23,25 +23,30 @@ var_dump($_POST['search']);
 			<div class="container">
 				<div class="row">
 					<div class="col d-flex flex-row">
-						<div class="top_bar_contact_item"><div class="top_bar_icon"><img src="https://res.cloudinary.com/dxfq3iotg/image/upload/v1560918577/phone.png" alt=""></div>05.34.48.09.63</div>
+						<div class="top_bar_contact_item"><div class="top_bar_icon"><img src="https://res.cloudinary.com/dxfq3iotg/image/upload/v1560918577/phone.png" alt=""></div>05.34.48.09.63  </div>
+						
 						<div class="top_bar_content ml-auto gauche">
 							<div class="top_bar_menu">
+							
+							
 								<ul class="standard_dropdown top_bar_dropdown">
-
-									 <li>
-										<a href="#" style="color: white" >$ US dollar<i class="fas fa-chevron-down"></i></a>
+									
+									<li>
+										<a href="produits" style="color: white" >Pizza<i class="fas fa-chevron-down"></i></a>
 										<ul>
-											<li><a href="#">EUR Euro</a></li>
-											<li><a href="#">GBP British Pound</a></li>
-											<li><a href="#">JPY Japanese Yen</a></li>
+
+											<?php foreach($categories as $categorie): ?>
+												<li><a href="produits?categorie=<?= $categorie['id'] ?>"><?= $categorie['nom_categ'] ?></a></li>
+											<?php endforeach; ?>
 										</ul>
 									</li>
 								</ul>
+
 							</div>
 							<div class="top_bar_user">
 								<div class="user_icon"><img src="https://res.cloudinary.com/dxfq3iotg/image/upload/v1560918647/user.svg" alt=""></div>
-								<div><a href="#" style="color: white">Register</a></div>
-								<div><a href="#" style="color: white">Sign in</a></div>
+								<div><a href="profil" style="color: white">Profil</a></div>
+								<div><a href="#" style="color: white">Déconnexion</a></div>
 							</div>
 						</div>
 					</div>
@@ -66,7 +71,7 @@ var_dump($_POST['search']);
 									<form action="recherche" method="POST" class="header_search_form clearfix">
 										<input type="search" name="search" required="required" id="search-bar" placeholder="Rechercher une pizza...">
 
-										<input type="submit" name="" id="checkout-button" value=""></input>
+										<input type="submit" name="" id="checkout-button" value="Rechercher"></input>
 									</form>
 								</div>
 							</div>
