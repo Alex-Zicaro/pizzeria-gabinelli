@@ -795,6 +795,9 @@ a:hover {
 	transform: translateY(-2px);
 	width: 15px;
 }
+.margin-bottom-52 {
+	margin-bottom: 52px;
+}
 
 .user_icon img {
 	width: 100%;

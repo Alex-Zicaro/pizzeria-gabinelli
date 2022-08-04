@@ -64,7 +64,7 @@ $userAdresse = $adresse->getAdresse($_SESSION['profil']['id']);
         ?>
 </header>
 <main>
-<?php if($_GET['modif'] != 'true'  || empty($_GET['adresse']) ){
+<?php if(empty($_GET['modif']) ){
         // echo "ezaezaeazaez";
         ?>
 
