@@ -1,4 +1,5 @@
 <?php
+namespace App\View;
 
 use App\Controller\{Utilisateurs, Images, Adresses};
 
@@ -13,6 +14,33 @@ $utilisateurActuelle = $utilisateur->userConnect();
 $userAdresse = $adresse->getAdresse($_SESSION['profil']['id']);
 // var_dump($utilisateurActuelle);
 // session_destroy();
+if (isset($_POST["Envoyer"]) && isset($_SESSION["profil"])) {
+
+    $utilisateur->CupdateMail($_POST["email"], $_SESSION["profil"]["id"]);
+    // $_SESSION["profil"]["email"] = htmlspecialchars(strip_tags($_POST["email"]));
+    // Login
+    // $_SESSION["profil"]["login"] = htmlspecialchars(strip_tags($_POST["login"])) ;
+    // Nom
+    $utilisateur->CupdateNom($_POST["nom"], $_SESSION["profil"]["id"]);
+    $_SESSION["profil"]["nom"] = htmlspecialchars(strip_tags($_POST["nom"]));
+    // Prenom
+    $utilisateur->CupdatePrenom($_POST["prenom"], $_SESSION["profil"]["id"]);
+    // $_SESSION["profil"]["prenom"] = htmlspecialchars(strip_tags($_POST["prenom"]));
+    // // Email
+    if(isset($_POST['password']) && isset($_POST['passwordConfirm'])){
+
+        $utilisateur->CupdatePassword($_POST["password"], $_POST['passwordConfirm'] , $_SESSION["profil"]["id"]);
+    }
+    
+        $utilisateur->updateImageUser();
+
+        
+    
+
+    header('Refresh:0');
+
+}
+// var_dump($_FILES['fichier']);
 ?>
 
 <!DOCTYPE html>
@@ -83,7 +111,7 @@ $userAdresse = $adresse->getAdresse($_SESSION['profil']['id']);
                                     </div>
                                     <?php if($userAdresse == false): ?>
                                     <div class="end">
-                                        <a href="profil?adresse=true">
+                                        <a href="adresse">
                                             <button class="button">
                                                 Ajouter une adresse
                                             </button>
@@ -95,12 +123,16 @@ $userAdresse = $adresse->getAdresse($_SESSION['profil']['id']);
                                                 Modifier
                                             </button>
                                         </a>
-                                        <a href="profil?delete=true">
+                                        <?php if($utilisateurActuelle['droit'] == 'admin'){ ?>
+
+                                        
+                                        <a href="admin">
 
                                             <button class="button button-color-red">
-                                                Supprimer
+                                                Espace admin
                                             </button>
                                         </a>
+                                        <?php } ?>
                                     </div>
 
                                 </div>
@@ -134,7 +166,7 @@ $userAdresse = $adresse->getAdresse($_SESSION['profil']['id']);
     <?php }
     
     else if(isset($_GET['modif']) && $_GET['modif'] == 'true'){
-    echo 'testsqdfdqsdfqfs';
+    // echo 'testsqdfdqsdfqfs';
     ?>
         <div class="page-content page-container" id="page-content">
         <div class="padding">
@@ -153,48 +185,45 @@ $userAdresse = $adresse->getAdresse($_SESSION['profil']['id']);
 							<?php if (isset($msgErr) && $msgErr !== 'Votre compte a bien été créé !') {
 				?><p class="alert alert-danger"><?= $msgErr;}?></p> 
 
-<?php if (isset($msgErr) && $msgErr == 'Votre compte a bien été créé !') {
-				?><p class="alert alert-success"><?= $msgErr;}?></p> 
+<?php if (isset($msgErr) && $msgErr == 'Votre compte a bien été créé !') { 
+				?><p class="alert alert-success"><?= $msgErr;
+            }
+                // var_dump($utilisateurActuelle);
+                ?></p> 
 				
 				
 
-							<div class="form-group form-input">
-								<input type="text" name="prenom" id="prenom" value="<?php
-								if(isset($_POST['prenom']))
+                <form method="post" enctype="multipart/form-data">
 
-									echo $controller->security($_POST['prenom']) ;
-								?>" required />
-								<label for="prenom" class="form-label" id="prenom">*Votre prenom</label>
-							</div>
 
-							<div class="form-group form-input">
-								<input type="text" name="nom" id="nom" value="<?php
-								if(isset($_POST['nom']))
+<div class="infos">
+    <h3>Votre login :</h3>
+    <input type="text" class="inputText" value="<?= $utilisateurActuelle["email"] ?>" maxlength="32" name="login">
+</div>
+<div class="infos">
+    <h3>Votre prénom :</h3>
+    <input type="text" class="inputText" value="<?= $utilisateurActuelle["prenom"] ?>" name="prenom">
+</div>
+<div class="infos">
+    <h3>Votre nom :</h3>
+    <input type="text" class="inputText" value="<?= $utilisateurActuelle["nom"] ?>" name="nom">
+</div>
+<div class="infos">
+    <h3>Votre email :</h3>
+    <input type="text" class="inputText" value="<?= $utilisateurActuelle["email"] ?>" name="email">
+</div>
 
-									echo $controller->security($_POST['nom']) ;
-								?>
-								" required />
-								<label for="nom" class="form-label">*Votre nom</label>
-							</div>
 
-							<div class="form-group form-input">
-								<input type="email" name="email" id="email" value="<?php
-								if(isset($_POST['email']))
-
-									echo $controller->security($_POST['email']) ;
-								?>" required />
-								<label for="email" class="form-label">*Votre Email</label>
-							</div>
 
 
 
 							<div class="form-group form-input">
-								<input type="password" name="password" id="password" autocomplete = "off" required />
+								<input type="password" name="password" id="password" autocomplete = "off"  />
 								<label for="password" class="form-label">*Votre mot de passe</label>
 							</div>
 
 							<div class="form-group form-input">
-								<input type="password" name="confirmation" id="confirmation" autocomplete = "off" required />
+								<input type="password" name="confirmation" id="confirmation" autocomplete = "off" />
 								<label for="confirmation" class="form-label">*Confirmation</label>
 							</div>
 
@@ -202,21 +231,7 @@ $userAdresse = $adresse->getAdresse($_SESSION['profil']['id']);
 								<input class="form-control" type="file" name="fichier" id="fichier">
 								<label class="form-label" for="fichier"> <b>Votre image</b> </label>
 							</div>
-							<fieldset>
 
-								<legend>*Choisir sa civilité </legend>
-
-								<div class="form-group form-input">
-									<input type="radio" name="civilite" id="Madame" value="Madame" value="" required />
-									<label for="Madame" class="">Mme.</label>
-								</div>
-
-								<div class="form-group form-input">
-									<input type="radio" name="civilite" id="Monsieur" value="Monsieur" value="" required />
-									<label for="Monsieur" class="">Mr.</label>
-								</div>
-
-							</fieldset>
 
 
 

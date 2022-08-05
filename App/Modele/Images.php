@@ -26,10 +26,12 @@ class Images extends Modele {
 
     public function trouverLeDernierId()
     {
+        // echo"on est iciciiazieazaze";
         $sql = "SELECT id FROM images ORDER BY id DESC LIMIT 1";
         $query = parent::getBdd()->prepare($sql);
         $query->execute();
         $data = $query->fetch();
+        // var_dump($data);
         return $data;
     }
 

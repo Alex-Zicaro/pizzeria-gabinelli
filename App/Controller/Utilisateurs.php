@@ -142,7 +142,7 @@ Class Utilisateurs extends Controller{
         $heIsAdmin = $this->utilisateur->isAdmin($id);
         if(is_array($heIsAdmin))
         $heIsAdmin = $heIsAdmin['droit'];
-        
+
         if($heIsAdmin == 'client'){
             return false;
         } else if ($heIsAdmin == 'admin'){
@@ -152,19 +152,16 @@ Class Utilisateurs extends Controller{
     }
 
 
-
-
-
     public function CUpdatemail($email, $id)
     {   
         // echo"on est ici";
-        $info = $_SESSION['profil'];
+        $info = $this->userConnect($_SESSION['profil']);
         // var_dump($info['email'],$email);
         $email = htmlspecialchars(strip_tags($email));
         $id = intval(strip_tags(htmlspecialchars($id)));
         if (isset($email) && isset($id)) {
             if (isset($email) && !empty($email) && $email != $info['email']) {
-                if ($this->utilisateur->emailVerify($email) === 0) {
+                if ($this->utilisateur->emailVerify($email) == 0) {
                     $this->utilisateur->updateMail($email, $id);
                     $_SESSION['profil']['email'] = $email;
                 } else {
@@ -178,7 +175,7 @@ Class Utilisateurs extends Controller{
     public function CUpdateNom($nom, $id)
     {
         // echo"on commence ici";
-        $info = $_SESSION['profil'];
+        $info = $this->utilisateur->getOneUser($id);
         $id = intval(htmlspecialchars(strip_tags($id)));
         $nom = htmlspecialchars(strip_tags($nom));
         // var_dump($info);
@@ -207,7 +204,7 @@ Class Utilisateurs extends Controller{
 
     public function CUpdatePrenom($prenom, $id)
     {   
-        $info = $_SESSION['profil'];
+        $info = $this->utilisateur->getOneUser($id);
         // var_dump($info);
         $id = intval(htmlspecialchars(strip_tags($id)));
         $prenom = htmlspecialchars(strip_tags($prenom));
@@ -249,11 +246,13 @@ Class Utilisateurs extends Controller{
     public function updateImageUser()
     {
 
-        $this->imageC->secondForm();
-        $idImage = $this->image->trouverLeDernierId();
+        if($this->imageC->addImage() == true){
+        $idImage = $this->imageC->requete->trouverLeDernierId();
         $this->utilisateur->updateImageUser($idImage["id"], $_SESSION["profil"]["id"]);
         $_SESSION['profil']['id_image'] = $idImage['id'];
-
+    } else {
+        echo "Votre image est introuvable!";
+    }
         // header("Refresh:0");
     }
 

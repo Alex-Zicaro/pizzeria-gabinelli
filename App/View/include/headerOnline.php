@@ -45,9 +45,21 @@ $produit->search();
 
 							</div>
 							<div class="top_bar_user">
-								<div class="user_icon"><img src="https://res.cloudinary.com/dxfq3iotg/image/upload/v1560918647/user.svg" alt=""></div>
-								<div><a href="profil" style="color: white">Profil</a></div>
-								<div><a href="accueil?deco=true" style="color: white">Déconnexion</a></div>
+							<div>
+							<ul class="standard_dropdown top_bar_dropdown">
+									
+									<li>
+										<a href="profil" style="color: white" >Profil<i class="fas fa-chevron-down"></i></a>
+										<ul>
+
+											
+												<li><a href="profil">Profil</a></li>
+												<li><a href="accueil?deco=true">Deconnexion</a></li>
+										</ul>
+									</li>
+								</ul>
+								</div>
+								<div><a href="panier" style="color: white">Panier</a></div>
 							</div>
 						</div>
 					</div>

@@ -22,7 +22,7 @@ class StripePaye extends Controller
     }
     public function startPayement($produits, $prix)
     {
-        var_dump($produits[0]);
+        // var_dump($produits[0]);
         $session = Session::create([
             'mode' => 'payment',
             'success_url' => 'http://localhost/pizzeria-gabinelli/App/succes',
@@ -54,7 +54,7 @@ class StripePaye extends Controller
 
     public function startPayementOneItem($produits, $prix , $description)
     {
-        var_dump($produits , $prix);
+        // var_dump($produits , $prix);
         $session = Session::create([
             'mode' => 'payment',
             'success_url' => 'http://localhost/pizzeria-gabinelli/App/succes',
@@ -89,14 +89,14 @@ class StripePaye extends Controller
         // var_dump($request);
         $endpoint_secret = 'whsec_b5d25112d7b1eb40613374ecb05f0ec79ac4b276b7b730876bf2435f0462c16b';
         $signature = $request->getHeaderLine('Content-Signature');
-        var_dump($signature);
+        // var_dump($signature);
         $body = (string) $request->getBody();
         $event = Webhook::constructEvent(
             $body,
             $signature,
             $endpoint_secret
         );
-        var_dump($event);
+        // var_dump($event);
         file_put_contents('checkout.completed', serialize($event));
     }
 }

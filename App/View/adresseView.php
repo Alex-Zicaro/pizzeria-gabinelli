@@ -1,22 +1,31 @@
 <?php
+use App\Controller\{Commandes, Produits, Utilisateurs};
 
-use App\Controller\{Utilisateurs,Controller,Images};
+$utilisateurs = new Utilisateurs;
+$commandes = new Commandes;
 
-$utilisateur = new Utilisateurs;
-$controller = new Controller;
-$image = new Images;
-$utilisateur->verifConnect();
-if (isset($_POST['Envoyer'])) {
-	$msgErr = $utilisateur->register($_POST['email'], $_POST['password'], $_POST['confirmation'], $_POST['prenom'], $_POST['nom'], $_POST['civilite']);
+$adresse = $commandes->commande->checkAdresse();
+
+
+
+if(isset($_POST['envoyer'])){
+
+    $commandes->addAdresse();
+
 }
-// var_dump($_FILES);
-// var_dump($_SESSION['err']);
+
+if(isset($_POST['modifier'])){
+
+    $commandes->modifierAdresse($_POST,$_SESSION['profil']['id']);
+
+}
+
+
+// echo"pain auuuuuuuuuuuuuuu chocolat";
 
 ?>
-
 <!DOCTYPE html>
 <html lang="fr">
-
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -60,113 +69,68 @@ if (isset($_POST['Envoyer'])) {
 	<meta name="robots" content="">
 </head>
 <body>
-<header>
-	<?php $utilisateur->headerFront(); 
-	
-	?>
-</header>
-	<main>
+    <header>
+    <?php $utilisateurs->headerFront(); 
+    if($adresse == NULL){
+    ?>
+    </header>
 
-		<div class="main">
-			<div class="container">
-				<div class="booking-content">
-					<!-- <div class="booking-image booking-img">
-					<img src="View/media/pizzaInscription.jpg" alt="">
-					</div> -->
-					<div class="booking-form">
-						<form id="booking-form" enctype="multipart/form-data" method="POST">
-							<h2 class="colorWhite">Inscription</h2>
-							<?php 
-							// echo $msgErr;
-							if (isset($msgErr) && $msgErr !== 'Votre compte a bien été créé !') {
-				?><p style="color: #fff"><?= $msgErr;}?></p> 
+    
+    <main>
+    <form action="" method="POST" class="booking-form">
+        <h2 class="colorWhite">Adresse de livraison</h2>
 
-<?php if (isset($msgErr) && $msgErr == 'Votre compte a bien été créé !') {
-				?><p class="alert alert-success"><?= $msgErr;}?></p> 
-				
-				
-
-							<div class="form-group form-input">
-								<input type="text" name="prenom" id="prenom" value="<?php
-								if(isset($_POST['prenom']))
-
-									echo $controller->security($_POST['prenom']) ;
-								?>" required />
-								<label for="prenom" class="form-label" id="prenom">*Votre prenom</label>
-							</div>
-
-							<div class="form-group form-input">
-								<input type="text" name="nom" id="nom" value="<?php
-								if(isset($_POST['nom']))
-
-									echo $controller->security($_POST['nom']) ;
-								?>
-								" required />
-								<label for="nom" class="form-label">*Votre nom</label>
-							</div>
-
-							<div class="form-group form-input">
-								<input type="email" name="email" id="email" value="<?php
-								if(isset($_POST['email']))
-
-									echo $controller->security($_POST['email']) ;
-								?>" required />
-								<label for="email" class="form-label">*Votre Email</label>
-							</div>
-
-
-
-							<div class="form-group form-input">
-								<input type="password" name="password" id="password" autocomplete = "off" required />
-								<label for="password" class="form-label">*Votre mot de passe</label>
-							</div>
-
-							<div class="form-group form-input">
-								<input type="password" name="confirmation" id="confirmation" autocomplete = "off" required />
-								<label for="confirmation" class="form-label">*Confirmation</label>
-							</div>
-
-							<div class="form-group form-input">
-								<input class="form-control" type="file" name="fichier" id="fichier">
-								<label class="form-label" for="fichier"> <b>Votre image</b> </label>
-							</div>
-							<fieldset>
-
-								<legend>*Choisir sa civilité </legend>
-
-								<div class="form-group form-input">
-									<input class="" type="radio" name="civilite" id="Madame" value="Madame" value="" required />
-									<label for="Madame" class="">Mme.</label>
-								</div>
-
-								<div class="form-group form-input">
-									<input class="" type="radio" name="civilite" id="Monsieur" value="Monsieur" value="" required />
-									<label for="Monsieur" class="">Mr.</label>
-								</div>
-
-							</fieldset>
-
-
-
-
-							<!-- <input type="submit" name="envoyer" id="envoyer" value="" required /> -->
-							<!-- <label for="envoyer" class="envoyer">S'inscrire</label> -->
-
-
-							<input type="submit" name="Envoyer" class="padding-top">
-
-							<p class="padding-top"><i>* = obligatoire</i></p>
-						</form>
-					</div>
-				</div>
-			</div>
-		</div>
-	</main>
-
-	<footer>
-		<?php include_once ('include/footer.php'); ?>
-	</footer>
+        <div class="form-group form-input">
+        <label for="ville">Votre ville : </label>
+        <input type="text" name="ville" id="ville" required>
+</div>
+<div class="form-group form-input">
+        <label for="rue">Votre rue : </label>
+        <input type="text" name="rue" id="rue" required>
+</div>
+<div class="form-group form-input">
+        <label for="postal">Code postal : </label>
+        <input type="number" name="postal" id="tel" required>
+</div>
+<div class="form-group form-input">
+        <label for="tel">Numéro de téléphone</label>
+        <input type="number" name="tel" id="tel" required>
+</div>
+        <input type="submit" name="envoyer" >
+        
+    </form>
+    <?php
+} else {
+    // echo"chocoooooooooooooooooooooooooolatine";
+    ?>
+        <form action="" class="booking-form" method="POST">
+        <h2 class="colorWhite">Adresse de livraison</h2>
+        
+        <div class="form-group form-input">
+        <label for="ville">Votre ville : </label>
+        <input type="text" name="ville" id="ville" value="<?= $adresse['ville'] ?>" required>
+</div>
+        <label for="rue">Votre rue : </label>
+        <input type="text" name="rue" id="rue" value="<?= $adresse['rue'] ?>" required>
+</div>
+<div class="form-group form-input">
+        <label for="postal">Code postal : </label>
+        <input type="number" name="postal" id="postal" value="<?= $adresse['code_postal'] ?>" required>
+</div>
+<div class="form-group form-input">
+        <label for="tel">Numéro de téléphone</label>
+        <input type="number" name="tel" id="tel" value="<?= $adresse['telephone'] ?>" required>
+</div>
+        <input type="submit" name="modifier" >
+        
+    </form>
+    <?php
+}
+?>
+</main>
+<footer>
+<?php include_once('View/include/footer.php'); ?>
+</footer>
 
 </body>
-
 </html>
