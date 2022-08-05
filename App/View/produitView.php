@@ -144,7 +144,7 @@ $controller = new Controller;
                                         <input type="submit" id="submit-to-cart" value="Ajouter au panier" name="submit">
                                 </form>
 
-                    <a href="paye?item=<?= $produit['id'] ?>">
+                    <a href="paye">
                         <button id='checkout-button' value="acheter">Payer</button>
                 </a>
 
@@ -310,8 +310,12 @@ $controller = new Controller;
                 if (isset($_POST["envoyeAdmin"])) {
                     // je lui dis que si la valeur ne reste pas la même je fais une modification au niveau de la base de donné
 
-                    $test = $obj->updateProduit($produit);
-                    header('Location: admin');
+                    $headerLocation = $obj->updateProduit($produit);
+                    var_dump($headerLocation);
+                    // header('Location: admin');
+                    if($headerLocation == 'headerBug'){
+                        echo "<script>window.location.href='produit?produit=". $produit['id'] . "</script>";
+                    }
                 }
                 ?>
 
@@ -329,10 +333,8 @@ $controller = new Controller;
                                 <input type="text" value="<?= $produit["nom"] ?>" id="nom" name="nom"></input>
 
                                 <label for="categ">Catégorie : </label>
-                                <input type="text" value="<?= $produit["categ"] ?>" id="categ" name="categ"></input>
+                                <input type="text" value="<?= $produit["nom_categ"] ?>" id="categ" name="categ"></input>
 
-                                <label for="sous">Sous catégorie : </label>
-                                <input type="text" value="<?= $produit["sous_nom"] ?>" id="sous" name="sous">
 
                                 <label for="description">Description : </label>
                                 <input type="text" value="<?= $produit["description"] ?>" id="description" name="description">

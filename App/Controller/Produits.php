@@ -158,32 +158,40 @@ class Produits extends Controller
 
         if ($produit["nom"] != $_POST["nom"]) {
             $this->produit->update(htmlspecialchars(strip_tags($_POST["nom"])), $produit["id"]);
+            echo '<script>window.location.href=produit?produit=' . $produit['id'] . '&modif=1</script>';
         }
 
         if ($produit["description"] != $_POST["description"]) {
             $this->produit->updateDesc(htmlspecialchars(strip_tags($_POST["description"])), $produit["id"]);
+            header('location: produit?produit=' . $produit["id"] . '&modif=1');
         }
 
         if ($produit["presentation"] != $_POST["presentation"]) {
             $this->produit->updatePres(htmlspecialchars(strip_tags($_POST["presentation"])), $produit["id"]);
+            header('location: produit?produit=' . $produit["id"] . '&modif=1');
         }
 
         // il faut vérifier si c'est un int ?
         if ($produit["prix"] != $_POST["prix"]) {
             $this->produit->updatePrix(htmlspecialchars(strip_tags($_POST["prix"])), $produit["id"]);
+            header('location: produit?produit=' . $produit["id"] . '&modif=1');
         }
 
         // echo"test";
 
-        $this->imageController->secondForm();
-        if (isset($_SESSION["err"]) && $_SESSION["err"] == 1) {
+        $addImg = $this->imageController->addImage();
+        if ($addImg == true) {
             $imageId = $this->image->trouverLeDernierId();
 
             $this->produit->updateImage($imageId["id"], $produit["id"]);
 
             $this->image->delete($produit["id"]);
         }
+        if(!headers_sent())
         header("Refresh:0");
+        else{
+            return 'headerBug';
+        }
     }
 
 

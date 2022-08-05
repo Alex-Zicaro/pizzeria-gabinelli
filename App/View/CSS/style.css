@@ -795,13 +795,21 @@ a:hover {
 	transform: translateY(-2px);
 	width: 15px;
 }
+.margin-bottom-52 {
+	margin-bottom: 52px;
+}
 
 .user_icon img {
 	width: 100%;
 }
+
+.aColorAndSize{
+	color:#000;
+	font-size: 20px;
+}
 .card-img-top{
-	max-width: 20%;
-	min-width: 20%;
+	max-width: 30%;
+	min-width: 30%;
 }
 .top_bar_user div {
 	display: inline-block;
