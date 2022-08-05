@@ -21,7 +21,7 @@ class Images extends Controller
     public function addImage()
     {
         // echo"test";
-        var_dump($_FILES);
+        // var_dump($_FILES);
 
         if (!empty($_FILES) && $_FILES['fichier']['name'] !== "") {
             $file_nom  = $_FILES["fichier"]["name"];

@@ -7,6 +7,8 @@ $produit = new Produits;
 $categories = $produit->produit->selectCategories();
 
 $produit->search();
+// var_dump($_POST['search']);
+
 ?>
 
 
@@ -22,10 +24,13 @@ $produit->search();
 			<div class="container">
 				<div class="row">
 					<div class="col d-flex flex-row">
-						<div class="top_bar_contact_item"><div class="top_bar_icon"><img src="https://res.cloudinary.com/dxfq3iotg/image/upload/v1560918577/phone.png" alt=""></div>05.34.48.09.63</div>
+						<div class="top_bar_contact_item"><div class="top_bar_icon"><a href="accueil" ><img src="https://res.cloudinary.com/dxfq3iotg/image/upload/v1560918577/phone.png" alt=""></div>05.34.48.09.63 </a></div>
+						
 						<div class="top_bar_content ml-auto gauche">
 							<div class="top_bar_menu">
-                            <ul class="standard_dropdown top_bar_dropdown">
+							
+							
+								<ul class="standard_dropdown top_bar_dropdown">
 									
 									<li>
 										<a href="produits" style="color: white" >Pizza<i class="fas fa-chevron-down"></i></a>
@@ -37,11 +42,24 @@ $produit->search();
 										</ul>
 									</li>
 								</ul>
+
 							</div>
 							<div class="top_bar_user">
-								<div class="user_icon"><img src="https://res.cloudinary.com/dxfq3iotg/image/upload/v1560918647/user.svg" alt=""></div>
-								<div><a href="inscription" style="color: white">Inscription</a></div>
-								<div><a href="connexion" style="color: white">Connexion</a></div>
+							<div>
+							<ul class="standard_dropdown top_bar_dropdown">
+									
+									<li>
+										<a href="connexion" style="color: white" >Connexion<i class="fas fa-chevron-down"></i></a>
+										<ul>
+
+											
+												<li><a href="connexion">Connexion</a></li>
+												<li><a href="inscription">Inscription</a></li>
+										</ul>
+									</li>
+								</ul>
+								</div>
+								<div><a href="panier" style="color: white">Panier</a></div>
 							</div>
 						</div>
 					</div>
@@ -66,7 +84,7 @@ $produit->search();
 									<form action="recherche" method="POST" class="header_search_form clearfix">
 										<input type="search" name="search" required="required" id="search-bar" placeholder="Rechercher une pizza...">
 
-										<input type="submit" id="checkout-button" value="Rechercher"></input>
+										<input type="submit" name="" id="checkout-button" value="Rechercher"></input>
 									</form>
 								</div>
 							</div>
@@ -84,88 +102,4 @@ $produit->search();
 		
 		
 		
-		<!-- Menu -->
-
-		<div class="page_menu">
-			<div class="container">
-				<div class="row">
-					<div class="col">
-						
-						<div class="page_menu_content">
-							
-							<div class="page_menu_search">
-                            <form action="recherche" method="POST" class="header_search_form clearfix">
-										<input type="search" name="search" required="required" id="search-bar" placeholder="Rechercher une pizza...">
-
-										<input type="submit" name="" id="checkout-button" value="Rechercher"></input>
-									</form>
-							</div>
-							<ul class="page_menu_nav">
-
-								<li class="page_menu_item has-children">
-									<a href="#">Currency<i class="fa fa-angle-down"></i></a>
-									<ul class="page_menu_selection">
-										<li><a href="#">US Dollar<i class="fa fa-angle-down"></i></a></li>
-										<li><a href="#">EUR Euro<i class="fa fa-angle-down"></i></a></li>
-										<li><a href="#">GBP British Pound<i class="fa fa-angle-down"></i></a></li>
-										<li><a href="#">JPY Japanese Yen<i class="fa fa-angle-down"></i></a></li>
-									</ul>
-								</li>
-								<li class="page_menu_item">
-									<a href="#">Home<i class="fa fa-angle-down"></i></a>
-								</li>
-								<li class="page_menu_item has-children">
-									<a href="#">Super Deals<i class="fa fa-angle-down"></i></a>
-									<ul class="page_menu_selection">
-										<li><a href="#">Super Deals<i class="fa fa-angle-down"></i></a></li>
-										<li class="page_menu_item has-children">
-											<a href="#">Menu Item<i class="fa fa-angle-down"></i></a>
-											<ul class="page_menu_selection">
-												<li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
-												<li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
-												<li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
-												<li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
-											</ul>
-										</li>
-										<li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
-										<li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
-										<li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
-									</ul>
-								</li>
-								<li class="page_menu_item has-children">
-									<a href="#">Featured Brands<i class="fa fa-angle-down"></i></a>
-									<ul class="page_menu_selection">
-										<li><a href="#">Featured Brands<i class="fa fa-angle-down"></i></a></li>
-										<li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
-										<li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
-										<li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
-									</ul>
-								</li>
-								<li class="page_menu_item has-children">
-									<a href="#">Trending Styles<i class="fa fa-angle-down"></i></a>
-									<ul class="page_menu_selection">
-										<li><a href="#">Trending Styles<i class="fa fa-angle-down"></i></a></li>
-										<li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
-										<li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
-										<li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
-									</ul>
-								</li>
-								<li class="page_menu_item"><a href="blog.html">blog<i class="fa fa-angle-down"></i></a></li>
-								<li class="page_menu_item"><a href="contact.html">contact<i class="fa fa-angle-down"></i></a></li>
-							</ul>
-							
-							<div class="menu_contact">
-								<div class="menu_contact_item"><div class="menu_contact_icon"><img src="images/phone_white.png" alt=""></div>+38 068 005 3570</div>
-								<div class="menu_contact_item"><div class="menu_contact_icon"><img src="images/mail_white.png" alt=""></div><a href="mailto:fastsales@gmail.com">fastsales@gmail.com</a></div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-
-
-	
-	
-
-</div>
+		

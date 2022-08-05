@@ -311,7 +311,7 @@ $controller = new Controller;
                     // je lui dis que si la valeur ne reste pas la même je fais une modification au niveau de la base de donné
 
                     $headerLocation = $obj->updateProduit($produit);
-                    var_dump($headerLocation);
+                    // var_dump($headerLocation);
                     // header('Location: admin');
                     if($headerLocation == 'headerBug'){
                         echo "<script>window.location.href='produit?produit=". $produit['id'] . "</script>";

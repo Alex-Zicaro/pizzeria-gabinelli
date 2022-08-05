@@ -64,7 +64,7 @@ Class Modele {
         $query->execute([
             
         ]);
-        var_dump($query);
+        // var_dump($query);
     }
 
     public function getLast()
