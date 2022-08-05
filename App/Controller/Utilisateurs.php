@@ -8,7 +8,7 @@ use PHPMailer\PHPMailer\Exception;
 require '../vendor/phpmailer/phpmailer/src/Exception.php';
 require '../vendor/phpmailer/phpmailer/src/SMTP.php';
 require '../vendor/phpmailer/phpmailer/src/PHPMailer.php';
-require_once('../vendor/autoload.php');
+
 
 //revoir le code ici 
 
@@ -123,7 +123,8 @@ Class Utilisateurs extends Controller{
     {
 // var_dump($_SESSION['profil']);
         if (isset($_SESSION["profil"]["id"])) {
-            $data = $this->utilisateur->getAll($_SESSION["profil"]["id"]);
+            $data = $this->utilisateur->getOneUser($_SESSION["profil"]["id"]);
+            // var_dump($data);
             $image = $this->imageC->requete->selectImage($data['id_image']);
             array_push($data, $image);
             return $data;
@@ -133,25 +134,25 @@ Class Utilisateurs extends Controller{
         }
     }
 
-    public function IsAdmin()
-    {
-        if (isset($_SESSION["profil"]["id_droits"]) && $_SESSION["profil"]["id_droits"] == 42) {
-            return true;
-        } else {
+    public function userAdmin($id){
+        if(!isset($_SESSION['profil'])){
+            header('location: connexion');
+            exit();
+        }
+        $heIsAdmin = $this->utilisateur->isAdmin($id);
+        if(is_array($heIsAdmin))
+        $heIsAdmin = $heIsAdmin['droit'];
+        
+        if($heIsAdmin == 'client'){
             return false;
-        }
-    }
-
-    public function userAdmin()
-    {
-
-        if (isset($_SESSION["profil"]["id_droits"]) && $_SESSION["profil"]["id_droits"] == 42) {
-
+        } else if ($heIsAdmin == 'admin'){
+            echo"true";
             return true;
-        } else {
-            header("location: profil");
         }
     }
+
+
+
 
 
     public function CUpdatemail($email, $id)
@@ -281,20 +282,20 @@ Class Utilisateurs extends Controller{
         $mail = new PHPMailer(true);
 
         $token = uniqid();
-        $url = "http://localhost/boutique-en-ligne/app/token?token=$token";
+        $url = "http://localhost/pizzeria-gabinelli/App/token?token=$token";
         try {
-            //Server settings
-            $mail->SMTPDebug  = 0;                  //Enable verbose debug output
-            $mail->isSMTP();                                            //Send using SMTP
-            $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
-            $mail->SMTPAuth   = TRUE;                                  //Enable SMTP authentication
-            $mail->Username   = 'lesouk13@gmail.com';                     //SMTP username
-            $mail->Password   = 'Pizza1013';                               //SMTP password
-            $mail->SMTPSecure = "tls";         //Enable implicit TLS encryption
-            $mail->Port       = 587;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
+     //Server settings
+     $mail->SMTPDebug = 0;                      //Enable verbose debug output
+     $mail->isSMTP();                                            //Send using SMTP
+     $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
+     $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
+     $mail->Username   = 'lebotdu13002@gmail.com';                     //SMTP username
+     $mail->Password   = 'xjraxilbhtbvgkee' ;                               //SMTP password
+     $mail->SMTPSecure = "tls";            //Enable implicit TLS encryption
+     $mail->Port       = 587;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
 
             //Recipients
-            $mail->setFrom('lesouk13@gmail.com', 'Mot de passe oublie');
+            $mail->setFrom('lebotdu13002@gmail.com', 'Mot de passe oublie');
             $mail->addAddress($email, '');     //Add a recipient
 
 
@@ -366,10 +367,10 @@ Class Utilisateurs extends Controller{
         if (isset($_GET['delete']) && $_GET['delete'] != 0) {
             $id = strip_tags(htmlspecialchars($_GET['delete']));
 
-            $this->utilisateur->deleteOne($id);
-            if ($page > 0) {
+            $this->utilisateur->deleteOneById($id);
+            if ($page == 0) {
                 header("location: admin");
-                // echo"gros couscous";
+                
 
                 die;
             } else {

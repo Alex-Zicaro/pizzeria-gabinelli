@@ -16,22 +16,8 @@ Class Paniers extends Modele {
 
     }
 
-public function SelectQuantiteFromIdProduit($idProduit) {
 
-    $sql = "SELECT quantite from produits where id = :idproduit";
-    $stmt = parent::getBdd()->prepare($sql);
-    $stmt->bindValue(':idproduit', $idProduit);
-    $stmt->execute();
-    $fetch = $stmt->fetch();
-    return $fetch['quantite'];
-}
-public function UpdateQuantiteFromQteProduit($idProduit, $newquantite) {
-    $sql2 = "UPDATE produits SET quantite = :quantite WHERE id = :idproduit";
-    $stmt = parent::getBdd()->prepare($sql2);
-    $stmt->bindValue(':quantite', $newquantite);
-    $stmt->bindValue(':idproduit', $idProduit);
-    $stmt->execute();
-}
+
 public function InsertPanierIntoBdd() {
     $sql = "INSERT INTO paniers (id_utilisateur) VALUES (:id_utilisateur)";
     $stmt = parent::getBdd()->prepare($sql);

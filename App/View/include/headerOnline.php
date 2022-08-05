@@ -1,84 +1,93 @@
+<?php
 
-<header class="header ">
+use App\Controller\{Utilisateurs, Controller , Images , Commentaires , Produits};
 
-<div class="header-bandeau ">
-    <div class="centrage display-flex-l flex-align-items-center-l flex-justify-space-between-l">
+$produit = new Produits;
 
-        <div class="no-margin-l margin-auto" id="logo">
-            <a href="accueil" title="Pizzeria Gabinelli">
-                <img class="logo" src="../media/logo_pizzeria_gabinelli.png" alt="Pizzeria Gabinelli" width="200" />
-            </a>
-        </div>
-        <label id="btMenu" for="ouvre-menu" class=" no-margin-top">
-            <span>
-                <span></span>
-                <span></span>
-                <span></span>
-            </span>
-        </label>
-        <div class="display-flex flex-direction-column flex-align-items-end-l flex-grow-9">
-            <!-- ici -->
-            <nav class="nav no-margin-top display-flex">
+$categories = $produit->produit->selectCategories();
 
-                <ul class="santa hidden">
+$produit->search();
+// var_dump($_POST['search']);
+
+?>
 
 
-                    <li class="normal-padding-right-l">
-                        <div class="bloc display-flex-l flex-align-items-center display-none" id="tel">
-                            <a class="font-size-big font-weight-bold" href="tel:+33488927544" onclick="gtag('event', 'Appel Téléphonique');">
-                                <span class="hotliner">Commande :</span>
-                                <span class="tx">05 34 48 09 63</span>
-                            </a>
-                        </div>
-                    </li>
-                </ul>
-            </nav>
-            <nav class="nav no-margin-top">
-                <ul class="lutin">
-                    <li class="active">
-                        <a href="connexion" title="Accueil">
-                            Connexion
-                        </a>
-                    </li>
-                    <li>
-                        <a href="la-carte-w1.html" title="La carte">
-                            panier
-                        </a>
-                    <li>
+<div class="super_container margin-bot-10">
+	
+	<!-- Header -->
+	
+	
 
-                        <a href="nos-pizzas-w1.html" title="Nos pizzas">
-                            Nos pizzas
-                        </a>
-                        <ul>
-                            <li>
-                                <a href="nos-pizzas-pizzas-traditionnelles-w1.html" title="Pizzas traditionnelles">
-                                    Base tomate
-                                </a>
-                            </li>
-                            <li>
-                                <a href="nos-pizzas-pizzas-specialites-w1.html" title="Pizzas spécialités">
-                                    Les spéciales
-                                </a>
-                            </li>
-                            <li>
-                                <a href="nos-pizzas-pizzas-sucrees-w1.html" title="Pizzas sucrées">
-                                    Base crème
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
+		<!-- Top Bar -->
+
+		<div class="top_bar">
+			<div class="container">
+				<div class="row">
+					<div class="col d-flex flex-row">
+						<div class="top_bar_contact_item"><div class="top_bar_icon"><img src="https://res.cloudinary.com/dxfq3iotg/image/upload/v1560918577/phone.png" alt=""></div>05.34.48.09.63  </div>
+						
+						<div class="top_bar_content ml-auto gauche">
+							<div class="top_bar_menu">
+							
+							
+								<ul class="standard_dropdown top_bar_dropdown">
+									
+									<li>
+										<a href="produits" style="color: white" >Pizza<i class="fas fa-chevron-down"></i></a>
+										<ul>
+
+											<?php foreach($categories as $categorie): ?>
+												<li><a href="produits?categorie=<?= $categorie['id'] ?>"><?= $categorie['nom_categ'] ?></a></li>
+											<?php endforeach; ?>
+										</ul>
+									</li>
+								</ul>
+
+							</div>
+							<div class="top_bar_user">
+								<div class="user_icon"><img src="https://res.cloudinary.com/dxfq3iotg/image/upload/v1560918647/user.svg" alt=""></div>
+								<div><a href="profil" style="color: white">Profil</a></div>
+								<div><a href="accueil?deco=true" style="color: white">Déconnexion</a></div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>		
+		</div>
+
+		<!-- Header Main -->
+
+		<div class="header_main">
+			<div class="container">
+				<div class="row">
+
+					<!-- Logo -->
+					
+
+					<!-- Search -->
+					<div class="col-lg-6 col-12 order-lg-2 order-3 text-lg-left text-right">
+						<div class="header_search">
+							<div class="header_search_content">
+								<div class="header_search_form_container">
+									<form action="recherche" method="POST" class="header_search_form clearfix">
+										<input type="search" name="search" required="required" id="search-bar" placeholder="Rechercher une pizza...">
+
+										<input type="submit" name="" id="checkout-button" value="Rechercher"></input>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
 
 
-                    <li>
-                        <a href="les-salades-w1.html" title="Les salades">
-                            Contact
-                        </a>
-                    </li>
-                    <li>
-                </ul>
-            </nav>
-        </div>
-    </div>
-</div>
 
-</header>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		
+		
+		

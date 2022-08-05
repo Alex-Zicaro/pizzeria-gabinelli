@@ -77,4 +77,22 @@ footer div {
   transition: 1s;
 }
 
+#img_error_404{
+  display: flex;
+  justify-content: center;
+  min-width: 300px;
+  min-height:300px ;
+}
+
+.margin-bot-10{
+  padding-bottom: 150px;
+}
+
+@media only screen and (max-width: 1199px) {
+  footer{
+    width: 100vh;
+  }
+}
+
+
 

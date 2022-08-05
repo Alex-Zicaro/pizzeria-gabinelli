@@ -3,11 +3,9 @@ display-flex, .booking-content {
     display: flex;
     display: -webkit-flex; }
   
-  /* @extend list-type-ulli; */
-  list-type-ulli, ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0; }
+a{
+  display: none;
+}
   
   a:focus, a:active {
     text-decoration: none;
@@ -56,22 +54,22 @@ display-flex, .booking-content {
     -o-appearance: radio !important;
     -ms-appearance: radio !important; }
   
-  img {
-    max-width: 100%;
-    height: auto; }
+
   
-  figure {
-    margin: 0; }
-  
-  p {
-    margin-bottom: 0px; }
+form label{
+  color: #fff;
+}
+.colorWhite{
+  color: #fff;
+}
   
   h2 {
     line-height: 1.8;
+    color: #fff;
     margin: 0;
     padding: 0;
     font-weight: bold;
-    font-family: Poppins;
+    /* font-family: Poppins; */
     font-size: 21px;
     text-align: center;
     margin-bottom: 28px; }
@@ -79,15 +77,7 @@ display-flex, .booking-content {
   .clear {
     clear: both; }
   
-  body {
-    font-size: 14px;
-    line-height: 1.8;
-    color: #fff !important;
-    background: #e5e1de;
-    background-color: #f9f9fa;
-    font-weight: 400;
-    font-family: Poppins;
-    margin: 0px; }
+  
   
   .main {
     padding: 115px 0;
@@ -121,7 +111,12 @@ display-flex, .booking-content {
   
   .booking-img {
     border-top-left-radius: 10px;
-    border-bottom-left-radius: 10px; }
+    border-bottom-left-radius: 10px; 
+
+  }
+  .margin-left250{
+    margin-left: 250px;
+  }
   
   .booking-form {
     width: 41.67%;
@@ -243,7 +238,7 @@ display-flex, .booking-content {
     width: 100%;
     display: block;
     border: none;
-    font-family: Poppins;
+    /* font-family: Poppins; */
     color: #fff;
     background: transparent;
     border-bottom: 1px solid #999;
@@ -279,42 +274,9 @@ display-flex, .booking-content {
     .submit:hover {
       background: #04711e; }
   
-  ul {
-    background: 0 0;
-    z-index: 9;
-    border-bottom: 1px solid #999;
-    padding-top: 15px; }
-  
-  ul li {
-    padding: 5px 0px;
-    z-index: 2;
-    color: #bebebe; }
-  
-  ul li:not(.init) {
-    display: none;
-    /* background: #fff; */
-    color: #222;
-    padding: 5px 10px; }
-  
-  ul li:not(.init):hover, ul li.selected:not(.init) {
-    background: #04711e; }
-  
-  li.init {
-    cursor: pointer;
-    position: relative; }
-    li.init:after {
-      position: absolute;
-      right: 0;
-      top: 50%;
-      transform: translateY(-50%);
-      -moz-transform: translateY(-50%);
-      -webkit-transform: translateY(-50%);
-      -o-transform: translateY(-50%);
-      -ms-transform: translateY(-50%);
-      font-size: 20px;
-      color: #bebebe;
-      font-family: 'Material-Design-Iconic-Font';
-      content: '\f2f2'; }
+
+
+
   
   .label-radio {
     display: block;

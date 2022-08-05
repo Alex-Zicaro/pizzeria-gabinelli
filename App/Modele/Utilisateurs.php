@@ -34,6 +34,15 @@ class Utilisateurs extends Modele{
 
         header('Refresh:5;url=connexion');
     }
+    public function getOneUser($id){
+
+        $sql = "SELECT utilisateurs.droit , utilisateurs.id , utilisateurs.email , utilisateurs.prenom , utilisateurs.nom , utilisateurs.civilite ,  images.img_dir , images.nom_img , images.id as id_image FROM utilisateurs
+        LEFT JOIN images ON utilisateurs.id_image = images.id WHERE utilisateurs.id = :id";
+        $query = parent::getBdd()->prepare($sql);
+        $query->execute(["id" => $id]);
+        $data = $query->fetch();
+        return $data ;
+    }
 
 
     public function emailVerify($email)
@@ -111,12 +120,54 @@ class Utilisateurs extends Modele{
         $infologin = $requetegetlogin->fetch();
         return $infologin;
     }
+    public function RecupEmailfromtoken($token)
+    {
+
+        $stmt = parent::getBdd()->prepare('SELECT email from utilisateurs where token = :token');
+        $stmt->execute([
+            'token' => $token
+        ]);
+        $email = $stmt->fetchColumn();
+        return $email;
+    }
+
+    public function UpdateTokenfromMail($token, $email)
+    {
+        $sql = "UPDATE utilisateurs SET token = ? where email = ?";
+        $stmt = parent::getBdd()->prepare($sql);
+        $stmt->execute(array($token, $email));
+        return $stmt;
+    }
+
+    public function UpdatePasswordFromToken($hashedpassword, $email)
+    {
+        $sql = "UPDATE utilisateurs SET password = ?, token = NULL WHERE email = ?";
+        $stmt = parent::getBdd()->prepare($sql);
+        $stmt->execute(array($hashedpassword, $email));
+    }
+    public function getAllUser(){
+
+        $sql = "SELECT utilisateurs.droit, utilisateurs.id , utilisateurs.email , utilisateurs.prenom , utilisateurs.nom , utilisateurs.civilite , images.img_dir , images.nom_img FROM utilisateurs
+        LEFT JOIN images ON utilisateurs.id_image = images.id";
+        $query = parent::getBdd()->prepare($sql);
+        $query->execute();
+        $data = $query->fetchAll();
+        return $data;
+    }
 
     public function genderOfCurrentUser(){
 
         $sql = "SELECT civilite FROM utilisateurs WHERE id = :id";
         $query = parent::getBdd()->prepare($sql);
         $query->execute(["id" => $_SESSION["profil"]["id"]]);
+        $data = $query->fetch();
+        return $data;
+    }
+    
+    public function isAdmin($id){
+        $sql = "SELECT droit FROM utilisateurs WHERE id = :id";
+        $query = parent::getBdd()->prepare($sql);
+        $query->execute(["id" => $id]);
         $data = $query->fetch();
         return $data;
     }
